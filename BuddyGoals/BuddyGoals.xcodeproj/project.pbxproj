@@ -75,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3226E8D287C1FAB00CBCB49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B35B934F287C1A380056C847 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B35B9341287C1A380056C847 = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +106,8 @@
 		B35B934C287C1A380056C847 /* BuddyGoals */ = {
 			isa = PBXGroup;
 			children = (
+				B3226E8D287C1FAB00CBCB49 /* Views */,
 				B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */,
-				B35B934F287C1A380056C847 /* ContentView.swift */,
 				B35B9351287C1A390056C847 /* Assets.xcassets */,
 				B35B9356287C1A390056C847 /* Persistence.swift */,
 				B35B9358287C1A390056C847 /* BuddyGoals.xcdatamodeld */,
