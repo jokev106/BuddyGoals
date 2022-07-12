@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct BuddyGoalsApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject var activityToday = Dailies()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(activityToday)
         }
     }
 }

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3226E90287D4DB900CBCB49 /* AddPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E8F287D4DB900CBCB49 /* AddPlanView.swift */; };
+		B3226E93287D4DEA00CBCB49 /* Dailies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E92287D4DEA00CBCB49 /* Dailies.swift */; };
+		B3226E95287D4ECB00CBCB49 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E94287D4ECB00CBCB49 /* Plan.swift */; };
+		B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E97287D4F1A00CBCB49 /* NavigationAppearance.swift */; };
+		B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E99287D504F00CBCB49 /* Actionable.swift */; };
+		B3226EA1287D508100CBCB49 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9B287D508100CBCB49 /* Goal.swift */; };
+		B3226EA2287D508100CBCB49 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9C287D508100CBCB49 /* StringExtension.swift */; };
+		B3226EA3287D508100CBCB49 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9D287D508100CBCB49 /* Rank.swift */; };
+		B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9F287D508100CBCB49 /* RepeatAction.swift */; };
+		B3226EA6287D508100CBCB49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226EA0287D508100CBCB49 /* User.swift */; };
 		B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */; };
 		B35B9350287C1A380056C847 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934F287C1A380056C847 /* ContentView.swift */; };
 		B35B9352287C1A390056C847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35B9351287C1A390056C847 /* Assets.xcassets */; };
@@ -16,6 +26,17 @@
 		B35B9364287C1A390056C847 /* BuddyGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B9363287C1A390056C847 /* BuddyGoalsTests.swift */; };
 		B35B936E287C1A390056C847 /* BuddyGoalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B936D287C1A390056C847 /* BuddyGoalsUITests.swift */; };
 		B35B9370287C1A390056C847 /* BuddyGoalsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B936F287C1A390056C847 /* BuddyGoalsUITestsLaunchTests.swift */; };
+		B3A89293287D535000694732 /* ScrollPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89291287D535000694732 /* ScrollPlanView.swift */; };
+		B3A89294287D535000694732 /* PlanHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89292287D535000694732 /* PlanHomeView.swift */; };
+		B3A89298287D53A400694732 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89295287D53A400694732 /* MainView.swift */; };
+		B3A89299287D53A400694732 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89296287D53A400694732 /* GoalView.swift */; };
+		B3A8929A287D53A400694732 /* CompanionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89297287D53A400694732 /* CompanionView.swift */; };
+		B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929B287D53D500694732 /* ColorsSet.swift */; };
+		B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929D287D53FE00694732 /* AddActionView.swift */; };
+		B3A892A0287D549700694732 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929F287D549700694732 /* RankView.swift */; };
+		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
+		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
+		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +57,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B3226E8F287D4DB900CBCB49 /* AddPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlanView.swift; sourceTree = "<group>"; };
+		B3226E92287D4DEA00CBCB49 /* Dailies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dailies.swift; sourceTree = "<group>"; };
+		B3226E94287D4ECB00CBCB49 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		B3226E97287D4F1A00CBCB49 /* NavigationAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppearance.swift; sourceTree = "<group>"; };
+		B3226E99287D504F00CBCB49 /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
+		B3226E9B287D508100CBCB49 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		B3226E9C287D508100CBCB49 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		B3226E9D287D508100CBCB49 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		B3226E9F287D508100CBCB49 /* RepeatAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatAction.swift; sourceTree = "<group>"; };
+		B3226EA0287D508100CBCB49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B35B934A287C1A380056C847 /* BuddyGoals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyGoals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsApp.swift; sourceTree = "<group>"; };
 		B35B934F287C1A380056C847 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +79,17 @@
 		B35B9369287C1A390056C847 /* BuddyGoalsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddyGoalsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35B936D287C1A390056C847 /* BuddyGoalsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsUITests.swift; sourceTree = "<group>"; };
 		B35B936F287C1A390056C847 /* BuddyGoalsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B3A89291287D535000694732 /* ScrollPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPlanView.swift; sourceTree = "<group>"; };
+		B3A89292287D535000694732 /* PlanHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanHomeView.swift; sourceTree = "<group>"; };
+		B3A89295287D53A400694732 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B3A89296287D53A400694732 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		B3A89297287D53A400694732 /* CompanionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionView.swift; sourceTree = "<group>"; };
+		B3A8929B287D53D500694732 /* ColorsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsSet.swift; sourceTree = "<group>"; };
+		B3A8929D287D53FE00694732 /* AddActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
+		B3A8929F287D549700694732 /* RankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
+		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
+		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +120,49 @@
 		B3226E8D287C1FAB00CBCB49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3A8929F287D549700694732 /* RankView.swift */,
+				B3A89297287D53A400694732 /* CompanionView.swift */,
+				B3A89296287D53A400694732 /* GoalView.swift */,
+				B3A89295287D53A400694732 /* MainView.swift */,
+				B3A89290287D531F00694732 /* Component */,
+				B3226E8E287D4DA800CBCB49 /* Modal */,
 				B35B934F287C1A380056C847 /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B3226E8E287D4DA800CBCB49 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				B3A892A2287D54E100694732 /* EditGoalView.swift */,
+				B3A8929D287D53FE00694732 /* AddActionView.swift */,
+				B3226E8F287D4DB900CBCB49 /* AddPlanView.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		B3226E91287D4DDE00CBCB49 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				B3226E9B287D508100CBCB49 /* Goal.swift */,
+				B3226E9D287D508100CBCB49 /* Rank.swift */,
+				B3226E9F287D508100CBCB49 /* RepeatAction.swift */,
+				B3226E9C287D508100CBCB49 /* StringExtension.swift */,
+				B3226EA0287D508100CBCB49 /* User.swift */,
+				B3226E92287D4DEA00CBCB49 /* Dailies.swift */,
+				B3226E94287D4ECB00CBCB49 /* Plan.swift */,
+				B3226E99287D504F00CBCB49 /* Actionable.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		B3226E96287D4F0100CBCB49 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3226E97287D4F1A00CBCB49 /* NavigationAppearance.swift */,
+				B3A892A6287D552C00694732 /* SubmissionPicker.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B35B9341287C1A380056C847 = {
@@ -106,6 +188,8 @@
 		B35B934C287C1A380056C847 /* BuddyGoals */ = {
 			isa = PBXGroup;
 			children = (
+				B3226E96287D4F0100CBCB49 /* Services */,
+				B3226E91287D4DDE00CBCB49 /* Object */,
 				B3226E8D287C1FAB00CBCB49 /* Views */,
 				B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */,
 				B35B9351287C1A390056C847 /* Assets.xcassets */,
@@ -139,6 +223,17 @@
 				B35B936F287C1A390056C847 /* BuddyGoalsUITestsLaunchTests.swift */,
 			);
 			path = BuddyGoalsUITests;
+			sourceTree = "<group>";
+		};
+		B3A89290287D531F00694732 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B3A892A4287D550D00694732 /* CardHomeView.swift */,
+				B3A8929B287D53D500694732 /* ColorsSet.swift */,
+				B3A89292287D535000694732 /* PlanHomeView.swift */,
+				B3A89291287D535000694732 /* ScrollPlanView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +366,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3226E90287D4DB900CBCB49 /* AddPlanView.swift in Sources */,
 				B35B9357287C1A390056C847 /* Persistence.swift in Sources */,
+				B3A89293287D535000694732 /* ScrollPlanView.swift in Sources */,
+				B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */,
+				B3226E95287D4ECB00CBCB49 /* Plan.swift in Sources */,
 				B35B935A287C1A390056C847 /* BuddyGoals.xcdatamodeld in Sources */,
+				B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */,
+				B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
+				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
+				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
+				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
+				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
+				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
+				B3A89298287D53A400694732 /* MainView.swift in Sources */,
+				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
+				B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */,
+				B3A89294287D535000694732 /* PlanHomeView.swift in Sources */,
+				B3226EA3287D508100CBCB49 /* Rank.swift in Sources */,
+				B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */,
+				B3A8929A287D53A400694732 /* CompanionView.swift in Sources */,
+				B3226EA2287D508100CBCB49 /* StringExtension.swift in Sources */,
+				B3A892A0287D549700694732 /* RankView.swift in Sources */,
+				B3226E93287D4DEA00CBCB49 /* Dailies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
