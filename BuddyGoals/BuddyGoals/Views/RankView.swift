@@ -201,7 +201,7 @@ struct RankView: View {
                     })
                     .foregroundColor(Color.white)
                 }//navigationView
-                .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
+                .navigationAppearance(backgroundColor: UIColor(primaryDark), foregroundColor: .white, hideSeperator: true)
             }//Vstack Line 23
         }//geometryReader
     }//bodyView
