@@ -19,30 +19,25 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 30)
                 
-                //Chevron back to onboarding page
+                //Chevron back to Register page
                 Image(systemName: "chevron.left")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.leading)
                     .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.black)
                 Spacer()
                     .frame(height: 50)
                 
                 //Title login page
-                Text("Hi There!")
+                Text("Log in")
                     .font(.system(size: 35).bold())
                     .padding(.leading, 26.0)
-                    .foregroundColor(Color.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Let's get better!")
-                    .font(.system(size: 35).bold())
-                    .padding(.leading, 26.0)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(primary900)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: 40)
                 Group{
                     //Text field for login
                     TextField("Email", text: $emailLogin)
@@ -53,7 +48,7 @@ struct LoginView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(lineWidth: 1)
                         )
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     
                     Spacer()
                         .frame(height: 20)
@@ -66,11 +61,11 @@ struct LoginView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(lineWidth: 1)
                         )
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                 }
                 
                 Spacer()
-                    .frame(height: 220)
+                    .frame(height: 100)
                 
                 Group{
                     //Button for sign in
@@ -80,49 +75,15 @@ struct LoginView: View {
                                 .padding(16)
                         }
                     .frame(width: 350, alignment: .center)
-                    .background(.white)
-                    .foregroundColor(primary900)
-                    .cornerRadius(18)
-                    
-                    Spacer()
-                        .frame(height: 5)
-                    HStack{
-                        Rectangle()
-                            .frame(width: 90, height: 1)
-                            .background(.white)
-                            .border(.white)
-                        Text("Or")
-                            .font(.system(size: 15))
-                            .foregroundColor(.white)
-                        Rectangle()
-                            .frame(width: 90, height: 1)
-                            .background(.white)
-                            .border(.white
-                            )
-                    }
-                    //Button for sign in via APPLE ACCOUNT
-                    Button(action: {}) {
-                            Image(systemName: "applelogo")
-                        Text("Sign In with Apple")
-                            .fontWeight(.bold)
-                                .padding(16)
-                        }
-                    .frame(width: 350, alignment: .center)
-                    .background(.black)
+                    .background(primary900)
                     .foregroundColor(.white)
                     .cornerRadius(18)
+                    
                 }
-                
-                //Register account button
-                Button(action: {}) {
-                    Text("Already have an account? Sign In")
-                        .foregroundColor(.white)
-                        .font(.system(size: 14))
-                    }
                 
             }
             
-        }.background(primary900)
+        }
     }
 }
 
