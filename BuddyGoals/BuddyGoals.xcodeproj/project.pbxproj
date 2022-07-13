@@ -37,6 +37,7 @@
 		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
+		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
+		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				B3A89290287D531F00694732 /* Component */,
 				B3226E8E287D4DA800CBCB49 /* Modal */,
 				B35B934F287C1A380056C847 /* ContentView.swift */,
+				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
 				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
 				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
+				B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */,
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
