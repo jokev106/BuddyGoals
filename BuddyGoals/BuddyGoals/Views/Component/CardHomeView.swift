@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CardHomeView: View {
+    
     //Variable
     @State var imageCard : String
     @State var colorCard : Color
