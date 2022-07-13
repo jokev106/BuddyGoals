@@ -126,10 +126,10 @@
 				B3A89297287D53A400694732 /* CompanionView.swift */,
 				B3A89296287D53A400694732 /* GoalView.swift */,
 				B3A89295287D53A400694732 /* MainView.swift */,
+				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
 				B3A89290287D531F00694732 /* Component */,
 				B3226E8E287D4DA800CBCB49 /* Modal */,
 				B35B934F287C1A380056C847 /* ContentView.swift */,
-				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
