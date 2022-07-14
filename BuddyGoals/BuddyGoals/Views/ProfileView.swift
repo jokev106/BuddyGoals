@@ -14,194 +14,105 @@ struct ProfileView: View {
     @State private var milestoneTitle:  String = ""
     @State private var startDatePicker = Date()
     
+    //variable for form
+    @State private var currentGoal : String = ""
+    @State private var scheduleStart = Date()
+    @State private var scheduleEnd = Date()
+
+    
+    
     var body: some View {
         GeometryReader{ geo in
             
             VStack{
                 NavigationView{
                     
-                    ScrollView {
+                    VStack {
                         
-                        VStack {
-                                
-                            HStack {
-                                Spacer()
-
-                                Button(action: {
-                                    //Do Action
-                                    
-                                }, label: {
-                                    Text("Edit")
-                                        .font(.system(size: 10))
-                                        .padding(5)
-                                        .background(white)
-                                        .foregroundColor(primary900)
-                                        .cornerRadius(10)
-                                })
-                            }.padding() //HStack for button edit
-                                
-                                
-                            ZStack {
-                                VStack {
-                                    Image("Gusde-Emot")
-                                        .resizable()
-                                        .clipShape(Circle())
-                                        .frame(width: 125, height: 125, alignment: .center)
-                                    Spacer(minLength: 100)
-                                }
-                                
-                                //Card
-                                HStack {
-                                    Image(systemName: "diamond.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 20, height: 20, alignment: .trailing)
-                                    
-                                    Text("27")
-                                    Text("Intermidiate")
-                                        .bold()
-                                }
-                                .padding(5)
-                                .font(.system(size: 12.5))
-                                .foregroundColor(primary900)
-                                .background(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 2)
-                                //End Card
-                            } //ZStack
-                                
-                            //Continue Profile
-                            Text("Bagus Wirawan")//Name
-                                .foregroundColor(.black)
-                                .font(.system(size: 25))
-                            HStack {
-                                Text("gghch")
-                                    .foregroundColor(whiteDark)
-                                Image(systemName: "doc.on.doc")
-                                    .foregroundColor(whiteDark)
-                            }
-                            
-                            Text("Do Actions to Rank up!")
-                                .foregroundColor(.black)
-                                .font(.system(size: 25))
-                                .bold()
-                                .padding(.top, 25)
-                                .padding(.bottom, 10)
-                            
-                            Text("The more difficult the Action, the faster your rank up")
-                                .foregroundColor(.black)
-                                .font(.system(size: 12.5))
-                                .frame(width: 300, alignment: .center)
-                                .padding(.bottom, 25)
-                            
-                            Group {
-                                
-                                VStack {
-                                    //Level
-                                    HStack {
-                                        Image(systemName: "diamond.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20, alignment: .trailing)
-                                        
-                                        Text("0")
-                                        Text("Rookie")
-                                            .bold()
-                                    }
-                                    .padding(2.5)
-                                    .font(.system(size: 12.5))
-                                    .foregroundColor(whiteDark)
-                                    
-                                    //Level
-                                    HStack {
-                                        Image(systemName: "diamond.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20, alignment: .trailing)
-                                        
-                                        Text("10")
-                                        Text("Beginner")
-                                            .bold()
-                                    }
-                                    .padding(2.5)
-                                    .font(.system(size: 12.5))
-                                    .foregroundColor(green)
-                                    
-                                    //Level
-                                    HStack {
-                                        Image(systemName: "diamond.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20, alignment: .trailing)
-                                        
-                                        Text("30")
-                                        Text("Intermidiate")
-                                            .bold()
-                                    }
-                                    .padding(2.5)
-                                    .font(.system(size: 12.5))
-                                    .foregroundColor(primary900)
-                                    
-                                    //Level
-                                    HStack {
-                                        Image(systemName: "diamond.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20, alignment: .trailing)
-                                        
-                                        Text("60")
-                                        Text("Pro")
-                                            .bold()
-                                    }
-                                    .padding(2.5)
-                                    .font(.system(size: 12.5))
-                                    .foregroundColor(purple)
-                                    
-                                    //Level
-                                    HStack {
-                                        Image(systemName: "diamond.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20, alignment: .trailing)
-                                        
-                                        Text("100")
-                                        Text("Expert")
-                                            .bold()
-                                    }
-                                    .padding(2.5)
-                                    .font(.system(size: 12.5))
-                                    .foregroundColor(orange)
-                                }
-                                
-                            }
+                        Image("Gusde-Emot")
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 125, height: 125, alignment: .center)
                             .padding()
-                            .frame(width: 350, height: .infinity, alignment: .center)
-                            .background(.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
                             
-                            Text("*Your rank will be reset for each new Goal")
+                        //Continue Profile
+                        Text("Giga Chadson")//Name
+                            .foregroundColor(.black)
+                            .font(.system(size: 25))
+                            .multilineTextAlignment(.center)
+                        
+                        HStack {
+                            Text("gghch")
                                 .foregroundColor(whiteDark)
-                                .padding()
-                                .font(.system(size: 12.5))
+                            Image(systemName: "doc.on.doc")
+                                .foregroundColor(whiteDark)
+                        }
+                        
+                        Form {
+                            
+                            //Form
+                            Section (header: Text("Current Goal")
+                                        .foregroundColor(Color.blue)
+                                        .bold()
+                            ){
+                                TextField("Set your goal", text: $currentGoal)
+                                    .padding(.all, 7.0)
+                                    .foregroundColor(Color.black)
+                                //                            .padding(.horizontal)
+                            }
+                            
+                            Section (header: Text("Scheduling")
+                                        .foregroundColor(Color.blue)
+                                        .bold()
+                            ){
+                                DatePicker("Start Date", selection: $scheduleStart, in: Date()..., displayedComponents: .date)
+                                    .padding(.leading, 5.0)
+                                    .foregroundColor(Color.black)
+                                DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
+                                    .padding(.leading, 5.0)
+                                    .foregroundColor(Color.black)
+                            }
+                            
+                            Button(action: {
+                                
+                            }, label: {
+                                Text("End Goal")
+                                    .foregroundColor(.red)
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+
                                     
-                        } //VStack
-                    } //ScrollView
-                    //content
+                            })
+                            //End Form
+                            
+                        } //Form
+                        
+                        
+                    }//VStack
                     //navbar Setting
                     .navigationBarTitle(
-                        Text("Your Rank").bold(),
+                        Text("Profile").bold(),
                         displayMode: .inline)
-                    .navigationBarItems(leading:
-                    //Done Button
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Done").bold()
-                    })
+                    .navigationBarItems(
+                    leading:
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Back").bold()
+                        },
+                    
+                    trailing:
+                        Button(action: {
+                            //Do Action
+                            //presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Edit").bold()
+                        }
+                    )
                     .foregroundColor(Color.white)
+                    
                 }//navigationView
-                .navigationAppearance(backgroundColor: UIColor(primaryDark), foregroundColor: .white, hideSeperator: true)
+                .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
             }//Vstack Line 23
         }//geometryReader
     }//bodyView

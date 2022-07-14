@@ -22,10 +22,6 @@ struct MainView: View {
                     Label("Goal", systemImage: "checkmark.square.fill")
                 }
 
-//            ProgressView()
-//                .tabItem{
-//                    Label("Progress", systemImage: "calendar")
-//                }
             
         }.accentColor(primary900)
         

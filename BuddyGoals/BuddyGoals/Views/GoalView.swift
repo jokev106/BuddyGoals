@@ -57,13 +57,13 @@ struct GoalView: View {
                                     Spacer()
 
                                     Button(action: {
-                                        self.tapEditGoal.toggle()
+                                        self.tapProfileView.toggle()
                                     }, label: {
                                         Image(systemName: "person.circle.fill")
                                             .padding( .bottom, 10)
                                     })
-                                    .sheet(isPresented: $tapEditGoal) {
-                                        EditGoalView()
+                                    .sheet(isPresented: $tapProfileView) {
+                                        ProfileView()
                                     }//Button card
 
                                 }
