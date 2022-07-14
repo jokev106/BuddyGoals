@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RankView: View {
+struct ProfileView: View {
     //    @Environment(\.dismiss) var dismissSheetView
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
@@ -207,8 +207,8 @@ struct RankView: View {
     }//bodyView
 }
 
-struct RankView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        RankView()
+        ProfileView()
     }
 }

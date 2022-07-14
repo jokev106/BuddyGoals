@@ -33,7 +33,7 @@
 		B3A8929A287D53A400694732 /* CompanionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89297287D53A400694732 /* CompanionView.swift */; };
 		B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929B287D53D500694732 /* ColorsSet.swift */; };
 		B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929D287D53FE00694732 /* AddActionView.swift */; };
-		B3A892A0287D549700694732 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929F287D549700694732 /* RankView.swift */; };
+		B3A892A0287D549700694732 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929F287D549700694732 /* ProfileView.swift */; };
 		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
@@ -86,7 +86,7 @@
 		B3A89297287D53A400694732 /* CompanionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionView.swift; sourceTree = "<group>"; };
 		B3A8929B287D53D500694732 /* ColorsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsSet.swift; sourceTree = "<group>"; };
 		B3A8929D287D53FE00694732 /* AddActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
-		B3A8929F287D549700694732 /* RankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		B3A8929F287D549700694732 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		B3226E8D287C1FAB00CBCB49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B3A8929F287D549700694732 /* RankView.swift */,
+				B3A8929F287D549700694732 /* ProfileView.swift */,
 				B3A89297287D53A400694732 /* CompanionView.swift */,
 				B3A89296287D53A400694732 /* GoalView.swift */,
 				B3A89295287D53A400694732 /* MainView.swift */,
@@ -389,7 +389,7 @@
 				B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */,
 				B3A8929A287D53A400694732 /* CompanionView.swift in Sources */,
 				B3226EA2287D508100CBCB49 /* StringExtension.swift in Sources */,
-				B3A892A0287D549700694732 /* RankView.swift in Sources */,
+				B3A892A0287D549700694732 /* ProfileView.swift in Sources */,
 				B3226E93287D4DEA00CBCB49 /* Dailies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,8 @@ struct PlanHomeView: View {
                     
                     let (imageName, imageColor) : (String, Color) = getImageNameColor(action: action)
                     
-                    CardHomeView(imageCard: imageName, colorCard: imageColor, milestone: action.action, destinationCard: "")
+//                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
+                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
                 })
 //                Text(action.action)
             }
