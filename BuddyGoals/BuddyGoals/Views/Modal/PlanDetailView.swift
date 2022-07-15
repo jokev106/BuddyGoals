@@ -33,7 +33,7 @@ struct PlanDetailView: View {
                     .padding(.horizontal)
                     List {
                         ForEach(Array(data.plans.enumerated()), id: \.offset){offset, plan in
-                            NavigationLink(destination: RankView()){
+                            NavigationLink(destination: ProfileView()){
                                 HStack{
                                     Rectangle()
                                         .foregroundColor(.orange)
