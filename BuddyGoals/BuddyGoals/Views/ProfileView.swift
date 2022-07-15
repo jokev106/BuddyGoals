@@ -73,19 +73,27 @@ struct ProfileView: View {
                                     .foregroundColor(Color.black)
                             }
                             
-                            Button(action: {
-                                
-                            }, label: {
-                                Text("End Goal")
-                                    .foregroundColor(.red)
-                                    .bold()
-                                    .multilineTextAlignment(.center)
+                            Section {
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
 
-                                    
-                            })
-                            //End Form
+                                    }, label: {
+                                        Text("End Goal")
+                                            .foregroundColor(.red)
+                                            .bold()
+                                            .multilineTextAlignment(.center)
+                                    })
+                                    Spacer()
+                                    //End Form
+                                }
+                            }
+                            .listRowBackground(white)
+                            
                             
                         } //Form
+                        
+                        
                         
                         
                     }//VStack
