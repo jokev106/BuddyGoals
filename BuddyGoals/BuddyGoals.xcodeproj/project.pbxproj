@@ -19,6 +19,9 @@
 		B3226EA6287D508100CBCB49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226EA0287D508100CBCB49 /* User.swift */; };
 		B340B2E2287EB2D200120673 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E1287EB2D200120673 /* LoginView.swift */; };
 		B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E3287EE05900120673 /* RegisterView.swift */; };
+		B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E5288002A700120673 /* PlanDetailView.swift */; };
+		B340B2E928801AA000120673 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E828801AA000120673 /* PlanModel.swift */; };
+		B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2EB28801B5800120673 /* PlanStruct.swift */; };
 		B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */; };
 		B35B9350287C1A380056C847 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934F287C1A380056C847 /* ContentView.swift */; };
 		B35B9352287C1A390056C847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35B9351287C1A390056C847 /* Assets.xcassets */; };
@@ -72,6 +75,9 @@
 		B3226EA0287D508100CBCB49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B340B2E1287EB2D200120673 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B340B2E3287EE05900120673 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		B340B2E5288002A700120673 /* PlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailView.swift; sourceTree = "<group>"; };
+		B340B2E828801AA000120673 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		B340B2EB28801B5800120673 /* PlanStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStruct.swift; sourceTree = "<group>"; };
 		B35B934A287C1A380056C847 /* BuddyGoals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyGoals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsApp.swift; sourceTree = "<group>"; };
 		B35B934F287C1A380056C847 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				B3A892A2287D54E100694732 /* EditGoalView.swift */,
 				B3A8929D287D53FE00694732 /* AddActionView.swift */,
 				B3226E8F287D4DB900CBCB49 /* AddPlanView.swift */,
+				B340B2E5288002A700120673 /* PlanDetailView.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -174,6 +181,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		B340B2E728801A8900120673 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B340B2E828801AA000120673 /* PlanModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B340B2EA28801B1800120673 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B340B2EB28801B5800120673 /* PlanStruct.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B35B9341287C1A380056C847 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +220,8 @@
 		B35B934C287C1A380056C847 /* BuddyGoals */ = {
 			isa = PBXGroup;
 			children = (
+				B340B2EA28801B1800120673 /* Model */,
+				B340B2E728801A8900120673 /* ViewModel */,
 				B3226E96287D4F0100CBCB49 /* Services */,
 				B3226E91287D4DDE00CBCB49 /* Object */,
 				B3226E8D287C1FAB00CBCB49 /* Views */,
@@ -382,6 +407,7 @@
 				B3226E95287D4ECB00CBCB49 /* Plan.swift in Sources */,
 				B35B935A287C1A390056C847 /* BuddyGoals.xcdatamodeld in Sources */,
 				B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */,
+				B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */,
 				B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
 				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
@@ -390,10 +416,12 @@
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
+				B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */,
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
 				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
+				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,
 				B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */,
 				B3A89294287D535000694732 /* PlanHomeView.swift in Sources */,
 				B3226EA3287D508100CBCB49 /* Rank.swift in Sources */,

@@ -10,6 +10,7 @@ import CoreData
 
 struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var data: PlanModel
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -128,7 +129,8 @@ struct GoalView: View {
                                     Image(systemName: "list.triangle")
                                         .font(.system(size: 20, weight: .bold))
                                 }.sheet(isPresented: $addNewPlanView) {
-                                    AddPlanView()
+                                    PlanDetailView()
+                                        .environmentObject(PlanModel())
                                 }
                                 
                                 Spacer()
