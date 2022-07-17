@@ -43,6 +43,18 @@
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
 		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
+		F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88DE2882C47000213726 /* CoreDataPartner+CoreDataClass.swift */; };
+		F73A88EB2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88DF2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift */; };
+		F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E02882C47000213726 /* CoreDataUser+CoreDataClass.swift */; };
+		F73A88ED2882C47000213726 /* CoreDataUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E12882C47000213726 /* CoreDataUser+CoreDataProperties.swift */; };
+		F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E22882C47000213726 /* CoreDataPlan+CoreDataClass.swift */; };
+		F73A88EF2882C47000213726 /* CoreDataPlan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E32882C47000213726 /* CoreDataPlan+CoreDataProperties.swift */; };
+		F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E42882C47000213726 /* CoreDataGoal+CoreDataClass.swift */; };
+		F73A88F12882C47000213726 /* CoreDataGoal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E52882C47000213726 /* CoreDataGoal+CoreDataProperties.swift */; };
+		F73A88F22882C47000213726 /* CoreDataAction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E62882C47000213726 /* CoreDataAction+CoreDataClass.swift */; };
+		F73A88F32882C47000213726 /* CoreDataAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E72882C47000213726 /* CoreDataAction+CoreDataProperties.swift */; };
+		F73A88F42882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E82882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift */; };
+		F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E92882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +114,18 @@
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
 		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F73A88DE2882C47000213726 /* CoreDataPartner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPartner+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88DF2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPartner+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88E02882C47000213726 /* CoreDataUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88E12882C47000213726 /* CoreDataUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88E22882C47000213726 /* CoreDataPlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlan+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88E32882C47000213726 /* CoreDataPlan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPlan+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88E42882C47000213726 /* CoreDataGoal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataGoal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88E52882C47000213726 /* CoreDataGoal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataGoal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88E62882C47000213726 /* CoreDataAction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataAction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88E72882C47000213726 /* CoreDataAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88E82882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataActionRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F73A88E92882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataActionRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +184,18 @@
 		B3226E91287D4DDE00CBCB49 /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				F73A88DE2882C47000213726 /* CoreDataPartner+CoreDataClass.swift */,
+				F73A88DF2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift */,
+				F73A88E02882C47000213726 /* CoreDataUser+CoreDataClass.swift */,
+				F73A88E12882C47000213726 /* CoreDataUser+CoreDataProperties.swift */,
+				F73A88E22882C47000213726 /* CoreDataPlan+CoreDataClass.swift */,
+				F73A88E32882C47000213726 /* CoreDataPlan+CoreDataProperties.swift */,
+				F73A88E42882C47000213726 /* CoreDataGoal+CoreDataClass.swift */,
+				F73A88E52882C47000213726 /* CoreDataGoal+CoreDataProperties.swift */,
+				F73A88E62882C47000213726 /* CoreDataAction+CoreDataClass.swift */,
+				F73A88E72882C47000213726 /* CoreDataAction+CoreDataProperties.swift */,
+				F73A88E82882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift */,
+				F73A88E92882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift */,
 				B3226E9B287D508100CBCB49 /* Goal.swift */,
 				B3226E9D287D508100CBCB49 /* Rank.swift */,
 				B3226E9F287D508100CBCB49 /* RepeatAction.swift */,
@@ -407,21 +443,31 @@
 				B3226E95287D4ECB00CBCB49 /* Plan.swift in Sources */,
 				B35B935A287C1A390056C847 /* BuddyGoals.xcdatamodeld in Sources */,
 				B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */,
+				F73A88F42882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift in Sources */,
 				B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */,
 				B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */,
+				F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
 				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
+				F73A88F32882C47000213726 /* CoreDataAction+CoreDataProperties.swift in Sources */,
+				F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */,
 				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
 				B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */,
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
+				F73A88EF2882C47000213726 /* CoreDataPlan+CoreDataProperties.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
+				F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
 				B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */,
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
 				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
+				F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */,
+				F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
+				F73A88F22882C47000213726 /* CoreDataAction+CoreDataClass.swift in Sources */,
 				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,
+				F73A88ED2882C47000213726 /* CoreDataUser+CoreDataProperties.swift in Sources */,
 				B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */,
 				B3A89294287D535000694732 /* PlanHomeView.swift in Sources */,
 				B3226EA3287D508100CBCB49 /* Rank.swift in Sources */,
@@ -429,6 +475,8 @@
 				B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */,
 				B3A8929A287D53A400694732 /* CompanionView.swift in Sources */,
 				B3226EA2287D508100CBCB49 /* StringExtension.swift in Sources */,
+				F73A88EB2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift in Sources */,
+				F73A88F12882C47000213726 /* CoreDataGoal+CoreDataProperties.swift in Sources */,
 				B3A892A0287D549700694732 /* ProfileView.swift in Sources */,
 				B3226E93287D4DEA00CBCB49 /* Dailies.swift in Sources */,
 			);

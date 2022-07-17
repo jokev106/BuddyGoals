@@ -1,9 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CoreDataAction" representedClassName="CoreDataAction" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataPlan" inverseName="actions" inverseEntity="CoreDataPlan"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataActionRecord" inverseName="action" inverseEntity="CoreDataActionRecord"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CoreDataActionRecord" representedClassName="CoreDataActionRecord" syncable="YES">
+        <attribute name="dateSubmitted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="proofImage" optional="YES" attributeType="Binary"/>
+        <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataAction" inverseName="records" inverseEntity="CoreDataAction"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CoreDataGoal" representedClassName="CoreDataGoal" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="plans" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataPlan" inverseName="goal" inverseEntity="CoreDataPlan"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataUser" inverseName="goals" inverseEntity="CoreDataUser"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CoreDataPartner" representedClassName="CoreDataPartner" syncable="YES">
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataUser" inverseName="partners" inverseEntity="CoreDataUser"/>
+    </entity>
+    <entity name="CoreDataPlan" representedClassName="CoreDataPlan" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataAction" inverseName="plan" inverseEntity="CoreDataAction"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataGoal" inverseName="plans" inverseEntity="CoreDataGoal"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CoreDataUser" representedClassName="CoreDataUser" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="profilePicture" optional="YES" attributeType="Binary"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+        <relationship name="goals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataGoal" inverseName="user" inverseEntity="CoreDataGoal"/>
+        <relationship name="partners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataPartner" inverseName="users" inverseEntity="CoreDataPartner"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="CoreDataUser" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="CoreDataPartner" positionX="-63" positionY="-9" width="128" height="44"/>
+        <element name="CoreDataGoal" positionX="-54" positionY="0" width="128" height="134"/>
+        <element name="CoreDataPlan" positionX="-36" positionY="9" width="128" height="89"/>
+        <element name="CoreDataAction" positionX="-18" positionY="27" width="128" height="104"/>
+        <element name="CoreDataActionRecord" positionX="0" positionY="45" width="128" height="89"/>
+        <element name="Item" positionX="9" positionY="99" width="128" height="44"/>
     </elements>
 </model>
