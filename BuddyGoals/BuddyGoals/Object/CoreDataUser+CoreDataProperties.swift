@@ -17,7 +17,7 @@ extension CoreDataUser {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var userName: String?
+    @NSManaged public var email: String?
     @NSManaged public var password: String?
     @NSManaged public var name: String?
     @NSManaged public var profilePicture: Data?
@@ -62,5 +62,15 @@ extension CoreDataUser {
 }
 
 extension CoreDataUser : Identifiable {
-
+    
+    public var wrappedName : String {
+        return name ?? "Unknown User"
+    }
+    
+    public var wrappedGoals : [CoreDataGoal] {
+        let goalSet = goals as? Set<CoreDataGoal> ?? []
+        let sortedGoal = goalSet.sorted { $0.wrappedTitle < $1.wrappedTitle }
+        
+        return sortedGoal
+    }
 }

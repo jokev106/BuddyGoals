@@ -10,7 +10,9 @@ import CoreData
 
 struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var data: PlanModel
+    @EnvironmentObject var data : PlanModel
+    @ObservedObject var vm = GoalViewModel()
+    
     
 //    @FetchRequest(
 //        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -50,7 +52,7 @@ struct GoalView: View {
                         Group {
                             VStack{
                                 HStack {
-                                    Text("Be a good boyfriend")
+                                    Text(vm.goal.first?.wrappedTitle ?? "No Goal Available")
                                         .font(.system(size: 25, weight: .bold))
                                         .frame(alignment: .topTrailing)
                                         .foregroundColor(Color.black)
@@ -80,7 +82,7 @@ struct GoalView: View {
                                         .foregroundColor(Color.black)
                                         .bold()
                                     Spacer()
-                                    Text("12 Weeks")
+                                    Text("\(vm.goal.first?.wrappedDuration ?? -1) Weeks")
                                         .foregroundColor(Color.gray)
                                     
                                     VStack {
@@ -93,7 +95,7 @@ struct GoalView: View {
                                         .foregroundColor(Color.black)
                                         .bold()
                                     Spacer()
-                                    Text("15 Days")
+                                    Text("\(vm.remainingDay) Days")
                                         .foregroundColor(Color.gray)
                                 }
                                 .font(.system(size: 8))
@@ -131,34 +133,10 @@ struct GoalView: View {
                             
                             ScrollView {
                                 
-                                VStack(spacing:-10){
-                                    HStack{
-                                        Text("Exercise")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 22.5))
-                                            .bold()
-                                            .padding()
-                                        Spacer()
-                                        
-                                        Button(action: {
-                                            
-                                        }, label: {
-                                            Image(systemName: "plus.circle.fill")
-                                                .padding()
-                                                .foregroundColor(whiteDark)
-                                        }) //Button
-                                    }
-                                    
-                                    //Card
-                                    CardHomeView(colorCard: purple, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: orange, milestone: "Plank for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: blue, milestone: "Sit up 10 times", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    //Close of Card
+                                ForEach(vm.plans) { plan in
+                                    PlanView(plan: plan)
                                 }
+                                
                                 
                             }
                             
@@ -199,6 +177,16 @@ struct GoalView: View {
             
         } //Navigation View
         .edgesIgnoringSafeArea(.all)
+        .onAppear() {
+            vm.setup(context: self.viewContext)
+            ////            Uncomment to get initial items in core data
+            //            vm.addInitialItems()
+            
+            
+            vm.getUser()
+            vm.getPlan(id: nil)
+            vm.calculateRemainingDays()
+        }
 
         
     } //View Close
@@ -274,5 +262,7 @@ struct GoalView_Previews: PreviewProvider {
 //    }
 //}
 //Text("Select an item")
+
+
 
 

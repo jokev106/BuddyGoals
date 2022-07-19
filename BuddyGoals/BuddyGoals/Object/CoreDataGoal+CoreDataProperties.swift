@@ -23,6 +23,7 @@ extension CoreDataGoal {
     @NSManaged public var isFinished: Bool
     @NSManaged public var user: CoreDataUser?
     @NSManaged public var plans: NSSet?
+    
 
 }
 
@@ -44,5 +45,18 @@ extension CoreDataGoal {
 }
 
 extension CoreDataGoal : Identifiable {
-
+    
+    var wrappedTitle : String {
+        return title ?? "Unknown Goal"
+    }
+    
+    var wrappedDuration : Int {
+        return Int(duration)
+    }
+    
+    var wrappedPlans : [CoreDataPlan] {
+        let planSet = plans as? Set<CoreDataPlan> ?? []
+        let sortedPlan = planSet.sorted { $0.wrappedTitle <= $1.wrappedTitle }
+        return sortedPlan
+    }
 }

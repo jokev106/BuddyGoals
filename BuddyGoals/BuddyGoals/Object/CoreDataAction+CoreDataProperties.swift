@@ -52,5 +52,7 @@ extension CoreDataAction {
 }
 
 extension CoreDataAction : Identifiable {
-    
+    var wrappedTitle : String {
+        return title ?? "Unknown Action"
+    }
 }

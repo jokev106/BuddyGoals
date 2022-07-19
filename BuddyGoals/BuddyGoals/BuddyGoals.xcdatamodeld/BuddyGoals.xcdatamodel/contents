@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="CoreDataAction" representedClassName="CoreDataAction" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="repeatValue" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataPlan" inverseName="actions" inverseEntity="CoreDataPlan"/>
@@ -16,6 +17,7 @@
         <attribute name="dateSubmitted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="proofImage" optional="YES" attributeType="Binary"/>
+        <attribute name="statusValue" optional="YES" attributeType="String"/>
         <relationship name="action" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataAction" inverseName="records" inverseEntity="CoreDataAction"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -41,6 +43,8 @@
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataUser" inverseName="partners" inverseEntity="CoreDataUser"/>
     </entity>
     <entity name="CoreDataPlan" representedClassName="CoreDataPlan" syncable="YES">
+        <attribute name="colorName" optional="YES" attributeType="String"/>
+        <attribute name="goalID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataAction" inverseName="plan" inverseEntity="CoreDataAction"/>
@@ -52,12 +56,12 @@
         </uniquenessConstraints>
     </entity>
     <entity name="CoreDataUser" representedClassName="CoreDataUser" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="profilePicture" optional="YES" attributeType="Binary"/>
-        <attribute name="userName" optional="YES" attributeType="String"/>
         <relationship name="goals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataGoal" inverseName="user" inverseEntity="CoreDataGoal"/>
         <relationship name="partners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataPartner" inverseName="users" inverseEntity="CoreDataPartner"/>
         <uniquenessConstraints>
@@ -70,12 +74,12 @@
         <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="CoreDataUser" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="CoreDataPartner" positionX="-63" positionY="-9" width="128" height="44"/>
+        <element name="CoreDataAction" positionX="-18" positionY="27" width="128" height="119"/>
+        <element name="CoreDataActionRecord" positionX="0" positionY="45" width="128" height="104"/>
         <element name="CoreDataGoal" positionX="-54" positionY="0" width="128" height="134"/>
-        <element name="CoreDataPlan" positionX="-36" positionY="9" width="128" height="89"/>
-        <element name="CoreDataAction" positionX="-18" positionY="27" width="128" height="104"/>
-        <element name="CoreDataActionRecord" positionX="0" positionY="45" width="128" height="89"/>
+        <element name="CoreDataPartner" positionX="-63" positionY="-9" width="128" height="44"/>
+        <element name="CoreDataPlan" positionX="-36" positionY="9" width="128" height="119"/>
+        <element name="CoreDataUser" positionX="-63" positionY="-18" width="128" height="149"/>
         <element name="Item" positionX="9" positionY="99" width="128" height="44"/>
     </elements>
 </model>
