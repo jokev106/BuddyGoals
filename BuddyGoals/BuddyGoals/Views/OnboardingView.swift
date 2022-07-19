@@ -78,15 +78,13 @@ struct OnboardingView: View {
                             .font(.system(size: 12))
                             .padding(.horizontal, 1.0)
                             .frame(width: 250, alignment: .leading)
-                            
+                        
                     }
                 }
                 Spacer()
                     .frame( height: 120)
                 
-                Button {
-                    
-                } label: {
+                NavigationLink (destination: RankView()) {
                     Text("Get Started")
                         .fontWeight(.bold)
                         .padding(16)
@@ -96,7 +94,7 @@ struct OnboardingView: View {
                         .cornerRadius(16)
                         .padding(.horizontal, 16)
                 }
-
+                
             }
             
         }
