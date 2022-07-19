@@ -41,75 +41,14 @@ struct GoalView: View {
                         primary900
                             .frame(height: 300, alignment: .top)
                             .ignoresSafeArea(.all)
+                            .shadow(radius: 10)
                         Spacer()
                     }
+                    
                     VStack {
                         
-                        //Spacer(minLength: 10)
-                        
-                        Group {
-                            VStack{
-                                HStack {
-                                    Text("Be a good boyfriend")
-                                        .font(.system(size: 25, weight: .bold))
-                                        .frame(alignment: .topTrailing)
-                                        .foregroundColor(Color.black)
-
-                                    Spacer()
-
-                                    Button(action: {
-                                        self.tapProfileView.toggle()
-                                    }, label: {
-                                        Image(systemName: "person.circle.fill")
-                                            .padding( .bottom, 10)
-                                    })
-                                    .sheet(isPresented: $tapProfileView) {
-                                        ProfileView()
-                                    }//Button card
-
-                                }
-                                
-                                HStack {
-                                    Rectangle()
-                                        .frame(height:1)
-                                        .padding(5)
-                                }
-                                
-                                HStack {
-                                    Text("Durations")
-                                        .foregroundColor(Color.black)
-                                        .bold()
-                                    Spacer()
-                                    Text("12 Weeks")
-                                        .foregroundColor(Color.gray)
-                                    
-                                    VStack {
-                                        Rectangle()
-                                            .frame(width: 0.75, height: 15)
-                                            .foregroundColor(Color.gray)
-                                    }
-                                    
-                                    Text("Remaining")
-                                        .foregroundColor(Color.black)
-                                        .bold()
-                                    Spacer()
-                                    Text("15 Days")
-                                        .foregroundColor(Color.gray)
-                                }
-                                .font(.system(size: 8))
-                                .padding(7)
-                                .background(white)
-                                .cornerRadius(10)
-                                
-
-                            }
-                            .padding()
-                            .background(.white)
-                                
-                        } //Group Card
-                        .cornerRadius(10)
-                        .padding()
-                        .shadow(radius: 5)
+                        //extention main goal card
+                        mainGoalCard
                         
                         //Close of Card
                         
@@ -129,73 +68,17 @@ struct GoalView: View {
                                 
                             }.padding(25)
                             
-                            ScrollView {
-                                
-                                VStack(spacing:-10){
-                                    HStack{
-                                        Text("Exercise")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 22.5))
-                                            .bold()
-                                            .padding()
-                                        Spacer()
-                                        
-                                        Button(action: {
-                                            
-                                        }, label: {
-                                            Image(systemName: "plus.circle.fill")
-                                                .padding()
-                                                .foregroundColor(whiteDark)
-                                        }) //Button
-                                    }
-                                    
-                                    //Card
-                                    CardHomeView(colorCard: purple, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: orange, milestone: "Plank for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: blue, milestone: "Sit up 10 times", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    //Close of Card
-                                }
-                                
-                            }
+                            //extention list card plan
+                            listPlansCard
                             
                         } //VStack
                    
                     } //VStack
                     .navigationTitle("Goal")
-//                    .toolbar {
-//                        ToolbarItemGroup(placement: .navigationBarTrailing){
-//                            Button(action: {
-//                                //Do action
-//                                self.tapRankView.toggle()
-//                            }, label: {
-//                                HStack {
-//                                    Image(systemName: "diamond.fill")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//
-//                                    Text("27")
-//                                    Text("Rookie")
-//                                        .bold()
-//                                }
-//                                .padding(5)
-//                                .font(.system(size: 12.5))
-//                                .foregroundColor(whiteDark)
-//                                .background(.white)
-//                                .cornerRadius(10)
-//                                .shadow(radius: 2)
-//                            }).sheet(isPresented: $tapRankView) {
-//                                RankView()
-//                            }
-//                        }
-//                    } //Toolbar
+
                     
                 }
                 
-            //}.edgesIgnoringSafeArea(.all)
             
         } //Navigation View
         .edgesIgnoringSafeArea(.all)
@@ -212,8 +95,7 @@ struct GoalView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
@@ -227,8 +109,7 @@ struct GoalView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
@@ -249,30 +130,119 @@ struct GoalView_Previews: PreviewProvider {
     }
 }
 
-//List
-//List {
-//    ForEach(items) { item in
-//        NavigationLink {
-//            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//        } label: {
-//            Text(item.timestamp!, formatter: itemFormatter)
-//        }
-//    }
-//    .onDelete(perform: deleteItems)
-//}
-//.toolbar {
-//    ToolbarItem(placement: .navigationBarTrailing) {
-//        EditButton()
-//    }
-//    ToolbarItem {
-//        Button(action: {self.addNewPlanView.toggle()}) {
-//            Label("Add Item", systemImage: "plus")
-//                .foregroundColor(Color.blue)
-//        }.sheet(isPresented: $addNewPlanView) {
-//            AddPlanView()
-//        }
-//    }
-//}
-//Text("Select an item")
+extension GoalView {
+    
+    //card for main goal card
+    var mainGoalCard: some View {
+        
+        Group {
+            VStack{
+                HStack {
+                    Text("Be a good boyfriend")
+                        .font(.system(size: 25, weight: .bold))
+                        .frame(alignment: .topTrailing)
+                        .foregroundColor(Color.black)
+
+                    Spacer()
+
+                    Button(action: {
+                        self.tapProfileView.toggle()
+                    }, label: {
+                        Image(systemName: "person.circle.fill")
+                            .padding( .bottom, 10)
+                    })
+                    .sheet(isPresented: $tapProfileView) {
+                        ProfileView()
+                    }//Button card
+
+                }
+                
+                HStack {
+                    Rectangle()
+                        .frame(height:1)
+                        .padding(5)
+                        .foregroundColor(primary900)
+                }
+                
+                HStack {
+                    Text("Durations")
+                        .foregroundColor(Color.black)
+                        .bold()
+                    Spacer()
+                    Text("12 Weeks")
+                        .foregroundColor(Color.gray)
+                    
+                    VStack {
+                        Rectangle()
+                            .frame(width: 0.75, height: 15)
+                            .foregroundColor(Color.gray)
+                    }
+                    
+                    Text("Remaining")
+                        .foregroundColor(Color.black)
+                        .bold()
+                    Spacer()
+                    Text("15 Days")
+                        .foregroundColor(Color.gray)
+                }
+                .font(.system(size: 8))
+                .padding(7)
+                .background(white)
+                .cornerRadius(10)
+                
+
+            }
+            .padding()
+            .background(.white)
+                
+        } //Group Card
+        .cornerRadius(10)
+        .padding()
+        .shadow(radius: 5)
+        
+    } //var main goal
+    
+    //list of plans
+    var listPlansCard: some View {
+        ScrollView {
+            
+            VStack(spacing:-5){
+                HStack{
+                    
+                    Text("Exercise")
+                        .foregroundColor(green)
+                        .font(.system(size: 22.5))
+                        .bold()
+                        
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        //Do Action
+                        
+                    }, label: {
+                        
+                        Image(systemName: "plus")
+                            .foregroundColor(green)
+                        
+                    })//Button
+                    
+                }.padding() // HStack
+                
+                //Card
+                CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
+                CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
+                CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
+                CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
+                //Close of Card
+            }
+            
+        }
+        .padding()
+    } //var listPlansCard
+    
+    
+}
 
 

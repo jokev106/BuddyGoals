@@ -29,10 +29,12 @@ struct CardHomeView: View {
                 
                 
                 Text(milestone)
-                    .font(.system(size: 17.5, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
+                    .lineLimit(2)
                     .padding(.trailing, 10)
                     .frame(alignment: .leading)
                     .foregroundColor(Color.black)
+                    
 
                 Spacer()
                 
