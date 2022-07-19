@@ -10,6 +10,7 @@ import CoreData
 
 struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var data: PlanModel
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -26,7 +27,7 @@ struct GoalView: View {
     //Modal Bool
     @State var addNewPlanView = false
     @State var addNewActionView = false
-    @State var tapRankView = false
+    @State var tapProfileView = false
     @State var tapEditGoal = false
 
     var body: some View {
@@ -49,7 +50,7 @@ struct GoalView: View {
                         Group {
                             VStack{
                                 HStack {
-                                    Text("Lose 10 Kg in 10 months")
+                                    Text("Be a good boyfriend")
                                         .font(.system(size: 25, weight: .bold))
                                         .frame(alignment: .topTrailing)
                                         .foregroundColor(Color.black)
@@ -57,16 +58,13 @@ struct GoalView: View {
                                     Spacer()
 
                                     Button(action: {
-                                        self.tapEditGoal.toggle()
+                                        self.tapProfileView.toggle()
                                     }, label: {
-                                        Text("Edit")
-                                            .font(.system(size: 10))
-                                            .padding(5)
-                                            .background(white)
-                                            .cornerRadius(10)
+                                        Image(systemName: "person.circle.fill")
+                                            .padding( .bottom, 10)
                                     })
-                                    .sheet(isPresented: $tapEditGoal) {
-                                        EditGoalView()
+                                    .sheet(isPresented: $tapProfileView) {
+                                        ProfileView()
                                     }//Button card
 
                                 }
@@ -78,41 +76,36 @@ struct GoalView: View {
                                 }
                                 
                                 HStack {
-                                    
-                                    HStack {
-                                        Text("Durations")
-                                            .foregroundColor(Color.black)
-                                            .bold()
-                                        Spacer()
-                                        Text("12 Weeks")
-                                            .foregroundColor(Color.gray)
-                                    }
-                                    .font(.system(size: 8))
-                                    .padding(7)
-                                    .background(white)
-                                    .cornerRadius(10)
-                                    
+                                    Text("Durations")
+                                        .foregroundColor(Color.black)
+                                        .bold()
                                     Spacer()
+                                    Text("12 Weeks")
+                                        .foregroundColor(Color.gray)
                                     
-                                    HStack {
-                                        Text("Remaining")
-                                            .foregroundColor(Color.black)
-                                            .bold()
-                                        Spacer()
-                                        Text("15 Days")
+                                    VStack {
+                                        Rectangle()
+                                            .frame(width: 0.75, height: 15)
                                             .foregroundColor(Color.gray)
                                     }
-                                    .font(.system(size: 8))
-                                    .padding(7)
-                                    .background(white)
-                                    .cornerRadius(10)
                                     
+                                    Text("Remaining")
+                                        .foregroundColor(Color.black)
+                                        .bold()
+                                    Spacer()
+                                    Text("15 Days")
+                                        .foregroundColor(Color.gray)
                                 }
+                                .font(.system(size: 8))
+                                .padding(7)
+                                .background(white)
+                                .cornerRadius(10)
                                 
 
                             }
                             .padding()
                             .background(.white)
+                                
                         } //Group Card
                         .cornerRadius(10)
                         .padding()
@@ -125,19 +118,13 @@ struct GoalView: View {
                             HStack {
                                 
                                 Button(action: {self.addNewPlanView.toggle()}) {
-                                    Image(systemName: "list.triangle")
-                                        .font(.system(size: 20, weight: .bold))
+                                    HStack{
+                                        Image(systemName: "list.triangle")
+                                        Text("Manage Plan")
+                                    }.font(.system(size: 14))
                                 }.sheet(isPresented: $addNewPlanView) {
-                                    AddPlanView()
-                                }
-                                
-                                Spacer()
-                                
-                                Button(action: {self.addNewActionView.toggle()}) {
-                                    Image(systemName: "plus")
-                                        .font(.system(size: 20, weight: .bold))
-                                }.sheet(isPresented: $addNewActionView) {
-                                    AddActionView()
+                                    PlanDetailView()
+                                        .environmentObject(PlanModel())
                                 }
                                 
                             }.padding(25)
@@ -152,16 +139,24 @@ struct GoalView: View {
                                             .bold()
                                             .padding()
                                         Spacer()
+                                        
+                                        Button(action: {
+                                            
+                                        }, label: {
+                                            Image(systemName: "plus.circle.fill")
+                                                .padding()
+                                                .foregroundColor(whiteDark)
+                                        }) //Button
                                     }
                                     
                                     //Card
-                                    CardHomeView(imageCard: "Stars_4", colorCard: purple, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_5", colorCard: orange, milestone: "Plank for 3 minutes", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_3", colorCard: blue, milestone: "Sit up 10 times", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_1", colorCard: white, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_2", colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_2", colorCard: white, milestone: "Try Something", destinationCard: "")
-                                    CardHomeView(imageCard: "Stars_2", colorCard: white, milestone: "Try Something", destinationCard: "")
+                                    CardHomeView(colorCard: purple, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
+                                    CardHomeView(colorCard: orange, milestone: "Plank for 3 minutes", destinationCard: "")
+                                    CardHomeView(colorCard: blue, milestone: "Sit up 10 times", destinationCard: "")
+                                    CardHomeView(colorCard: white, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
+                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
+                                    CardHomeView(colorCard: white, milestone: "Try Something", destinationCard: "")
                                     //Close of Card
                                 }
                                 
@@ -171,32 +166,32 @@ struct GoalView: View {
                    
                     } //VStack
                     .navigationTitle("Goal")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing){
-                            Button(action: {
-                                //Do action
-                                self.tapRankView.toggle()
-                            }, label: {
-                                HStack {
-                                    Image(systemName: "diamond.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                    
-                                    Text("27")
-                                    Text("Rookie")
-                                        .bold()
-                                }
-                                .padding(5)
-                                .font(.system(size: 12.5))
-                                .foregroundColor(whiteDark)
-                                .background(.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 2)
-                            }).sheet(isPresented: $tapRankView) {
-                                RankView()
-                            }
-                        }
-                    } //Toolbar
+//                    .toolbar {
+//                        ToolbarItemGroup(placement: .navigationBarTrailing){
+//                            Button(action: {
+//                                //Do action
+//                                self.tapRankView.toggle()
+//                            }, label: {
+//                                HStack {
+//                                    Image(systemName: "diamond.fill")
+//                                        .resizable()
+//                                        .aspectRatio(contentMode: .fit)
+//
+//                                    Text("27")
+//                                    Text("Rookie")
+//                                        .bold()
+//                                }
+//                                .padding(5)
+//                                .font(.system(size: 12.5))
+//                                .foregroundColor(whiteDark)
+//                                .background(.white)
+//                                .cornerRadius(10)
+//                                .shadow(radius: 2)
+//                            }).sheet(isPresented: $tapRankView) {
+//                                RankView()
+//                            }
+//                        }
+//                    } //Toolbar
                     
                 }
                 

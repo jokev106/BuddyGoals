@@ -41,7 +41,7 @@ class PlanClass : Hashable, Equatable, Identifiable {
     
     
     func removeAction(_ id : UUID) {
-        var removedAction = self.actions.filter {$0.id == id}[0]
+        let removedAction = self.actions.filter {$0.id == id}[0]
         removedAction.isDeleted = true
     }
     

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CardHomeView: View {
+    
     //Variable
-    @State var imageCard : String
+    //@State var imageCard : String
     @State var colorCard : Color
     @State var milestone : String
     @State var destinationCard : String
@@ -19,12 +20,10 @@ struct CardHomeView: View {
         //Card
             HStack{
                 VStack{
-                    Image(imageCard)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    Rectangle()
                         .padding(.trailing, 10)
                         .padding(.leading, 10)
-                        .frame(width: 50, height: 80)
+                        .frame(width: 20, height: 80)
                         .background(colorCard)
                 }
                 
@@ -53,6 +52,7 @@ struct CardHomeView: View {
 
 struct CardHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        CardHomeView(imageCard: "", colorCard: Color.black, milestone: "Test", destinationCard: "")
+        CardHomeView(colorCard: Color.black, milestone: "Test", destinationCard: "")
+//        CardHomeView(imageCard: "", colorCard: Color.black, milestone: "Test", destinationCard: "")
     }
 }

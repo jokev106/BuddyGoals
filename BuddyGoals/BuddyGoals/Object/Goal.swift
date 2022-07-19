@@ -51,7 +51,7 @@ class GoalClass : Identifiable {
     
     
     func removePlan(_ id : UUID) {
-        var removedPlan = self.plans.filter {$0.id == id}[0]
+        let removedPlan = self.plans.filter {$0.id == id}[0]
         removedPlan.isDeleted = true
     }
     

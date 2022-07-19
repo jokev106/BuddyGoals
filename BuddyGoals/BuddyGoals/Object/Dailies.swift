@@ -37,8 +37,8 @@ class Dailies : ObservableObject {
     }
     
     func updateAction(planId:UUID, actionId:UUID, action : String, time : Date, place : String, startDate : Date, repeats : RepeatAction, difficulty : Rank) {
-        var targetPlan = self.goal.plans.filter({$0.id == planId})[0]
-        var targetAction = targetPlan.actions.filter({$0.id == actionId})[0]
+        let targetPlan = self.goal.plans.filter({$0.id == planId})[0]
+        let targetAction = targetPlan.actions.filter({$0.id == actionId})[0]
         let targetIndex = targetPlan.actions.firstIndex(where: {$0 === targetAction})!
 //        targetAction.action = action
 //        targetAction.time = time
@@ -81,7 +81,7 @@ class Dailies : ObservableObject {
     }
     
     func addNewAction(planTitle : String = "Olahraga", action : String, time : Date, place : String, startDate : Date, repeats : RepeatAction, difficulty : Rank) {
-        var targetPlan = self.goal.plans.filter({$0.title == planTitle})[0]
+        let targetPlan = self.goal.plans.filter({$0.title == planTitle})[0]
         targetPlan.addNewAction(action: action, time: time, place: place, startDate: startDate, repeats: repeats, difficulty: difficulty)
         self.getTodaysPlanAndAction()
     }
