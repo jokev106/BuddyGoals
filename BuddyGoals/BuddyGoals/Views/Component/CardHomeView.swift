@@ -45,9 +45,12 @@ struct CardHomeView: View {
             }
             .background(.white)
             
-        .cornerRadius(10)
-        .padding()
-        .shadow(color: .gray, radius: 5)
+        .cornerRadius(13)
+        .padding(.bottom, 20)
+        .padding(.trailing, 30)
+        .padding(.leading, 30)
+        //.padding(30) //safe area
+        .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
         //Close of Card
     }
 }

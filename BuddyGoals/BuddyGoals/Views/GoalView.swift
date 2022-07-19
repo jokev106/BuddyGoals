@@ -39,7 +39,7 @@ struct GoalView: View {
                     
                     VStack{
                         primary900
-                            .frame(height: 300, alignment: .top)
+                            .frame(height: 260, alignment: .top)
                             .ignoresSafeArea(.all)
                             .shadow(radius: 10)
                         Spacer()
@@ -47,12 +47,25 @@ struct GoalView: View {
                     
                     VStack {
                         
+                        HStack{
+                            Text("Goal")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(.top, 16)
+                                .padding(.leading, 30)
+                                .padding(.bottom, 1)
+                            
+                            Spacer()
+                        }
+                        
+                        
                         //extention main goal card
                         mainGoalCard
                         
                         //Close of Card
                         
-                        VStack(spacing:-10){
+                        VStack {
                             
                             HStack {
                                 
@@ -74,7 +87,8 @@ struct GoalView: View {
                         } //VStack
                    
                     } //VStack
-                    .navigationTitle("Goal")
+                    //.navigationTitle("Goal")
+                    .navigationBarHidden(true)
 
                     
                 }
@@ -136,6 +150,7 @@ extension GoalView {
     var mainGoalCard: some View {
         
         Group {
+            
             VStack{
                 HStack {
                     Text("Be a good boyfriend")
@@ -197,7 +212,8 @@ extension GoalView {
                 
         } //Group Card
         .cornerRadius(10)
-        .padding()
+        .padding(.trailing, 16)
+        .padding(.leading, 16)
         .shadow(radius: 5)
         
     } //var main goal
@@ -207,6 +223,7 @@ extension GoalView {
         ScrollView {
             
             VStack(spacing:-5){
+                
                 HStack{
                     
                     Text("Exercise")
@@ -214,32 +231,43 @@ extension GoalView {
                         .font(.system(size: 22.5))
                         .bold()
                         
-                    
                     Spacer()
                     
                     Button(action: {
                         //Do Action
                         
                     }, label: {
-                        
-                        Image(systemName: "plus")
-                            .foregroundColor(green)
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(plusButtonWhite)
+                                .background(green)
+                                .clipShape(Circle())
+                                
                         
                     })//Button
+                        
                     
-                }.padding() // HStack
+                }
+                .padding(.bottom, 20)
+                .padding(.trailing, 30)
+                .padding(.leading, 30)// HStack
                 
                 //Card
-                CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
-                CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
-                CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
+                //ForEach {
+                    CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
+                //}
+                
                 //Close of Card
             }
             
         }
-        .padding()
     } //var listPlansCard
     
     
