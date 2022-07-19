@@ -55,6 +55,9 @@
 		F73A88F32882C47000213726 /* CoreDataAction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E72882C47000213726 /* CoreDataAction+CoreDataProperties.swift */; };
 		F73A88F42882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E82882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift */; };
 		F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E92882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift */; };
+		F73A88FB2886999400213726 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FA2886999400213726 /* CoreDataHandler.swift */; };
+		F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FC28869D4300213726 /* GoalViewModel.swift */; };
+		F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FE2886BCCC00213726 /* PlanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		F73A88E72882C47000213726 /* CoreDataAction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataAction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F73A88E82882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataActionRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F73A88E92882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataActionRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F73A88FA2886999400213726 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
+		F73A88FC28869D4300213726 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
+		F73A88FE2886BCCC00213726 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,7 @@
 			children = (
 				B3226E97287D4F1A00CBCB49 /* NavigationAppearance.swift */,
 				B3A892A6287D552C00694732 /* SubmissionPicker.swift */,
+				F73A88FA2886999400213726 /* CoreDataHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				B340B2E828801AA000120673 /* PlanModel.swift */,
+				F73A88FC28869D4300213726 /* GoalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 				B3A8929B287D53D500694732 /* ColorsSet.swift */,
 				B3A89292287D535000694732 /* PlanHomeView.swift */,
 				B3A89291287D535000694732 /* ScrollPlanView.swift */,
+				F73A88FE2886BCCC00213726 /* PlanView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -449,6 +458,7 @@
 				F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
 				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
+				F73A88FB2886999400213726 /* CoreDataHandler.swift in Sources */,
 				F73A88F32882C47000213726 /* CoreDataAction+CoreDataProperties.swift in Sources */,
 				F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */,
 				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
@@ -456,6 +466,7 @@
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				F73A88EF2882C47000213726 /* CoreDataPlan+CoreDataProperties.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
+				F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */,
 				F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
 				B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */,
@@ -464,6 +475,7 @@
 				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
 				F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */,
 				F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */,
+				F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
 				F73A88F22882C47000213726 /* CoreDataAction+CoreDataClass.swift in Sources */,
 				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,

@@ -8,11 +8,16 @@
 import Foundation
 import Combine
 import SwiftUI
+import CoreData
 
 class PlanModel: ObservableObject {
     @Published var planTitle : String = ""
     @Published var colorPlan : String = ""
     @Published var plans : [Plan] = []
+    
+    
+    
+    
     
     func onAdd(plan: String, color: String) {
         plans.append(Plan(planTitle: plan, colorPlan: color))
@@ -32,4 +37,5 @@ class PlanModel: ObservableObject {
         plans[index].planTitle = planTitle
         plans[index].colorPlan = colorPlan
     }
+    
 }
