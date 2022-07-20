@@ -18,33 +18,32 @@ struct CardHomeView: View {
     var body: some View {
         
         //Card
-            HStack{
-                VStack{
-                    Rectangle()
-                        .padding(.trailing, 10)
-                        .padding(.leading, 10)
-                        .frame(width: 20, height: 80)
-                        .background(colorCard)
-                }
-                
-                
-                Text(milestone)
-                    .font(.system(size: 15, weight: .bold))
-                    .lineLimit(2)
+        HStack{
+            VStack{
+                Rectangle()
                     .padding(.trailing, 10)
-                    .frame(alignment: .leading)
-                    .foregroundColor(Color.black)
-                    
-
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .padding(.trailing, 15)
-                    .foregroundColor(Color.gray)
-
+                    .padding(.leading, 10)
+                    .frame(width: 20, height: 80)
+                    .background(colorCard)
             }
-            .background(.white)
             
+            
+            Text(milestone)
+                .font(.system(size: 15, weight: .bold))
+                .lineLimit(2)
+                .padding(.trailing, 10)
+                .frame(alignment: .leading)
+                .foregroundColor(Color.black)
+                
+
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .padding(.trailing, 15)
+                .foregroundColor(Color.gray)
+
+        }
+        .background(.white)
         .cornerRadius(13)
         .padding(.bottom, 20)
         .padding(.trailing, 30)

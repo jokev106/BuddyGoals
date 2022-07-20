@@ -44,6 +44,7 @@
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
 		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
 		B8880BCE2887EA7A003A1AD2 /* BuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */; };
+		B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
 		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyView.swift; sourceTree = "<group>"; };
+		B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,6 @@
 				B340B2E3287EE05900120673 /* RegisterView.swift */,
 				B340B2E1287EB2D200120673 /* LoginView.swift */,
 				B3A8929F287D549700694732 /* ProfileView.swift */,
-				B3A89297287D53A400694732 /* CompanionView.swift */,
 				B3A89296287D53A400694732 /* GoalView.swift */,
 				B3A89295287D53A400694732 /* MainView.swift */,
 				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
@@ -277,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */,
+				B3A89297287D53A400694732 /* CompanionView.swift */,
+				B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */,
 			);
 			path = Companion;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
 				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,
+				B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */,
 				B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */,
 				B3A89294287D535000694732 /* PlanHomeView.swift in Sources */,
 				B3226EA3287D508100CBCB49 /* Rank.swift in Sources */,
