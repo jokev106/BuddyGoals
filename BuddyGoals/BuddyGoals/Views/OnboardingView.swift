@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    
+    @Binding var showOnboarding: Bool
+    
     var body: some View {
         
         GeometryReader{ geo in
@@ -84,7 +87,10 @@ struct OnboardingView: View {
                 Spacer()
                     .frame( height: 120)
                 
-                NavigationLink (destination: RankView()) {
+                Button(action: {
+                    //Action
+                    showOnboarding.toggle()
+                }) {
                     Text("Get Started")
                         .fontWeight(.bold)
                         .padding(16)
@@ -93,16 +99,10 @@ struct OnboardingView: View {
                         .foregroundColor(.white)
                         .cornerRadius(16)
                         .padding(.horizontal, 16)
+                    
                 }
-                
             }
-            
         }
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView()
-    }
-}

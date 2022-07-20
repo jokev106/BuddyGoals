@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
+    
+
+    
     var body: some View {
-        
+
         //Main Tabbar
         TabView {
             CompanionView()
@@ -21,10 +24,8 @@ struct MainView: View {
                 .tabItem{
                     Label("Goal", systemImage: "checkmark.square.fill")
                 }
-
-            
         }.accentColor(primary900)
-        
+            
     }
 }
 
