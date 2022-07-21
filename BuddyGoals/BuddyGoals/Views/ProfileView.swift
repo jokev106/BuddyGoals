@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State private var milestoneTitle:  String = ""
     @State private var startDatePicker = Date()
     
-    @ObservedObject var vm : ProfileViewModel = ProfileViewModel()
+    @StateObject var vm : ProfileViewModel = ProfileViewModel()
     @EnvironmentObject var gvm : GoalViewModel
     
     //variable for form
@@ -57,6 +57,7 @@ struct ProfileView: View {
                             if !tapEditProfile {
                                 presentationMode.wrappedValue.dismiss()
                             } else {
+                                vm.fillProperties()
                                 tapEditProfile = false
                             }
                         }) {
@@ -76,7 +77,8 @@ struct ProfileView: View {
                                 
                             } else {
                                 //Action
-                                
+                                vm.update()
+                                tapEditProfile = false
                             }
                             
                         }) {
@@ -97,6 +99,9 @@ struct ProfileView: View {
         }//geometryReader
         .onAppear() {
             vm.setup(context: gvm.context!, userID: gvm.user.first!.id!)
+        }
+        .onDisappear() {
+            gvm.getUser()
         }
     }//bodyView
 }
@@ -120,7 +125,7 @@ extension ProfileView {
                 .padding()
                 
             //Continue Profile
-            Text("Giga Chadson")//Name
+            Text(vm.name)//Name
                 .foregroundColor(.black)
                 .font(.system(size: 25))
                 .multilineTextAlignment(.center)
@@ -139,10 +144,12 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    TextField("Set your goal", text: $vm.currentGoal)
-                        .padding(.all, 7.0)
+                    
+                    Text("\(vm.currentGoal)")
                         .foregroundColor(Color.black)
-                    //                            .padding(.horizontal)
+                    
+                    
+                        //                            .padding(.horizontal)<#code#>
                 }
                 
                 Section (header: Text("Scheduling")

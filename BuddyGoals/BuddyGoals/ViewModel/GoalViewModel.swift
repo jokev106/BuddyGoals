@@ -25,9 +25,14 @@ class GoalViewModel : ObservableObject {
         coreDataController = CoreDataController(context: context)
     }
     
+    var currentGoal : CoreDataGoal? {
+        return goal.first ?? nil
+    }
+    
     // query user sesuai user yang login
     func getUser() {
-        user = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "name", predicateValue: "My Name") as! [CoreDataUser]
+//        user = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "name", predicateValue: "My Nam") as! [CoreDataUser]
+        user = self.coreDataController?.selectAllCoreData(entityName: "CoreDataUser") as! [CoreDataUser]
         var tempGoal = user[0].wrappedGoals
         tempGoal = tempGoal.filter { $0.isFinished == false }
         goal = tempGoal

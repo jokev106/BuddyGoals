@@ -168,7 +168,7 @@ extension GoalView {
             
             VStack{
                 HStack {
-                    Text("Be a good boyfriend")
+                    Text(vm.currentGoal?.wrappedTitle ?? "Unknown Goal")
                         .font(.system(size: 25, weight: .bold))
                         .frame(alignment: .topTrailing)
                         .foregroundColor(Color.black)
@@ -199,7 +199,7 @@ extension GoalView {
                         .foregroundColor(Color.black)
                         .bold()
                     Spacer()
-                    Text("12 Weeks")
+                    Text("\(vm.currentGoal?.wrappedDuration ?? 0) Weeks")
                         .foregroundColor(Color.gray)
                     
                     VStack {
@@ -212,7 +212,7 @@ extension GoalView {
                         .foregroundColor(Color.black)
                         .bold()
                     Spacer()
-                    Text("15 Days")
+                    Text("\(vm.remainingDay) Days")
                         .foregroundColor(Color.gray)
                 }
                 .font(.system(size: 8))
@@ -237,50 +237,56 @@ extension GoalView {
     var listPlansCard: some View {
         ScrollView {
             
-            VStack(spacing:-5){
-                
-                HStack{
+            ForEach(vm.plans) { plan in
+                VStack(spacing:-5){
                     
-                    Text("Exercise")
-                        .foregroundColor(green)
-                        .font(.system(size: 22.5))
-                        .bold()
+                    HStack{
                         
-                    Spacer()
+                        Text(plan.wrappedTitle)
+                            .foregroundColor(plan.planColor.colorValue)
+                            .font(.system(size: 22.5))
+                            .bold()
+                            
+                        Spacer()
+                        
+                        Button(action: {
+                            //Do Action
+                            
+                        }, label: {
+                                Image(systemName: "plus.circle.fill")
+                                    .foregroundColor(plusButtonWhite)
+                                    .background(plan.planColor.colorValue)
+                                    .clipShape(Circle())
+                                    
+                            
+                        })//Button
+                            
+                        
+                    }
+                    .padding(.bottom, 20)
+                    .padding(.trailing, 30)
+                    .padding(.leading, 30)// HStack
                     
-                    Button(action: {
-                        //Do Action
+                    //Card
+                    //ForEach {
+                    ForEach (plan.wrappedActions) { action in
+                        CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle, destinationCard: "")
+                    }
                         
-                    }, label: {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(plusButtonWhite)
-                                .background(green)
-                                .clipShape(Circle())
-                                
-                        
-                    })//Button
-                        
+//                        CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
+//                        CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
+                    //}
                     
+                    //Close of Card
                 }
-                .padding(.bottom, 20)
-                .padding(.trailing, 30)
-                .padding(.leading, 30)// HStack
-                
-                //Card
-                //ForEach {
-                    CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
-                //}
-                
-                //Close of Card
             }
+            
             
         }
     } //var listPlansCard

@@ -25,13 +25,13 @@ struct PlanDetailView: View {
                 
                 //content
                 VStack{
-                    HStack{
-                        TextField("Enter title", text: $dataPlan.planTitle)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .foregroundColor(.black)
-                        addButton
-                    }
-                    .padding(.horizontal)
+//                    HStack{
+//                        TextField("Enter title", text: $dataPlan.planTitle)
+//                            .textFieldStyle(RoundedBorderTextFieldStyle())
+//                            .foregroundColor(.black)
+//                        addButton
+//                    }
+//                    .padding(.horizontal)
                     List {
                         ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
                             NavigationLink(destination: ProfileView()){

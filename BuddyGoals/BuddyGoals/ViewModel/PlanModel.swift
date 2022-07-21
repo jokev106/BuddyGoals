@@ -30,12 +30,12 @@ class PlanModel: ObservableObject {
     }
     
     // Add new plan
-    func onAdd(plan: String, color: PlanColor) {
+    func addPlan() {
         
         let newPlan = CoreDataPlan(context: context!)
         newPlan.id = UUID()
-        newPlan.title = plan
-        newPlan.planColor = color
+        newPlan.title = planTitle
+        newPlan.planColor = colorPlan
         newPlan.index = Int16(plans.count)
         
         newPlan.goalID = goal!.id
