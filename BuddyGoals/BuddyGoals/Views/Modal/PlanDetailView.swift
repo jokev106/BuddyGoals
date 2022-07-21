@@ -12,6 +12,7 @@ struct PlanDetailView: View {
     //    @Environment(\.dismiss) var dismissSheetView
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
+    @EnvironmentObject var gvm : GoalViewModel
     @EnvironmentObject var dataPlan : PlanModel
     //if edit mode active
     @State var editMode = EditMode.inactive
@@ -79,6 +80,13 @@ struct PlanDetailView: View {
             }//navigationView
             .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
         }//geometryReader
+        .onAppear() {
+            dataPlan.setup(goalID: gvm.goalID!, context: gvm.context!)
+            dataPlan.getPlans()
+        }
+        .onDisappear() {
+            gvm.getPlans(id: nil)
+        }
     }//bodyView
     private var addButton : some View {
         //if edit mode active / not active
@@ -109,6 +117,7 @@ struct PlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlanDetailView()
             .environmentObject(planModel)
+            .environmentObject(GoalViewModel())
     }
 }
 

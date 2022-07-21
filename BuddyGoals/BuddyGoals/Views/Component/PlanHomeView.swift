@@ -27,7 +27,7 @@ struct PlanHomeView: View {
                 
                 NavigationLink(destination: AddActionView(action : action, planId: plan.id), label: {
                     
-                    let (imageName, imageColor) : (String, Color) = getImageNameColor(action: action)
+                    let imageColor : Color = getImageNameColor(action: action)
                     
 //                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
                     CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
@@ -37,18 +37,18 @@ struct PlanHomeView: View {
             //Close of Card
         }
     }
-    func getImageNameColor(action:Actionable) -> (String, Color) {
+    func getImageNameColor(action:Actionable) -> Color {
         switch action.difficulty {
         case .trivial:
-            return ("Stars_1", white)
+            return white
         case .easy:
-            return ("Stars_2", white)
+            return white
         case .medium:
-            return ("Stars_3", blue)
+            return blue
         case .hard:
-            return ("Stars_4", purple)
+            return purple
         case .expert:
-            return ("Stars_5", orange)
+            return orange
         }
     }
 }

@@ -11,8 +11,6 @@ struct AddPlanView: View {
     //    @Environment(\.dismiss) var dismissSheetView
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
-    @State var planTitle:  String = ""
-    @State var colorPlan: String = ""
     
     @EnvironmentObject var dataPlan : PlanModel
     
@@ -35,11 +33,11 @@ struct AddPlanView: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                dataPlan.onAdd(plan: $planTitle.wrappedValue, color: $colorPlan.wrappedValue)
+                                dataPlan.addPlan()
                                 presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("Create").bold()
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                             }
                             Spacer()
                                 .frame(width: 20)
@@ -50,13 +48,13 @@ struct AddPlanView: View {
                         Image(systemName: "plus.diamond.fill")
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
-                            .foregroundColor(blue)
+                            .foregroundColor(dataPlan.colorPlan.colorValue)
                             
                         Spacer()
                             .frame(height: 35)
                         
                         //Milestone set up
-                        TextField("Ex: Exercise", text: $planTitle)
+                        TextField("Ex: Exercise", text: $dataPlan.planTitle)
                             .padding()
                             .foregroundColor(Color.black)
                             .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, style: StrokeStyle(lineWidth: 1.0)))
@@ -70,6 +68,7 @@ struct AddPlanView: View {
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
+                                    dataPlan.colorPlan = .colorBlue
                                     self.isTappedCircleBlue.toggle()
                                     if isTappedCircleBlue == true {
                                         isTappedCircleRed = false
@@ -88,6 +87,7 @@ struct AddPlanView: View {
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.yellow)
                                 .onTapGesture {
+                                    // Warnanya green
                                     self.isTappedCircleYellow.toggle()
                                     if isTappedCircleYellow == true {
                                         isTappedCircleRed = false
@@ -105,6 +105,7 @@ struct AddPlanView: View {
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.orange)
                                 .onTapGesture {
+                                    dataPlan.colorPlan = .colorOrange
                                     self.isTappedCircleOrange.toggle()
                                     if isTappedCircleOrange == true {
                                         isTappedCircleRed = false
@@ -122,6 +123,7 @@ struct AddPlanView: View {
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.purple)
                                 .onTapGesture {
+                                    dataPlan.colorPlan = .colorPurple
                                     self.isTappedCirclePurple.toggle()
                                     if isTappedCirclePurple == true {
                                         isTappedCircleRed = false
@@ -139,6 +141,7 @@ struct AddPlanView: View {
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(.red)
                                 .onTapGesture {
+                                    dataPlan.colorPlan = .colorRed
                                     self.isTappedCircleRed.toggle()
                                     if isTappedCircleRed == true {
                                         isTappedCircleYellow = false
@@ -157,8 +160,12 @@ struct AddPlanView: View {
                     //navbar Setting
                     .foregroundColor(Color.white)
                     .navigationBarHidden(true)
+                    
                 }//navigationView
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
+                .onDisappear() {
+                    dataPlan.getPlans()
+                }
             }//Vstack Line 23
         }//geometryReader
     }//bodyView
