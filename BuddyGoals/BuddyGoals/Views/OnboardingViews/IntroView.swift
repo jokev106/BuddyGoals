@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
+struct IntroView: View {
     
-    @Binding var showOnboarding: Bool
+//    @Binding var showOnboarding: Bool
     
     var body: some View {
         
@@ -87,20 +87,6 @@ struct OnboardingView: View {
                 Spacer()
                     .frame( height: 120)
                 
-                Button(action: {
-                    //Action
-                    showOnboarding.toggle()
-                }) {
-                    Text("Get Started")
-                        .fontWeight(.bold)
-                        .padding(16)
-                        .frame(maxWidth: .infinity)
-                        .background(primary900)
-                        .foregroundColor(.white)
-                        .cornerRadius(16)
-                        .padding(.horizontal, 16)
-                    
-                }
             }
         }
     }
