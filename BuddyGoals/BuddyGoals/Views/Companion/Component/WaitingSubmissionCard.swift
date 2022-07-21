@@ -1,13 +1,13 @@
 //
-//  CardHomeView.swift
+//  WaitingSubmissionCard.swift
 //  BuddyGoals
 //
-//  Created by I Gede Bagus Wirawan on 28/06/22.
+//  Created by I Gede Bagus Wirawan on 21/07/22.
 //
 
 import SwiftUI
 
-struct CardHomeView: View {
+struct WaitingSubmissionCard: View {
     
     //Variable
     //@State var imageCard : String
@@ -34,14 +34,9 @@ struct CardHomeView: View {
                 .padding(.trailing, 10)
                 .frame(alignment: .leading)
                 .foregroundColor(Color.black)
-                
-
+            
             Spacer()
             
-            Image(systemName: "chevron.right")
-                .padding(.trailing, 15)
-                .foregroundColor(Color.gray)
-
         }
         .background(.white)
         .cornerRadius(13)
@@ -54,9 +49,9 @@ struct CardHomeView: View {
     }
 }
 
-struct CardHomeView_Previews: PreviewProvider {
+struct WaitingSubmissionCard_Previews: PreviewProvider {
     static var previews: some View {
-        CardHomeView(colorCard: Color.black, milestone: "Test", destinationCard: "")
-//        CardHomeView(imageCard: "", colorCard: Color.black, milestone: "Test", destinationCard: "")
+        WaitingSubmissionCard(colorCard: Color.black, milestone: "Test", destinationCard: "")
+        //WaitingSubmissionCard(imageCard: "Gusde-Emot", colorCard: Color.black, milestone: "Test", destinationCard: "")
     }
 }

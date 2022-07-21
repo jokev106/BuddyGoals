@@ -15,7 +15,7 @@ struct BuddyGoalsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            RegisterView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(activityToday)
                 .environmentObject(gvm)

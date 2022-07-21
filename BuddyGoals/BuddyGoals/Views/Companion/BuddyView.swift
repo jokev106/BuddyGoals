@@ -8,16 +8,14 @@
 import SwiftUI
 import CoreData
 
-struct GoalView: View {
+struct BuddyView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var data : PlanModel
-    @EnvironmentObject var vm : GoalViewModel
+    @EnvironmentObject var data: PlanModel
     
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-//        animation: .default)
-//    private var items: FetchedResults<Item>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<Item>
     
     //for White Content Navigation Bar
     init() {
@@ -40,7 +38,7 @@ struct GoalView: View {
                 ZStack {
                     
                     VStack{
-                        primary900
+                        Color.red
                             .frame(height: 260, alignment: .top)
                             .ignoresSafeArea(.all)
                             .shadow(radius: 10)
@@ -59,6 +57,35 @@ struct GoalView: View {
                                 .padding(.bottom, 1)
                             
                             Spacer()
+                            
+                            Button(action: {
+                                self.tapProfileView.toggle()
+                            }, label: {
+                                
+                                HStack {
+                                    Image("Gusde-Emot")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .clipShape(Circle())
+                                    
+                                    Text("Giga Chad")
+                                        .font(.caption2)
+                                        .fontWeight(.bold)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(1)
+                                        .foregroundColor(.black)
+                                }
+                                .padding(2.5)
+                                .background()
+                                .cornerRadius(10)
+                                
+                                    
+                            })
+                            .padding()
+                            .sheet(isPresented: $tapProfileView) {
+                                BuddyProfileView()
+                            }//Button card
+                            
                         }
                         
                         
@@ -66,27 +93,11 @@ struct GoalView: View {
                         mainGoalCard
                         
                         //Close of Card
-                        
-                        VStack {
+                        listPlansCard
+                       
+                        //extention list card plan
+                        //listPlansCard
                             
-                            HStack {
-                                
-                                Button(action: {self.addNewPlanView.toggle()}) {
-                                    HStack{
-                                        Image(systemName: "list.triangle")
-                                        Text("Manage Plan")
-                                    }.font(.system(size: 14))
-                                }.sheet(isPresented: $addNewPlanView) {
-                                    PlanDetailView()
-                                        .environmentObject(PlanModel())
-                                }
-                                
-                            }.padding(25)
-                            
-                            //extention list card plan
-                            listPlansCard
-                            
-                        } //VStack
                    
                     } //VStack
                     //.navigationTitle("Goal")
@@ -98,51 +109,39 @@ struct GoalView: View {
             
         } //Navigation View
         .edgesIgnoringSafeArea(.all)
-        .onAppear() {
-            vm.setup(context: self.viewContext)
-            ////            Uncomment to get initial items in core data
-            //            vm.addInitialItems()
-            
-            
-            vm.getUser()
-            vm.getPlans(id: nil)
-            vm.calculateRemainingDays()
-        }
 
         
     } //View Close
     
     //Function
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
+    private func addItem() {
+        withAnimation {
+            let newItem = Item(context: viewContext)
+            newItem.timestamp = Date()
+            
+            do {
+                try viewContext.save()
+            } catch {
+                
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
     
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { items[$0] }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
 
 private let itemFormatter: DateFormatter = {
@@ -152,14 +151,13 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct GoalView_Previews: PreviewProvider {
+struct BuddyView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalView()
-            .environmentObject(GoalViewModel())
+        BuddyView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
-extension GoalView {
+extension BuddyView {
     
     //card for main goal card
     var mainGoalCard: some View {
@@ -175,23 +173,13 @@ extension GoalView {
 
                     Spacer()
 
-                    Button(action: {
-                        self.tapProfileView.toggle()
-                    }, label: {
-                        Image(systemName: "person.circle.fill")
-                            .padding( .bottom, 10)
-                    })
-                    .sheet(isPresented: $tapProfileView) {
-                        ProfileView()
-                    }//Button card
-
                 }
                 
                 HStack {
                     Rectangle()
                         .frame(height:1)
                         .padding(5)
-                        .foregroundColor(primary900)
+                        .foregroundColor(.red)
                 }
                 
                 HStack {
@@ -242,24 +230,10 @@ extension GoalView {
                 HStack{
                     
                     Text("Exercise")
-                        .foregroundColor(green)
                         .font(.system(size: 22.5))
                         .bold()
-                        
-                    Spacer()
                     
-                    Button(action: {
-                        //Do Action
-                        
-                    }, label: {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(plusButtonWhite)
-                                .background(green)
-                                .clipShape(Circle())
-                                
-                        
-                    })//Button
-                        
+                    Spacer()
                     
                 }
                 .padding(.bottom, 20)
@@ -271,23 +245,19 @@ extension GoalView {
                     CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
                     CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
                     CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
+                    
                 //}
                 
                 //Close of Card
             }
+
             
         }
+        .padding(.top, 30)
+        
     } //var listPlansCard
     
     
 }
-
-
 
 

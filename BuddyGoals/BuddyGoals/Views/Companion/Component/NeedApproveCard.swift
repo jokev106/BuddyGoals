@@ -1,16 +1,16 @@
 //
-//  CardHomeView.swift
+//  NeedApproveCard.swift
 //  BuddyGoals
 //
-//  Created by I Gede Bagus Wirawan on 28/06/22.
+//  Created by I Gede Bagus Wirawan on 21/07/22.
 //
 
 import SwiftUI
 
-struct CardHomeView: View {
+struct NeedApproveCard: View {
     
     //Variable
-    //@State var imageCard : String
+    @State var imageCard : String
     @State var colorCard : Color
     @State var milestone : String
     @State var destinationCard : String
@@ -38,9 +38,12 @@ struct CardHomeView: View {
 
             Spacer()
             
-            Image(systemName: "chevron.right")
+            Image(imageCard)
+                .resizable()
+                .frame(width: 60, height: 60)
+                .cornerRadius(10)
                 .padding(.trailing, 15)
-                .foregroundColor(Color.gray)
+                
 
         }
         .background(.white)
@@ -54,9 +57,9 @@ struct CardHomeView: View {
     }
 }
 
-struct CardHomeView_Previews: PreviewProvider {
+struct NeedApproveCard_Previews: PreviewProvider {
     static var previews: some View {
-        CardHomeView(colorCard: Color.black, milestone: "Test", destinationCard: "")
-//        CardHomeView(imageCard: "", colorCard: Color.black, milestone: "Test", destinationCard: "")
+        //NeedApproveCard(colorCard: Color.black, milestone: "Test", destinationCard: "")
+        NeedApproveCard(imageCard: "Gusde-Emot", colorCard: Color.black, milestone: "Test", destinationCard: "")
     }
 }
