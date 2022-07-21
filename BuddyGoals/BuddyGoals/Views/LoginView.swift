@@ -69,7 +69,9 @@ struct LoginView: View {
                 
                 Group{
                     //Button for sign in
-                    Button(action: {}) {
+                    Button(action: {
+                        
+                    }) {
                         Text("Sign In")
                             .fontWeight(.bold)
                                 .padding(16)

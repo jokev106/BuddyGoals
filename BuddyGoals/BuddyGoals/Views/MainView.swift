@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
+    
+
+    
     var body: some View {
-        
+
         //Main Tabbar
         TabView {
             
@@ -27,7 +30,7 @@ struct MainView: View {
 
             
         }.accentColor(primary900)
-        
+            
     }
 }
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    @AppStorage("showOnboarding") var showOnboarding: Bool = true
+    
     @State private var emailRegister:  String = ""
     @State private var passwordRegister:  String = ""
     
@@ -129,7 +131,11 @@ struct RegisterView: View {
                 
             }
             
-        }.background(primary900)
+        }
+        .background(primary900)
+        .fullScreenCover(isPresented: $showOnboarding, content: {
+            OnboardingView(showOnboarding: $showOnboarding)
+        })
     }
 }
 
