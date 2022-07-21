@@ -44,13 +44,12 @@
 		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
-		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
+		B3A892AB287D5D3500694732 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* IntroView.swift */; };
 		B8880BCE2887EA7A003A1AD2 /* BuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */; };
 		B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */; };
 		B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD228893212003A1AD2 /* NeedApproveCard.swift */; };
 		B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */; };
 		B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */; };
-		B3A892AB287D5D3500694732 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* IntroView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,22 +101,21 @@
 		B35B936F287C1A390056C847 /* BuddyGoalsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B3A89291287D535000694732 /* ScrollPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPlanView.swift; sourceTree = "<group>"; };
 		B3A89292287D535000694732 /* PlanHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanHomeView.swift; sourceTree = "<group>"; };
-		B3A89295287D53A400694732 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B3A89296287D53A400694732 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		B3A89295287D53A400694732 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = HomeView/MainView.swift; sourceTree = "<group>"; };
+		B3A89296287D53A400694732 /* GoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoalView.swift; path = HomeView/GoalView.swift; sourceTree = "<group>"; };
 		B3A89297287D53A400694732 /* CompanionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionView.swift; sourceTree = "<group>"; };
 		B3A8929B287D53D500694732 /* ColorsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsSet.swift; sourceTree = "<group>"; };
 		B3A8929D287D53FE00694732 /* AddActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
-		B3A8929F287D549700694732 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B3A8929F287D549700694732 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = HomeView/ProfileView.swift; sourceTree = "<group>"; };
 		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
-		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B3A892AA287D5D3500694732 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyView.swift; sourceTree = "<group>"; };
 		B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyProfileView.swift; sourceTree = "<group>"; };
 		B8880BD228893212003A1AD2 /* NeedApproveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedApproveCard.swift; sourceTree = "<group>"; };
 		B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingSubmissionCard.swift; sourceTree = "<group>"; };
 		B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedCard.swift; sourceTree = "<group>"; };
-		B3A892AA287D5D3500694732 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				B8880BCC2887EA64003A1AD2 /* Companion */,
-				B340B2E3287EE05900120673 /* RegisterView.swift */,
-				B340B2E1287EB2D200120673 /* LoginView.swift */,
 				B3A8929F287D549700694732 /* ProfileView.swift */,
 				B3A89296287D53A400694732 /* GoalView.swift */,
 				B3A89295287D53A400694732 /* MainView.swift */,
-				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
 				B359A0EB2887E98D00C72159 /* OnboardingViews */,
 				B359A0EA2887E96900C72159 /* HomeView */,
 				B340B2E1287EB2D200120673 /* LoginView.swift */,
@@ -219,9 +214,6 @@
 		B359A0EA2887E96900C72159 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				B3A89296287D53A400694732 /* GoalView.swift */,
-				B3A8929F287D549700694732 /* ProfileView.swift */,
-				B3A89295287D53A400694732 /* MainView.swift */,
 				B3A89297287D53A400694732 /* CompanionView.swift */,
 			);
 			path = HomeView;
@@ -316,7 +308,6 @@
 			children = (
 				B8880BD1288931D4003A1AD2 /* Component */,
 				B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */,
-				B3A89297287D53A400694732 /* CompanionView.swift */,
 				B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */,
 			);
 			path = Companion;

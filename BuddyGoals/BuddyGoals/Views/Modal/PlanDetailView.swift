@@ -24,65 +24,44 @@ struct PlanDetailView: View {
                 
                 //content
                 VStack{
-                    HStack{
-                        TextField("Enter title", text: $data.planTitle)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .foregroundColor(.black)
-                        addButton
-                    }
-                    .padding(.horizontal)
-                    List {
-                        ForEach(Array(data.plans.enumerated()), id: \.offset){offset, plan in
-                            NavigationLink(destination: ProfileView()){
-                                HStack{
-                                    Rectangle()
-                                        .foregroundColor(.orange)
-                                        .frame(width: 15, height: 50)
-                                    VStack{
-                                        Text(data.planTitle)
+                    ScrollView{
+                        ZStack{
+                            VStack{
+                                Spacer()
+                                    .frame(height: 20)
+                                ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
+                                    NavigationLink(destination: ProfileView()){
+                                        
+                                        HStack{
+                                            CardHomeView(colorCard: green, milestone: dataPlan.ti, destinationCard: "")
                                             .foregroundColor(.black)
+                                        }.cornerRadius(5)
                                     }
-                                    .foregroundColor(.black)
-                                }.cornerRadius(5)
-                            }
-                        }
-                        .padding(.horizontal)
-                        List {
-                            ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
-                                NavigationLink(destination: RankView()){
-                                    HStack{
-                                        Rectangle()
-                                            .foregroundColor(.orange)
-                                            .frame(width: 15, height: 50)
-                                        VStack{
-                                            Text(dataPlan.planTitle)
-                                                .foregroundColor(.black)
-                                        }
-                                        .foregroundColor(.black)
-                                    }.cornerRadius(5)
                                 }
+                                .onDelete(perform: dataPlan.onDelete)
+                                .onMove(perform: dataPlan.onMove)
+                                Spacer()
+                                
                             }
-                            .onDelete(perform: dataPlan.onDelete)
-                            .onMove(perform: dataPlan.onMove)
                         }
-                        .listStyle(InsetListStyle())
-                        
-                        //Footer Button
-                        
-                        
                     }
+                    //Footer Button
+                    ZStack{
+                        NavigationLink{
+                            AddPlanView()
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(blue)
+                            Text("Add New Plan")
+                                .foregroundColor(blue)
+                            //                                    .frame(width: 350, height: 20, alignment: .leading)
+                        }
+                        .frame(width: 300, height: 0, alignment: .leading)
+                    }.padding(.top)
                 }
-                .safeAreaInset(edge: .bottom){
-                    NavigationLink{
-                        AddPlanView()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(blue)
-                        Text("Add New Plan")
-                            .foregroundColor(blue)
-                    }
-                    .frame(width: 300, height: 0, alignment: .leading)
-                }
+                
+                
+                
                 //navbar Setting
                 .navigationBarTitle(
                     Text("Plan").bold(),
@@ -107,7 +86,7 @@ struct PlanDetailView: View {
         case .inactive:
             return AnyView(Button(action: {}) {
                 HStack{
-//                                        Text("Add")
+                    //                                        Text("Add")
                     Image(systemName: "plus")
                 }
                 .padding()
