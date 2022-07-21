@@ -26,14 +26,14 @@ struct PlanDetailView: View {
                 //content
                 VStack{
                     HStack{
-                        TextField("Enter title", text: $data.planTitle)
+                        TextField("Enter title", text: $dataPlan.planTitle)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .foregroundColor(.black)
                         addButton
                     }
                     .padding(.horizontal)
                     List {
-                        ForEach(Array(data.plans.enumerated()), id: \.offset){offset, plan in
+                        ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
                             NavigationLink(destination: ProfileView()){
                                 HStack{
                                     Rectangle()
@@ -50,7 +50,7 @@ struct PlanDetailView: View {
                         .padding(.horizontal)
                         List {
                             ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
-                                NavigationLink(destination: RankView()){
+                                NavigationLink(destination: ProfileView()){
                                     HStack{
                                         Rectangle()
                                             .foregroundColor(.orange)
@@ -102,8 +102,8 @@ struct PlanDetailView: View {
             .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
         }//geometryReader
         .onAppear() {
-            data.setup(goalID: gvm.goalID!, context: gvm.context!)
-            data.getPlans()
+            dataPlan.setup(goalID: gvm.goalID!, context: gvm.context!)
+            dataPlan.getPlans()
         }
         .onDisappear() {
             gvm.getPlans(id: nil)

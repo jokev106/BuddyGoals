@@ -35,7 +35,7 @@ struct AddPlanView: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                dataPlan.onAdd(plan: $planTitle.wrappedValue, color: $colorPlan.wrappedValue)
+                                dataPlan.onAdd(plan: $planTitle.wrappedValue, color: PlanColor(rawValue: colorPlan)!)
                                 presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("Create").bold()

@@ -26,7 +26,7 @@ struct ProfileView: View {
     // @State private var currentName : String = ""
     // @State private var currentGoal : String = ""
     // @State private var scheduleStart = Date()
-    // @State private var scheduleEnd = Date()
+     @State private var scheduleEnd = Date()
 
     
     
@@ -139,7 +139,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    TextField("Set your goal", text: $currentGoal)
+                    TextField("Set your goal", text: $vm.currentGoal)
                         .padding(.all, 7.0)
                         .foregroundColor(Color.black)
                     //                            .padding(.horizontal)
@@ -149,7 +149,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    DatePicker("Start Date", selection: $scheduleStart, in: Date()..., displayedComponents: .date)
+                    DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
                         .padding(.leading, 5.0)
                         .foregroundColor(Color.black)
                     DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
@@ -218,7 +218,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    TextField("Set your goal", text: $currentName)
+                    TextField("Set your goal", text: $vm.name)
                         .padding(.all, 7.0)
                         .foregroundColor(Color.black)
                     //                            .padding(.horizontal)
@@ -228,7 +228,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    TextField("Set your goal", text: $currentGoal)
+                    TextField("Set your goal", text: $vm.currentGoal)
                         .padding(.all, 7.0)
                         .foregroundColor(Color.black)
                     //                            .padding(.horizontal)
@@ -238,7 +238,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    DatePicker("Start Date", selection: $scheduleStart, in: Date()..., displayedComponents: .date)
+                    DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
                         .padding(.leading, 5.0)
                         .foregroundColor(Color.black)
                     DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)

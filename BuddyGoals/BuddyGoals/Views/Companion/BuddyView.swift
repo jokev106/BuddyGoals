@@ -12,10 +12,6 @@ struct BuddyView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var data: PlanModel
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
     
     //for White Content Navigation Bar
     init() {
@@ -113,35 +109,6 @@ struct BuddyView: View {
         
     } //View Close
     
-    //Function
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
 
 private let itemFormatter: DateFormatter = {
@@ -153,7 +120,7 @@ private let itemFormatter: DateFormatter = {
 
 struct BuddyView_Previews: PreviewProvider {
     static var previews: some View {
-        BuddyView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        BuddyView()
     }
 }
 
