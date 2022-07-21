@@ -10,15 +10,25 @@ import SwiftUI
 struct OnboardingView: View {
     
     /*
+     Onboarding State Section
      0 - Welcome Section
      1 - Register Section
-     2 - 3 Step intro
-     3 - Add Goal
-     4 - Add Plan
-     5 - Add Action
-     6 - Appreciation
+     2 - 3 Step intro Section
+     3 - Add Goal Section
+     4 - Add Plan Section
+     5 - Add Action Section
+     6 - Appreciation Section
      */
     @State var onboardingState: Int = 0
+    
+    //Animation moveing section
+//    let transitionSection: AnyTransition = .asymmetric(
+//        insertion: .move(edge: .leading),
+//        removal: .move(edge: .leading))
+    
+    //Alert
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
     
     //Register var
     @State private var emailRegister:  String = ""
@@ -27,6 +37,13 @@ struct OnboardingView: View {
     //Set onboarding goal var
     @State private var onboardingGoal: String = ""
     @State private var onboardingPlan: String = ""
+    @State private var onboardingAction: String = ""
+    
+    //App Storage
+    @AppStorage("onboardingGoal") var currentUserGoal: String?
+    @AppStorage("onboardingPlan") var currentUserPlan: String?
+    @AppStorage("onboardingAction") var currentUserAction: String?
+    @AppStorage("signed_in") var currentUserSignedIn: Bool = false
     
     var body: some View {
         ZStack{
@@ -35,18 +52,25 @@ struct OnboardingView: View {
                 switch onboardingState {
                 case 0:
                     welcomeSection
+//                        .transition(transitionSection)
                 case 1:
                     registerSection
+//                        .transition(transitionSection)
                 case 2:
                     stepIntroSection
+//                        .transition(transitionSection)
                 case 3:
                     addGoalSection
+//                        .transition(transitionSection)
                 case 4:
                     addPlanSection
+//                        .transition(transitionSection)
                 case 5:
                     addActionSection
+//                        .transition(transitionSection)
                 case 6:
                     appreciationSection
+//                        .transition(transitionSection)
                 default:
                     Rectangle()
                         .foregroundColor(.black)
@@ -58,6 +82,9 @@ struct OnboardingView: View {
                 Spacer()
                 bottomButton
             }.padding(30)
+        }
+        .alert(isPresented: $showAlert) {
+            return Alert(title: Text(alertTitle))
         }
     }
     
@@ -163,13 +190,13 @@ extension OnboardingView {
             Spacer()
                 .frame( height: 120)
             
-        }.padding(20)
+        }
     }
     
     private var registerSection: some View {
         VStack{
             Spacer()
-                .frame(height: 60)
+                .frame(height: 20)
             //Chevron back to onboarding page
             Image(systemName: "chevron.left")
                 .resizable()
@@ -179,6 +206,7 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .onTapGesture {
                     //Code go back to Onboarding
+                    previousButtonPressed()
                 }
             Spacer()
                 .frame(height: 50)
@@ -207,7 +235,7 @@ extension OnboardingView {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     )
-                    .foregroundColor(primary900)
+                    .foregroundColor(.black)
                 
                 Spacer()
                     .frame(height: 20)
@@ -220,7 +248,7 @@ extension OnboardingView {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     )
-                    .foregroundColor(primary900)
+                    .foregroundColor(.black)
             }
             
             Spacer()
@@ -295,6 +323,7 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .onTapGesture {
                     //Code go back to Onboarding
+                    previousButtonPressed()
                 }
             Spacer()
                 .frame(height: 30)
@@ -328,6 +357,7 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .onTapGesture {
                     //Code go back to Onboarding
+                    previousButtonPressed()
                 }
             Spacer()
                 .frame(height: 30)
@@ -346,8 +376,7 @@ extension OnboardingView {
                 .frame(width: 320, alignment: .leading)
             
             Spacer()
-                .frame(height: 30)
-            
+    
             Text("GOAL")
                 .foregroundColor(primary900)
                 .font(.system(size: 15))
@@ -365,59 +394,81 @@ extension OnboardingView {
                 .foregroundColor(primary900)
             
             Spacer()
+                .frame(height: 150)
         }
     }
     
     private var addPlanSection: some View {
         VStack{
-            Spacer()
-                .frame(height: 20)
-            //Chevron back to previous page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                }
-            Spacer()
-                .frame(height: 30)
-            //Title
-            Text("2. Now break your \nGoal into Plans")
-                .font(.system(size: 35).bold())
-                .padding(.leading, 26.0)
-                .foregroundColor(primary900)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-                .frame(height: 30)
-            Text("How do you plan on achieving your Goal? Let’s start with 1 Plan.")
-                .foregroundColor(.gray)
-                .font(.system(size: 18))
-                .padding(.horizontal, 1.0)
-                .frame(width: 320, alignment: .leading)
+            Group{
+                Spacer()
+                    .frame(height: 20)
+                //Chevron back to previous page
+                Image(systemName: "chevron.left")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.leading)
+                    .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                    .foregroundColor(primary900)
+                    .onTapGesture {
+                        //Code go back to Onboarding
+                        previousButtonPressed()
+                    }
+                Spacer()
+                    .frame(height: 30)
+                //Title
+                Text("2. Now break your \nGoal into Plans")
+                    .font(.system(size: 35).bold())
+                    .padding(.leading, 26.0)
+                    .foregroundColor(primary900)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                    .frame(height: 30)
+                Text("How do you plan on achieving your Goal? Let’s start with 1 Plan.")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 18))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+            }
+            
+            Group{
+                Spacer()
+                    .frame(height: 35)
+                Text("GOAL")
+                    .foregroundColor(primary900)
+                    .font(.system(size: 15))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                Text(currentUserGoal ?? "Lose Weight 20 Kg")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .font(.system(size: 20))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+            }
             
             Spacer()
-                .frame(height: 30)
             
-            Text("PLAN")
-                .foregroundColor(primary900)
-                .font(.system(size: 15))
-                .padding(.horizontal, 1.0)
-                .frame(width: 320, alignment: .leading)
-            
-            TextField("Ex. Exercises", text: $onboardingPlan)
-                .padding()
-                .frame(width: 350, alignment: .center)
-                .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1)
-                )
-                .foregroundColor(primary900)
+            Group{
+                Text("PLAN")
+                    .foregroundColor(primary900)
+                    .font(.system(size: 15))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                
+                TextField("Ex. Exercises", text: $onboardingPlan)
+                    .padding()
+                    .frame(width: 350, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 1)
+                    )
+                    .foregroundColor(primary900)
+            }
             
             Spacer()
+                .frame(height: 150)
         }
     }
     
@@ -434,6 +485,7 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .onTapGesture {
                     //Code go back to Onboarding
+                    previousButtonPressed()
                 }
             Spacer()
                 .frame(height: 30)
@@ -444,33 +496,62 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
-                .frame(height: 30)
-            Text("What real Action you can do inside of this Plan? Make it detailed!")
+                .frame(height: 15)
+            Text("What real Action you can do \ninside of this Plan? Make it detailed!")
                 .foregroundColor(.gray)
                 .font(.system(size: 18))
                 .padding(.horizontal, 1.0)
-                .frame(width: 320, alignment: .leading)
+                .frame(width: 320, height: 100, alignment: .leading)
             
+            Group{
+                Spacer()
+                    .frame(height: 35)
+                Text("GOAL")
+                    .foregroundColor(primary900)
+                    .font(.system(size: 15))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                Text(currentUserGoal ?? "Lose Weight 20 Kg")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .font(.system(size: 20))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                Spacer()
+                    .frame(height: 10)
+                Text("PLAN")
+                    .foregroundColor(primary900)
+                    .font(.system(size: 15))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                Text(currentUserPlan ?? "Exercises")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .font(.system(size: 20))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+            }
             Spacer()
-                .frame(height: 30)
-            
-            Text("ACTION")
-                .foregroundColor(primary900)
-                .font(.system(size: 15))
-                .padding(.horizontal, 1.0)
-                .frame(width: 320, alignment: .leading)
-            
-            TextField("Ex. Exercises", text: $onboardingPlan)
-                .padding()
-                .frame(width: 350, alignment: .center)
-                .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 1)
-                )
-                .foregroundColor(primary900)
-            
-            Spacer()
+            Group{
+                Text("ACTION")
+                    .foregroundColor(primary900)
+                    .font(.system(size: 15))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                
+                TextField("Ex. Exercises", text: $onboardingAction)
+                    .padding()
+                    .frame(width: 350, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 1)
+                    )
+                    .foregroundColor(primary900)
+                
+                Spacer()
+                    .frame(height: 150)
+            }
         }
     }
     
@@ -487,6 +568,7 @@ extension OnboardingView {
                 .foregroundColor(primary900)
                 .onTapGesture {
                     //Code go back to Onboarding
+                    previousButtonPressed()
                 }
             Spacer()
                 .frame(height: 30)
@@ -517,7 +599,7 @@ extension OnboardingView {
                         .frame(width: 320, alignment: .leading)
                     Spacer()
                         .frame(height:5)
-                    Text("Lose Weight 20 Kg")
+                    Text(onboardingGoal )
                         .foregroundColor(.black)
                         .font(.system(size: 23))
                         .padding(.horizontal, 1.0)
@@ -536,7 +618,7 @@ extension OnboardingView {
                         .frame(width: 320, alignment: .leading)
                     Spacer()
                         .frame(height:5)
-                    Text("Exercises")
+                    Text(onboardingPlan )
                         .foregroundColor(.black)
                         .font(.system(size: 23))
                         .padding(.horizontal, 1.0)
@@ -554,7 +636,7 @@ extension OnboardingView {
                         .frame(width: 320, alignment: .leading)
                     Spacer()
                         .frame(height:5)
-                    Text("Push Up 100 times")
+                    Text(onboardingAction )
                         .foregroundColor(.black)
                         .font(.system(size: 23))
                         .padding(.horizontal, 1.0)
@@ -571,15 +653,78 @@ extension OnboardingView {
 //MARK: FUNCTIONS
 extension OnboardingView {
     
+    func previousButtonPressed(){
+        
+        withAnimation(.spring()) {
+            onboardingState -= 1
+        }
+
+    }
+    
     func nextButtonPressed(){
         
-//        if onboardingState == 6 {
+        //Check input data
+        switch onboardingState {
+        case 1:
+            guard emailRegister.count > 1 else {
+                showAlert(title: "Email and Password can't be empty")
+                return
+            }
+            guard passwordRegister.count > 1 else {
+                showAlert(title: "Email and Password can't be empty")
+                return
+            }
+        case 3:
+            guard onboardingGoal.count > 1 else {
+                showAlert(title: "You have to set your Goal first!")
+                return
+            }
+        case 4:
+            guard onboardingPlan.count > 1 else {
+                showAlert(title: "You have to set your Plan!")
+                return
+            }
+        case 5:
+            guard onboardingAction.count > 1 else {
+                showAlert(title: "You have to set your Action")
+                return
+            }
+        default:
+            break
+            
+        }
+        
+        //GOTO NEXT SECTION
+        if onboardingState == 6 {
             //Sign in
-//        }else{
+            signIn()
+        }else{
             withAnimation(.spring()) {
                 onboardingState += 1
+                passData()
             }
-//        }
+        }
         
     }
+    
+    func signIn(){
+        currentUserGoal = onboardingGoal
+        currentUserPlan = onboardingPlan
+        currentUserAction = onboardingAction
+        withAnimation(.spring()){
+        currentUserSignedIn = true
+        }
+    }
+    
+    func passData(){
+        currentUserGoal = onboardingGoal
+        currentUserPlan = onboardingPlan
+        currentUserAction = onboardingAction
+    }
+    
+    func showAlert(title: String){
+        alertTitle = title
+        showAlert.toggle()
+    }
+    
 }

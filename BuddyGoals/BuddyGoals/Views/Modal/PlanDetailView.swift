@@ -33,7 +33,7 @@ struct PlanDetailView: View {
                                     NavigationLink(destination: ProfileView()){
                                         
                                         HStack{
-                                            CardHomeView(colorCard: green, milestone: dataPlan.ti, destinationCard: "")
+                                            CardHomeView(colorCard: green, milestone: dataPlan.planTitle, destinationCard: "")
                                             .foregroundColor(.black)
                                         }.cornerRadius(5)
                                     }
