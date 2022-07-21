@@ -18,11 +18,13 @@ class ActionViewModel : ObservableObject {
     var context : NSManagedObjectContext?
     var coreDataController : CoreDataController?
     
+    // initial setup
     func setup(context: NSManagedObjectContext) {
         self.context = context
         coreDataController = CoreDataController(context: context)
     }
     
+    // add new action
     func addAction(plan : CoreDataPlan) {
         let newAction = CoreDataAction(context: context!)
         newAction.id = UUID()
@@ -34,18 +36,21 @@ class ActionViewModel : ObservableObject {
         save()
     }
     
+    // fill and update values for published properties
     func fillProperties(title : String, date : Date, repeats: String) {
         actionTitle = title
         startDate = date
         self.repeats = repeats
     }
     
+    // edit action
     func editAction(action : CoreDataAction) {
         action.title = actionTitle
         action.startDate = startDate
         action.repeats = RepeatAction(rawValue: repeats)!
     }
     
+    // sacve to core data
     func save() {
         do {
             try context?.save()

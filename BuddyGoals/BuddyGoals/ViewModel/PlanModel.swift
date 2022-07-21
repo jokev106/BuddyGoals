@@ -29,10 +29,8 @@ class PlanModel: ObservableObject {
         self.goal = (self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataGoal", toPredicate: "id", predicateValue: "\(goalID)").first as! CoreDataGoal)
     }
     
+    // Add new plan
     func onAdd(plan: String, color: PlanColor) {
-//        plans.append(Plan(planTitle: plan, colorPlan: color))
-//        self.planTitle = ""
-//        self.colorPlan = ""
         
         let newPlan = CoreDataPlan(context: context!)
         newPlan.id = UUID()
@@ -49,22 +47,26 @@ class PlanModel: ObservableObject {
         getPlans()
     }
     
+    // Refresh Plan
     func getPlans() {
         let tempPlan = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(self.goalID!)") as! [CoreDataPlan]
         self.plans = tempPlan.sorted { $0.wrappedIndex <= $1.wrappedIndex }
     }
     
+    // delete plan
     func onDelete(offset: IndexSet) {
         offset.map { plans[$0] }.forEach(context!.delete)
         save()
         getPlans()
     }
     
+    // Gerakin plan ketika edit
     func onMove(source: IndexSet, destination: Int){
         plans.move(fromOffsets: source, toOffset: destination)
         updateIndex()
     }
     
+    // Update plan index (urutan)
     func updateIndex() {
         for (index, plan) in self.plans.enumerated() {
             plan.wrappedIndex = index

@@ -19,12 +19,13 @@ class GoalViewModel : ObservableObject {
     @Published var plans : [CoreDataPlan] = []
     @Published var remainingDay : Int = 0
     
-    
+    // Setup awal
     func setup(context : NSManagedObjectContext) {
         self.context = context
         coreDataController = CoreDataController(context: context)
     }
     
+    // query user sesuai user yang login
     func getUser() {
         user = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "name", predicateValue: "My Name") as! [CoreDataUser]
         var tempGoal = user[0].wrappedGoals
@@ -33,12 +34,14 @@ class GoalViewModel : ObservableObject {
         goalID = goal[0].id
     }
     
+    // query plans from goal
     func getPlans(id : UUID?) {
         let usedID = id ?? self.goalID!
         let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
         plans = tempPlans.sorted { $0.index <= $1.index}
     }
     
+    // calculate end date from start date
     private func calculateEndDate() -> Date {
         var dateComponent = DateComponents()
         let tempGoal = goal[0]
@@ -47,12 +50,14 @@ class GoalViewModel : ObservableObject {
         return calculatedEndDate!
     }
     
+    // calculate remaining days from end date to start date
     func calculateRemainingDays() {
         let diffSeconds = calculateEndDate().timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
         let diffDays = Int(diffSeconds / (60.0 * 60.0 * 24.0))
         self.remainingDay = diffDays
     }
     
+    // Add initial items for core data
     func addInitialItems() {
         let user = CoreDataUser(context: context!)
         user.id = UUID()
@@ -71,6 +76,7 @@ class GoalViewModel : ObservableObject {
         plan1.title = "Olahraga"
         plan1.planColor = .colorOrange
         plan1.id = UUID()
+        plan1.index = 0
         let action1 = CoreDataAction(context: context!)
         action1.id = UUID()
         action1.title = "Jogging"

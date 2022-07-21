@@ -20,18 +20,22 @@ class ProfileViewModel : ObservableObject {
     var user : CoreDataUser?
     var coreDataController : CoreDataController?
     
+    
+    // initial setup
     func setup(context : NSManagedObjectContext, userID : UUID) {
         self.context = context
         self.coreDataController = CoreDataController(context: context)
         getUser(id: userID)
     }
     
+    // query user info
     func getUser(id : UUID?) {
         let tempID = id ?? self.user!.id!
         self.user = (coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "id", predicateValue: "\(tempID)").first! as! CoreDataUser)
         fillProperties()
     }
     
+    // fill and update published properties
     func fillProperties() {
         name = self.user?.wrappedName ?? "Unknown User"
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
@@ -40,6 +44,7 @@ class ProfileViewModel : ObservableObject {
         duration = tempGoal!.wrappedDuration
     }
     
+    // update user + goal
     func update() {
         user?.name = name
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
@@ -50,6 +55,7 @@ class ProfileViewModel : ObservableObject {
         save()
     }
     
+    // finish goal
     func finishGoal() {
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
         tempGoal?.isFinished = true
@@ -57,6 +63,7 @@ class ProfileViewModel : ObservableObject {
         save()
     }
     
+    // save in core data
     func save() {
         do {
             try context?.save()
