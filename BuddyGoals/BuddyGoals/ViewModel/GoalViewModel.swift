@@ -33,9 +33,10 @@ class GoalViewModel : ObservableObject {
         goalID = goal[0].id
     }
     
-    func getPlan(id : UUID?) {
+    func getPlans(id : UUID?) {
         let usedID = id ?? self.goalID!
-        plans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
+        let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
+        plans = tempPlans.sorted { $0.index <= $1.index}
     }
     
     private func calculateEndDate() -> Date {
@@ -85,8 +86,15 @@ class GoalViewModel : ObservableObject {
         goal.addToPlans(plan1)
         plan1.addToActions([action1, action2])
 
-        try? context?.save()
+        save()
     }
     
-    
+    func save() {
+        do {
+            try context?.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error \(error)")
+        }
+    }
 }

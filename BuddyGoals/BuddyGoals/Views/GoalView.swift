@@ -11,7 +11,7 @@ import CoreData
 struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var data : PlanModel
-    @ObservedObject var vm = GoalViewModel()
+    @EnvironmentObject var vm : GoalViewModel
     
     
 //    @FetchRequest(
@@ -184,7 +184,7 @@ struct GoalView: View {
             
             
             vm.getUser()
-            vm.getPlan(id: nil)
+            vm.getPlans(id: nil)
             vm.calculateRemainingDays()
         }
 
@@ -234,6 +234,7 @@ private let itemFormatter: DateFormatter = {
 struct GoalView_Previews: PreviewProvider {
     static var previews: some View {
         GoalView()
+            .environmentObject(GoalViewModel())
     }
 }
 

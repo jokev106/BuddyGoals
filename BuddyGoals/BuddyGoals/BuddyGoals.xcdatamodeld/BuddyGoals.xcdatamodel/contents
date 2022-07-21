@@ -46,6 +46,7 @@
         <attribute name="colorName" optional="YES" attributeType="String"/>
         <attribute name="goalID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CoreDataAction" inverseName="plan" inverseEntity="CoreDataAction"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoreDataGoal" inverseName="plans" inverseEntity="CoreDataGoal"/>
@@ -78,7 +79,7 @@
         <element name="CoreDataActionRecord" positionX="0" positionY="45" width="128" height="104"/>
         <element name="CoreDataGoal" positionX="-54" positionY="0" width="128" height="134"/>
         <element name="CoreDataPartner" positionX="-63" positionY="-9" width="128" height="44"/>
-        <element name="CoreDataPlan" positionX="-36" positionY="9" width="128" height="119"/>
+        <element name="CoreDataPlan" positionX="-36" positionY="9" width="128" height="134"/>
         <element name="CoreDataUser" positionX="-63" positionY="-18" width="128" height="149"/>
         <element name="Item" positionX="9" positionY="99" width="128" height="44"/>
     </elements>

@@ -32,7 +32,11 @@ struct PlanView: View {
             
             //Card
             ForEach (plan.wrappedActions) { action in
-                CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle, destinationCard: "")
+                NavigationLink {
+                    AddActionView()
+                } label: {
+                    CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle, destinationCard: "")
+                }
             }
 //            CardHomeView(colorCard: orange, milestone: "Plank for 3 minutes", destinationCard: "")
 //            CardHomeView(colorCard: blue, milestone: "Sit up 10 times", destinationCard: "")

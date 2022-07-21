@@ -56,7 +56,7 @@ extension CoreDataGoal : Identifiable {
     
     var wrappedPlans : [CoreDataPlan] {
         let planSet = plans as? Set<CoreDataPlan> ?? []
-        let sortedPlan = planSet.sorted { $0.wrappedTitle <= $1.wrappedTitle }
+        let sortedPlan = planSet.sorted { $0.wrappedIndex <= $1.wrappedIndex }
         return sortedPlan
     }
 }

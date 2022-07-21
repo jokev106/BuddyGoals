@@ -13,6 +13,7 @@ struct PlanDetailView: View {
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     @EnvironmentObject var data : PlanModel
+    @EnvironmentObject var gvm : GoalViewModel
     //if edit mode active
     @State var editMode = EditMode.inactive
     @State var show: Bool = false
@@ -36,10 +37,10 @@ struct PlanDetailView: View {
                             NavigationLink(destination: ProfileView()){
                                 HStack{
                                     Rectangle()
-                                        .foregroundColor(.orange)
+                                        .foregroundColor(plan.planColor.colorValue)
                                         .frame(width: 15, height: 50)
                                     VStack{
-                                        Text(data.planTitle)
+                                        Text(plan.wrappedTitle)
                                             .foregroundColor(.black)
                                     }
                                     .foregroundColor(.black)
@@ -69,6 +70,13 @@ struct PlanDetailView: View {
             }//navigationView
             .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
         }//geometryReader
+        .onAppear() {
+            data.setup(goalID: gvm.goalID!, context: gvm.context!)
+            data.getPlans()
+        }
+        .onDisappear() {
+            gvm.getPlans(id: nil)
+        }
     }//bodyView
     private var addButton : some View {
         //if edit mode active / not active
@@ -97,6 +105,7 @@ struct PlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlanDetailView()
             .environmentObject(planModel)
+            .environmentObject(GoalViewModel())
     }
 }
 

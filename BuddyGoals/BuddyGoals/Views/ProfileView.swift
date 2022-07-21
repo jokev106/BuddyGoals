@@ -14,9 +14,12 @@ struct ProfileView: View {
     @State private var milestoneTitle:  String = ""
     @State private var startDatePicker = Date()
     
+    @ObservedObject var vm : ProfileViewModel = ProfileViewModel()
+    @EnvironmentObject var gvm : GoalViewModel
+    
     //variable for form
-    @State private var currentGoal : String = ""
-    @State private var scheduleStart = Date()
+//    @State private var currentGoal : String = ""
+//    @State private var scheduleStart = Date()
     @State private var scheduleEnd = Date()
 
     
@@ -36,7 +39,7 @@ struct ProfileView: View {
                             .padding()
                             
                         //Continue Profile
-                        Text("Giga Chadson")//Name
+                        Text(vm.name)//Name
                             .foregroundColor(.black)
                             .font(.system(size: 25))
                             .multilineTextAlignment(.center)
@@ -55,7 +58,7 @@ struct ProfileView: View {
                                         .foregroundColor(Color.blue)
                                         .bold()
                             ){
-                                TextField("Set your goal", text: $currentGoal)
+                                TextField("Set your goal", text: $vm.currentGoal)
                                     .padding(.all, 7.0)
                                     .foregroundColor(Color.black)
                                 //                            .padding(.horizontal)
@@ -65,7 +68,7 @@ struct ProfileView: View {
                                         .foregroundColor(Color.blue)
                                         .bold()
                             ){
-                                DatePicker("Start Date", selection: $scheduleStart, in: Date()..., displayedComponents: .date)
+                                DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
                                     .padding(.leading, 5.0)
                                     .foregroundColor(Color.black)
                                 DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
@@ -123,6 +126,9 @@ struct ProfileView: View {
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
             }//Vstack Line 23
         }//geometryReader
+        .onAppear() {
+            vm.setup(context: gvm.context!, userID: gvm.user.first!.id!)
+        }
     }//bodyView
 }
 

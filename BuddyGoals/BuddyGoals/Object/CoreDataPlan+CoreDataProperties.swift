@@ -22,6 +22,7 @@ extension CoreDataPlan {
     @NSManaged public var goal: CoreDataGoal?
     @NSManaged public var actions: NSSet?
     @NSManaged public var goalID : UUID?
+    @NSManaged public var index : Int16
     
     @NSManaged public var colorName : String
     
@@ -62,6 +63,15 @@ extension CoreDataPlan : Identifiable {
         let actionSet = actions as? Set<CoreDataAction> ?? []
         let sortedAction = actionSet.sorted { $0.wrappedTitle < $1.wrappedTitle }
         return sortedAction
+    }
+    
+    var wrappedIndex : Int {
+        get {
+            return Int(index)
+        }
+        set {
+            self.index = Int16(newValue)
+        }
     }
 }
 
