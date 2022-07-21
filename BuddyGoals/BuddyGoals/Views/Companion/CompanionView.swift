@@ -122,7 +122,7 @@ extension CompanionView {
             })
             .padding(.top, 5.0)
             .frame(width: .infinity)
-            //NavigationLink("", destination:  BuddyView(), isActive: $showBuddyView)
+            NavigationLink("", destination:  BuddyView(), isActive: $showBuddyView)
                
             
             Spacer()

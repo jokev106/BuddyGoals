@@ -45,6 +45,9 @@
 		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
 		B8880BCE2887EA7A003A1AD2 /* BuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */; };
 		B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */; };
+		B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD228893212003A1AD2 /* NeedApproveCard.swift */; };
+		B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */; };
+		B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyView.swift; sourceTree = "<group>"; };
 		B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyProfileView.swift; sourceTree = "<group>"; };
+		B8880BD228893212003A1AD2 /* NeedApproveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedApproveCard.swift; sourceTree = "<group>"; };
+		B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingSubmissionCard.swift; sourceTree = "<group>"; };
+		B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,11 +283,22 @@
 		B8880BCC2887EA64003A1AD2 /* Companion */ = {
 			isa = PBXGroup;
 			children = (
+				B8880BD1288931D4003A1AD2 /* Component */,
 				B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */,
 				B3A89297287D53A400694732 /* CompanionView.swift */,
 				B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */,
 			);
 			path = Companion;
+			sourceTree = "<group>";
+		};
+		B8880BD1288931D4003A1AD2 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				B8880BD228893212003A1AD2 /* NeedApproveCard.swift */,
+				B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */,
+				B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3226E90287D4DB900CBCB49 /* AddPlanView.swift in Sources */,
+				B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */,
 				B35B9357287C1A390056C847 /* Persistence.swift in Sources */,
 				B3A89293287D535000694732 /* ScrollPlanView.swift in Sources */,
 				B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */,
@@ -429,11 +447,13 @@
 				B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */,
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
+				B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
 				B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */,
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
 				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
+				B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
 				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,
 				B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */,

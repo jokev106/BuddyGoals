@@ -67,10 +67,10 @@ struct ProfileView: View {
                             if !tapEditProfile {
                                 tapEditProfile = true
                                 //Action
-                            } else {
                                 
+                            } else {
                                 //Action
-                                //tapEditProfile = false
+                                
                             }
                             
                         }) {
@@ -152,7 +152,7 @@ extension ProfileView {
                     HStack {
                         Spacer()
                         Button(action: {
-
+                            //action
                         }, label: {
                             Text("End Goal")
                                 .foregroundColor(.red)
@@ -177,6 +177,7 @@ extension ProfileView {
             
             Button(action: {
                 //Action
+                
             }, label: {
                 ZStack {
                     
