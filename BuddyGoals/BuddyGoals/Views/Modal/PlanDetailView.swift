@@ -30,18 +30,17 @@ struct PlanDetailView: View {
                             VStack{
                                 Spacer()
                                     .frame(height: 20)
-                                ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
-                                    NavigationLink(destination: ProfileView()){
-                                        
-                                        HStack{
-                                            CardHomeView(colorCard: green, milestone: dataPlan.planTitle, destinationCard: "")
-                                            .foregroundColor(.black)
-                                        }.cornerRadius(5)
+                                    ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
+                                        NavigationLink(destination: ProfileView()){
+                                            
+                                            HStack{
+                                                CardHomeView(colorCard: plan.planColor.colorValue, milestone: plan.wrappedTitle, destinationCard: "")
+                                                .foregroundColor(.black)
+                                            }.cornerRadius(5)
+                                        }
                                     }
-                                }
-                                .onDelete(perform: dataPlan.onDelete)
-                                .onMove(perform: dataPlan.onMove)
-                                Spacer()
+                                    .onDelete(perform: dataPlan.onDelete)
+                                    .onMove(perform: dataPlan.onMove);                                Spacer()
                                 
                             }
                         }
