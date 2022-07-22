@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @ObservedObject var vm = OnboardingViewModel()
+    @EnvironmentObject var gvm : GoalViewModel
     /*
      Onboarding State Section
      0 - Welcome Section
@@ -38,6 +40,7 @@ struct OnboardingView: View {
     @State private var onboardingGoal: String = ""
     @State private var onboardingPlan: String = ""
     @State private var onboardingAction: String = ""
+    
     
     //App Storage
     @AppStorage("onboardingGoal") var currentUserGoal: String?
@@ -85,6 +88,8 @@ struct OnboardingView: View {
         }
         .alert(isPresented: $showAlert) {
             return Alert(title: Text(alertTitle))
+        }.onAppear() {
+            vm.setup(context: gvm.context!)
         }
     }
     
@@ -111,6 +116,13 @@ extension OnboardingView {
         .foregroundColor(.white)
         .cornerRadius(10)
         .onTapGesture {
+            if onboardingState == 1 {
+                vm.addNewUser(name: nameRegister, username: idRegister)
+            } else if onboardingState == 6 {
+                vm.addNewGoal(title: onboardingGoal)
+                vm.addNewPlan(title: onboardingPlan)
+                vm.addNewAction(title: onboardingAction)
+            }
             nextButtonPressed()
         }
     }
@@ -898,6 +910,7 @@ extension OnboardingView {
     
     func skipButtonPresssed(){
         withAnimation(.spring()){
+            vm.addEmptyUser()
             currentUserSignedIn = true
         }
     }

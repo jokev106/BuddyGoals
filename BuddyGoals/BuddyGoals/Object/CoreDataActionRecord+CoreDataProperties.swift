@@ -35,7 +35,9 @@ extension CoreDataActionRecord {
 }
 
 extension CoreDataActionRecord : Identifiable {
-    
+    var wrappedDate : Date {
+        return dateSubmitted ?? Date()
+    }
 }
 
 enum ActionStatus : String {

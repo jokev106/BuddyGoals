@@ -202,9 +202,9 @@ extension BuddyView {
                 
                 //Card
                 //ForEach {
-                    CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
-                    CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
+                    CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes")
+                    CardHomeView(colorCard: green, milestone: "Plank for 3 minutes")
+                    CardHomeView(colorCard: green, milestone: "Sit up 10 times")
                     
                 //}
                 

@@ -25,10 +25,15 @@ class ProfileViewModel : ObservableObject {
     
     
     // initial setup
-    func setup(context : NSManagedObjectContext, userID : UUID) {
+    func setup(context : NSManagedObjectContext, userID : UUID?) {
         self.context = context
         self.coreDataController = CoreDataController(context: context)
-        getUser(id: userID)
+        if userID != nil {
+            getUser(id: userID)
+        }
+        else{
+            fillProperties()
+        }
     }
     
     // query user info
@@ -41,11 +46,11 @@ class ProfileViewModel : ObservableObject {
     // fill and update published properties
     func fillProperties() {
         name = self.user?.wrappedName ?? "Unknown User"
-        imageSelected = self.user?.wrappedPicture ?? UIImage()
-        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
-        currentGoal = tempGoal!.wrappedTitle
-        scheduleStart = tempGoal!.startDate!
-        duration = tempGoal!.wrappedDuration
+        imageSelected = self.user?.wrappedPicture ?? UIImage(named: "Gusde-Emot")!
+        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
+        currentGoal = tempGoal?.wrappedTitle ?? "No Goal Set Yet"
+        scheduleStart = tempGoal?.startDate ?? Date()
+        duration = tempGoal?.wrappedDuration ?? -1
     }
     
     // update user + goal
@@ -53,9 +58,17 @@ class ProfileViewModel : ObservableObject {
         user?.name = name
         user?.profilePicture = imageSelected.pngData()
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
-        tempGoal?.title = currentGoal
-        tempGoal?.startDate = scheduleStart
-        tempGoal?.duration = Int16(duration)
+        if tempGoal != nil {
+            tempGoal?.title = currentGoal
+            tempGoal?.startDate = scheduleStart
+            tempGoal?.duration = Int16(duration)
+        } else {
+            let newGoal = CoreDataGoal(context: context!)
+            newGoal.id = UUID()
+            newGoal.title = currentGoal
+            newGoal.startDate = scheduleStart
+            newGoal.duration = Int16(duration)
+        }
         
         save()
     }

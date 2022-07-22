@@ -65,7 +65,9 @@
 		F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FC28869D4300213726 /* GoalViewModel.swift */; };
 		F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FE2886BCCC00213726 /* PlanView.swift */; };
 		F73A8901288800A000213726 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A8900288800A000213726 /* ProfileViewModel.swift */; };
-		F73A89032888FBB600213726 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A89022888FBB600213726 /* ActionViewModel.swift */; };
+		F73A89032888FBB600213726 /* EditActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A89022888FBB600213726 /* EditActionViewModel.swift */; };
+		F73A8905288AD20A00213726 /* AddActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A8904288AD20A00213726 /* AddActionViewModel.swift */; };
+		F73A8907288AEA9200213726 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A8906288AEA9200213726 /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +149,9 @@
 		F73A88FC28869D4300213726 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		F73A88FE2886BCCC00213726 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		F73A8900288800A000213726 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		F73A89022888FBB600213726 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
+		F73A89022888FBB600213726 /* EditActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionViewModel.swift; sourceTree = "<group>"; };
+		F73A8904288AD20A00213726 /* AddActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewModel.swift; sourceTree = "<group>"; };
+		F73A8906288AEA9200213726 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +251,9 @@
 				B340B2E828801AA000120673 /* PlanModel.swift */,
 				F73A88FC28869D4300213726 /* GoalViewModel.swift */,
 				F73A8900288800A000213726 /* ProfileViewModel.swift */,
-				F73A89022888FBB600213726 /* ActionViewModel.swift */,
+				F73A89022888FBB600213726 /* EditActionViewModel.swift */,
+				F73A8904288AD20A00213726 /* AddActionViewModel.swift */,
+				F73A8906288AEA9200213726 /* OnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -511,7 +517,7 @@
 				F73A88F42882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift in Sources */,
 				B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */,
 				B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */,
-				F73A89032888FBB600213726 /* ActionViewModel.swift in Sources */,
+				F73A89032888FBB600213726 /* EditActionViewModel.swift in Sources */,
 				F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
 				B3A89299287D53A400694732 /* GoalView.swift in Sources */,
@@ -520,6 +526,7 @@
 				F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */,
 				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
 				B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */,
+				F73A8907288AEA9200213726 /* OnboardingViewModel.swift in Sources */,
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				F73A88EF2882C47000213726 /* CoreDataPlan+CoreDataProperties.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
@@ -534,6 +541,7 @@
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
 				F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */,
+				F73A8905288AD20A00213726 /* AddActionViewModel.swift in Sources */,
 				F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */,
 				B33BD08B288A9B6C003AC334 /* ActionSubmissionView.swift in Sources */,
 				F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */,

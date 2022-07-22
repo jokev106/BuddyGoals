@@ -55,4 +55,26 @@ extension CoreDataAction : Identifiable {
     var wrappedTitle : String {
         return title ?? "Unknown Action"
     }
+    
+    var wrappedDate : Date {
+        return startDate ?? Date()
+    }
+    
+    var wrappedRecords : [CoreDataActionRecord] {
+        let recordsSet = records as? Set<CoreDataActionRecord> ?? []
+        let sortedRecords = recordsSet.sorted { $0.wrappedDate <= $1.wrappedDate }
+        
+        return sortedRecords
+    }
+    
+    var isDoneToday : Bool {
+        let actionRecord = wrappedRecords.filter {
+            Calendar.current.dateComponents([.day], from: $0.wrappedDate, to: Date()).day == 0
+        }
+        if actionRecord.count == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
 }
