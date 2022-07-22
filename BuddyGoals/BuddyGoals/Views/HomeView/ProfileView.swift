@@ -105,6 +105,7 @@ struct ProfileView: View {
         }
         .onDisappear() {
             gvm.getUser()
+            gvm.calculateRemainingDays()
         }
     }//bodyView
 }
