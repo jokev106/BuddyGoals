@@ -13,13 +13,6 @@ struct BuddyView: View {
     @EnvironmentObject var data: PlanModel
     
     
-    //for White Content Navigation Bar
-    init() {
-       let navBarAppearance = UINavigationBar.appearance()
-       navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-       navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-    
     //Modal Bool
     @State var addNewPlanView = false
     @State var addNewActionView = false
