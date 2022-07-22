@@ -101,7 +101,7 @@ struct GoalView: View {
         .onAppear() {
             vm.setup(context: self.viewContext)
             ////            Uncomment to get initial items in core data
-            //            vm.addInitialItems()
+                        vm.addInitialItems()
             
             
             vm.getUser()
@@ -218,18 +218,14 @@ extension GoalView {
                             
                         Spacer()
                         
-                        Button(action: {
-                            //Do Action
-                            
-                        }, label: {
-                                Image(systemName: "plus.circle.fill")
-                                    .foregroundColor(plusButtonWhite)
-                                    .background(plan.planColor.colorValue)
-                                    .clipShape(Circle())
-                                    
-                            
-                        })//Button
-                            
+                        Button(action: {self.addNewActionView.toggle()}) {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(plusButtonWhite)
+                                .background(plan.planColor.colorValue)
+                                .clipShape(Circle())
+                        }.sheet(isPresented: $addNewActionView) {
+                            AddActionView()
+                        }
                         
                     }
                     .padding(.bottom, 20)
