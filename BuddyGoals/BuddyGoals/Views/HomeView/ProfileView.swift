@@ -26,7 +26,7 @@ struct ProfileView: View {
     // @State private var currentName : String = ""
     // @State private var currentGoal : String = ""
     // @State private var scheduleStart = Date()
-     @State private var scheduleEnd = Date()
+    //@State private var scheduleEnd = Date()
 
     
     //var for submission image picker
@@ -159,12 +159,22 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
-                        .padding(.leading, 5.0)
-                        .foregroundColor(Color.black)
-                    DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
-                        .padding(.leading, 5.0)
-                        .foregroundColor(Color.black)
+                    HStack {
+                        Text("Start Date")
+                        Spacer()
+                        Text("\(vm.scheduleStart.formatted(.dateTime.day().month().year()))")
+                    }
+                    .padding(.leading, 5.0)
+                    .foregroundColor(Color.black)
+                    
+                    HStack {
+                        Text("Duration")
+                        Spacer()
+                        Text("\(vm.duration) Weeks")
+                    }
+                    .padding(.leading, 5.0)
+                    .foregroundColor(Color.black)
+                    
                 }
                 
                 Section {
@@ -254,9 +264,15 @@ extension ProfileView {
                     DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
                         .padding(.leading, 5.0)
                         .foregroundColor(Color.black)
-                    DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
-                        .padding(.leading, 5.0)
-                        .foregroundColor(Color.black)
+                    
+                    HStack {
+                        Text("Duration")
+                        Spacer()
+                        Text("\(vm.duration) Weeks")
+                    }
+                    .padding(.leading, 5.0)
+                    .foregroundColor(Color.black)
+                    
                 }
                 
                 
