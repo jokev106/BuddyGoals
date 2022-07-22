@@ -17,6 +17,8 @@
 		B3226EA3287D508100CBCB49 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9D287D508100CBCB49 /* Rank.swift */; };
 		B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9F287D508100CBCB49 /* RepeatAction.swift */; };
 		B3226EA6287D508100CBCB49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226EA0287D508100CBCB49 /* User.swift */; };
+		B33BD08B288A9B6C003AC334 /* ActionSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BD08A288A9B6C003AC334 /* ActionSubmissionView.swift */; };
+		B33BD08E288A9E20003AC334 /* EditActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BD08D288A9E20003AC334 /* EditActionView.swift */; };
 		B340B2E2287EB2D200120673 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E1287EB2D200120673 /* LoginView.swift */; };
 		B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E5288002A700120673 /* PlanDetailView.swift */; };
 		B340B2E928801AA000120673 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E828801AA000120673 /* PlanModel.swift */; };
@@ -39,7 +41,6 @@
 		B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929B287D53D500694732 /* ColorsSet.swift */; };
 		B3A8929E287D53FE00694732 /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929D287D53FE00694732 /* AddActionView.swift */; };
 		B3A892A0287D549700694732 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8929F287D549700694732 /* ProfileView.swift */; };
-		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
 		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
@@ -95,6 +96,8 @@
 		B3226E9D287D508100CBCB49 /* Rank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		B3226E9F287D508100CBCB49 /* RepeatAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatAction.swift; sourceTree = "<group>"; };
 		B3226EA0287D508100CBCB49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B33BD08A288A9B6C003AC334 /* ActionSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSubmissionView.swift; sourceTree = "<group>"; };
+		B33BD08D288A9E20003AC334 /* EditActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionView.swift; sourceTree = "<group>"; };
 		B340B2E1287EB2D200120673 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B340B2E5288002A700120673 /* PlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailView.swift; sourceTree = "<group>"; };
 		B340B2E828801AA000120673 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
@@ -120,7 +123,6 @@
 		B3A8929B287D53D500694732 /* ColorsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsSet.swift; sourceTree = "<group>"; };
 		B3A8929D287D53FE00694732 /* AddActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		B3A8929F287D549700694732 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = HomeView/ProfileView.swift; sourceTree = "<group>"; };
-		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
 		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -193,8 +195,9 @@
 		B3226E8E287D4DA800CBCB49 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				B3A892A2287D54E100694732 /* EditGoalView.swift */,
 				B3A8929D287D53FE00694732 /* AddActionView.swift */,
+				B33BD08A288A9B6C003AC334 /* ActionSubmissionView.swift */,
+				B33BD08D288A9E20003AC334 /* EditActionView.swift */,
 				B3226E8F287D4DB900CBCB49 /* AddPlanView.swift */,
 				B340B2E5288002A700120673 /* PlanDetailView.swift */,
 			);
@@ -502,7 +505,6 @@
 				B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */,
 				B35B9357287C1A390056C847 /* Persistence.swift in Sources */,
 				B3A89293287D535000694732 /* ScrollPlanView.swift in Sources */,
-				B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */,
 				B3226E95287D4ECB00CBCB49 /* Plan.swift in Sources */,
 				B35B935A287C1A390056C847 /* BuddyGoals.xcdatamodeld in Sources */,
 				B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */,
@@ -524,6 +526,7 @@
 				B359A0F1288A8EA200C72159 /* IntroView.swift in Sources */,
 				F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */,
 				F73A8901288800A000213726 /* ProfileViewModel.swift in Sources */,
+				B33BD08E288A9E20003AC334 /* EditActionView.swift in Sources */,
 				F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */,
 				B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */,
 				B3226E9A287D504F00CBCB49 /* Actionable.swift in Sources */,
@@ -532,6 +535,7 @@
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
 				F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */,
 				F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */,
+				B33BD08B288A9B6C003AC334 /* ActionSubmissionView.swift in Sources */,
 				F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */,
 				B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddActionView: View {
+struct EditActionView: View {
     
     //modal view(presentation) mode
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
@@ -145,7 +145,7 @@ struct AddActionView: View {
                         
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Create").bold()
+                        Text("Save").bold()
                     })
                     .foregroundColor(Color.white)
                 }//navigationView
@@ -176,9 +176,9 @@ struct AddActionView: View {
 
 }
 
-struct AddActionView_Previews: PreviewProvider {
+struct EditActionView_Previews: PreviewProvider {
     static var previews: some View {
-        AddActionView()
+        EditActionView()
             .environmentObject(Dailies())
     }
 }

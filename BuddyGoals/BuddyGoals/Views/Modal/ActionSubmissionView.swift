@@ -2,12 +2,12 @@
 //  AddActionView.swift
 //  BuddyGoals
 //
-//  Created by Jonathan Kevin on 24/06/22.
+//  Created by Jonathan Kevin on 22/07/22.
 //
 
 import SwiftUI
 
-struct AddActionView: View {
+struct ActionSubmissionView: View {
     
     //modal view(presentation) mode
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
@@ -56,6 +56,72 @@ struct AddActionView: View {
                 
                 NavigationView{
                     Form{
+                        
+                        //Submission image
+                        Section(header: Text("Submission")
+                                    .foregroundColor(Color.blue)
+                                    .bold()
+                        ){
+                            HStack{
+                                Spacer()
+                                //Add photo from library
+                                Button(action:{
+                                    changeSubmissionImage = true
+                                    openCameraSheet = true
+                                }){
+                                    if changeSubmissionImage {
+                                        Image(uiImage: imageSelected)
+                                            .resizable()
+                                            .foregroundColor(primary900)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 200, height: 200, alignment: .center)
+                                    }else {
+                                        HStack{
+                                            Spacer()
+                                            Image(systemName: "photo.fill")
+                                                .resizable()
+                                                .foregroundColor(primary900)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50, alignment: .center)
+                                            Spacer()
+                                            Rectangle()
+                                                .frame(width: 1, height: 100)
+                                                .foregroundColor(Color.gray
+                                                )
+                                                .padding(5)
+                                            Spacer()
+                                            Image(systemName: "camera.fill")
+                                                .resizable()
+                                                .foregroundColor(primary900)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50, alignment: .center)
+                                            Spacer()
+                                        }
+                                    }
+                                }.sheet(isPresented: $openCameraSheet) {
+                                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                                }
+                                Spacer()
+    
+                            } //HStack
+                            
+                        }
+                        
+                        //Submit Action Button
+                        Section{
+                            Button {
+                                //Saving image action
+                            } label: {
+                                HStack{
+                                    Spacer()
+                                    Text("Submit")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                            }
+
+                        }.listRowBackground(primary900)
                         
                         //Action title set up section
                         Section (header: Text("Title")
@@ -122,32 +188,21 @@ struct AddActionView: View {
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Cancel").bold()
-                    }, trailing: Button(action: {
-//                        activityToday.updateAction(planId: planId!, actionId: action!.id, action: $actionTitle.wrappedValue)
-                        let difficulty : Rank = {
-                            if isTappedDifficultyTrivial {
-                                return .trivial
-                            } else if isTappedDifficultyMedium {
-                                return .medium
-                            } else if isTappedDifficultyEasy {
-                                return.easy
-                            } else if isTappedDifficultyHard {
-                                return .hard
-                            } else {
-                                return .expert
-                            }
-                        }()
-                        if let action = action {
-                            activityToday.updateAction(planId: planId!, actionId: action.id, action: $actionTitle.wrappedValue, time: $detailsDatePicker.wrappedValue, place: $detailsWhere.wrappedValue, startDate: $detailsDatePicker.wrappedValue, repeats: RepeatAction(rawValue: $repeatPicker.wrappedValue)!, difficulty: difficulty)
-                        } else {
-                            activityToday.addNewAction(action: $actionTitle.wrappedValue, time: $detailsDatePicker.wrappedValue, place: $detailsWhere.wrappedValue, startDate: $detailsDatePicker.wrappedValue, repeats: RepeatAction(rawValue: $repeatPicker.wrappedValue)!, difficulty: difficulty)
-                        }
-                        
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Create").bold()
                     })
                     .foregroundColor(Color.white)
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink{
+                                //Move to edit page with passing data
+                                EditActionView()
+                                
+                            }label: {
+                                Text("Edit")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                        }
+                    }
                 }//navigationView
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
                 .onAppear {
@@ -176,9 +231,9 @@ struct AddActionView: View {
 
 }
 
-struct AddActionView_Previews: PreviewProvider {
+struct ActionSubmissionView_Previews: PreviewProvider {
     static var previews: some View {
-        AddActionView()
+        ActionSubmissionView()
             .environmentObject(Dailies())
     }
 }
