@@ -56,7 +56,58 @@ struct AddActionView: View {
                 
                 NavigationView{
                     Form{
-                        //Mission title set up section
+                        
+                        //Submission image
+                        Section(header: Text("Submission")
+                                    .foregroundColor(Color.blue)
+                                    .bold()
+                        ){
+                            HStack{
+                                Spacer()
+                                //Add photo from library
+                                Button(action:{
+                                    changeSubmissionImage = true
+                                    openCameraSheet = true
+                                }){
+                                    if changeSubmissionImage {
+                                        Image(uiImage: imageSelected)
+                                            .resizable()
+                                            .foregroundColor(primary900)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 200, height: 200, alignment: .center)
+                                    }else {
+                                        HStack{
+                                            Spacer()
+                                            Image(systemName: "photo.fill")
+                                                .resizable()
+                                                .foregroundColor(primary900)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50, alignment: .center)
+                                            Spacer()
+                                            Rectangle()
+                                                .frame(width: 1, height: 100)
+                                                .foregroundColor(Color.gray
+                                                )
+                                                .padding(5)
+                                            Spacer()
+                                            Image(systemName: "camera.fill")
+                                                .resizable()
+                                                .foregroundColor(primary900)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50, alignment: .center)
+                                            Spacer()
+                                        }
+                                    }
+                                }.sheet(isPresented: $changeSubmissionImage) {
+                                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                                }
+                                Spacer()
+    
+                            } //HStack
+                            
+                        }
+                        
+                        //Action title set up section
                         Section (header: Text("Title")
                                     .foregroundColor(Color.blue)
                                     .bold()
@@ -66,52 +117,8 @@ struct AddActionView: View {
                                 .foregroundColor(Color.black)
                             //                            .padding(.horizontal)
                         }
-//
-//                        //Commitment set up section
-//                        Section (header: Text("Commitment")
-//                                    .foregroundColor(Color.blue)
-//                                    .bold()
-//                        ){
-//                            TextField("Ex: Run for 30 minutes or 2 miles", text: $actionCommitment)
-//                                .padding(.all, 7.0)
-//                                .foregroundColor(Color.black)
-//                            //                            .padding(.horizontal)
-//                        }
                         
-                        //Detail set up
-                        Section (header: Text("Details")
-                                    .foregroundColor(Color.blue)
-                                    .bold()
-                        ){
-                            DatePicker("Time", selection: $detailsDatePicker, displayedComponents: .hourAndMinute)
-                                .padding(.leading, 5.0)
-                                .foregroundColor(Color.black)
-                            TextField("", text: $detailsWhere){
-                                (status) in
-                                if status{
-                                    withAnimation(.easeIn){
-                                        isTappedDetails = true
-                                    }
-                                }
-                            } onCommit: {
-                                if detailsWhere == "" {
-                                    withAnimation(.easeOut){
-                                        isTappedDetails = false
-                                    }
-                                }
-                            }
-                            .background(
-                                Text("Where")
-                                    .scaleEffect(isTappedDetails ? 0.8 : 0.8)
-                                    .offset(x: isTappedDetails ? 0 : 0, y: isTappedDetails ? -14 : -14 )
-                                    .foregroundColor(isTappedDetails ? Color.blue : Color.blue)
-                                , alignment: .leading
-                            
-                            )
-                                .padding(.all, 5.0)
-                                .foregroundColor(Color.black)
-                        }
-                        
+        
                         //Schedule set up
                         Section (header: Text("Schedule")
                                     .foregroundColor(Color.blue)
@@ -148,105 +155,8 @@ struct AddActionView: View {
                                     .foregroundColor(Color.black)
                             }//Hstack
                         }
-                        //Difficulty set up section
-                        Section(header: Text("Difficulty")
-                                    .foregroundColor(Color.blue)
-                                    .bold()
-                        ){
-                            HStack{
-                                //difficulty image button list
-                                Image(isTappedDifficultyTrivial ? "dTrivial" : "dTrivialGray")
-                                    .onTapGesture {
-                                        self.isTappedDifficultyTrivial.toggle()
-                                    }
-                                Spacer()
-                                Image(isTappedDifficultyEasy ? "dEasy" : "dEasyGray")
-                                    .onTapGesture {
-                                        self.isTappedDifficultyEasy.toggle()
-                                    }
-                                Spacer()
-                                Image(isTappedDifficultyMedium ? "dMedium" : "dMediumGray")
-                                    .onTapGesture {
-                                        self.isTappedDifficultyMedium.toggle()
-                                    }
-                                Spacer()
-                                Image(isTappedDifficultyHard ? "dHard" : "dHardGray")
-                                    .onTapGesture {
-                                        self.isTappedDifficultyHard.toggle()
-                                    }
-                                Spacer()
-                                Image(isTappedDifficultyExpert ? "dExpert" : "dExpertGray")
-                                    .onTapGesture {
-                                        self.isTappedDifficultyExpert.toggle()
-                                    }
-//                                ForEach(imageDifficulty, id: \.self){
-//                                    imageDifficulties in
-//                                    Button(action:{
-//                                        self.isTappedDifficulty.toggle()
-//                                    }){
-//                                        Image(isTappedDifficulty ? imageDifficulties : imageDifficulties + "Gray")
-//                                    }.onChange(of: imageDifficulty, perform: { imageDifficulties in
-//                                        if imageDifficulties == imageDifficulty  {
-//                                        }else{
-//
-//                                        }
-//
-//                                    })
-//                                    .padding(.horizontal, 11.0)
-//                                }
-
-                            }//Hstack
-                        }
                         
-                        //Submission image
-                        Section(header: Text("Submission")
-                                    .foregroundColor(Color.blue)
-                                    .bold()
-                        ){
-                            HStack{
-                                Spacer()
-                                //Add photo from library
-                                Button(action:{
-                                    changeSubmissionImage = true
-                                    openCameraSheet = true
-                                }){
-                                    if changeSubmissionImage {
-                                        Image(uiImage: imageSelected)
-                                            .resizable()
-                                            .foregroundColor(primary900)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 100, height: 100, alignment: .center)
-                                    }else {
-                                        Image(systemName: "photo.fill")
-                                            .resizable()
-                                            .foregroundColor(primary900)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 50, height: 50, alignment: .center)
-                                    }
-                                }.sheet(isPresented: $openCameraSheet) {
-                                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
-                                }
-                                Spacer()
-                                Rectangle()
-                                    .frame(width: 1, height: 100)
-                                    .foregroundColor(Color.gray
-                                    )
-                                    .padding(5)
-                                Spacer()
-                                //Add photo from camera
-                                Button(action:{
-                                    
-                                }){
-                                    Image(systemName: "camera.fill")
-                                        .resizable()
-                                        .foregroundColor(primary900)
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 50, height: 50, alignment: .center)
-                                }
-                                Spacer()
-                            } //HStack
-                            
-                        }
+                        
                     }//Vstack line 22
                     //content
                     
