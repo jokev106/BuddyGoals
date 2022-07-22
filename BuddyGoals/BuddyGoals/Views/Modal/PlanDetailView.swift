@@ -13,7 +13,7 @@ struct PlanDetailView: View {
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     @EnvironmentObject var gvm : GoalViewModel
-    @EnvironmentObject var dataPlan : PlanModel
+    @EnvironmentObject var data : PlanModel
     //if edit mode active
     @State var editMode = EditMode.inactive
     @State var show: Bool = false
@@ -25,43 +25,40 @@ struct PlanDetailView: View {
                 
                 //content
                 VStack{
-                    ScrollView{
-                        ZStack{
-                            VStack{
-                                Spacer()
-                                    .frame(height: 20)
-                                    ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
-                                        NavigationLink(destination: ProfileView()){
-                                            
-                                            HStack{
-                                                CardHomeView(colorCard: plan.planColor.colorValue, milestone: plan.wrappedTitle, destinationCard: "")
-                                                .foregroundColor(.black)
-                                            }.cornerRadius(5)
-                                        }
+                    
+                    List {
+                        ForEach(Array(data.plans.enumerated()), id: \.offset) {offset, plan in
+                            NavigationLink(destination: ProfileView()){
+                                HStack{
+                                    Rectangle()
+                                        .foregroundColor(plan.planColor.colorValue)
+                                        .frame(width: 15, height: 50)
+                                    VStack{
+                                        Text(plan.wrappedTitle)
+                                            .foregroundColor(.black)
                                     }
-                                    .onDelete(perform: dataPlan.onDelete)
-                                    .onMove(perform: dataPlan.onMove);                                Spacer()
-                                
+                                    .foregroundColor(.black)
+                                }.cornerRadius(5)
                             }
                         }
+                        .onDelete(perform: data.onDelete)
+                        .onMove(perform: data.onMove)
                     }
+                    .listStyle(InsetListStyle())
                     //Footer Button
-                    ZStack{
-                        NavigationLink{
-                            AddPlanView()
-                        } label: {
-                            Image(systemName: "plus")
-                                .foregroundColor(blue)
-                            Text("Add New Plan")
-                                .foregroundColor(blue)
-                            //                                    .frame(width: 350, height: 20, alignment: .leading)
-                        }
-                        .frame(width: 300, height: 0, alignment: .leading)
-                    }.padding(.top)
+                                        ZStack{
+                                            NavigationLink{
+                                                AddPlanView()
+                                            } label: {
+                                                Image(systemName: "plus")
+                                                    .foregroundColor(blue)
+                                                Text("Add New Plan")
+                                                    .foregroundColor(blue)
+                                                //                                    .frame(width: 350, height: 20, alignment: .leading)
+                                            }
+                                            .frame(width: 300, height: 0, alignment: .leading)
+                                        }.padding(.top)
                 }
-                
-                
-                
                 //navbar Setting
                 .navigationBarTitle(
                     Text("Plan").bold(),
@@ -80,32 +77,13 @@ struct PlanDetailView: View {
             .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
         }//geometryReader
         .onAppear() {
-            dataPlan.setup(goalID: gvm.goalID!, context: gvm.context!)
-            dataPlan.getPlans()
+            data.setup(goalID: gvm.goalID!, context: gvm.context!)
+            data.getPlans()
         }
         .onDisappear() {
             gvm.getPlans(id: nil)
         }
     }//bodyView
-    private var addButton : some View {
-        //if edit mode active / not active
-        switch editMode {
-        case .inactive:
-            return AnyView(Button(action: {}) {
-                HStack{
-                    //                                        Text("Add")
-                    Image(systemName: "plus")
-                }
-                .padding()
-                .background(Color.orange)
-                .foregroundColor(Color.white)
-                .cornerRadius(5)
-            })
-        default:
-            return AnyView(EmptyView())
-        }
-    }
-    
     
 }
 
@@ -116,7 +94,5 @@ struct PlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlanDetailView()
             .environmentObject(planModel)
-            .environmentObject(GoalViewModel())
     }
 }
-
