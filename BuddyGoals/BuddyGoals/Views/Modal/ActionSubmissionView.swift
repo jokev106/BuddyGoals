@@ -25,29 +25,19 @@ struct ActionSubmissionView: View {
     @State var openCameraSheet = false
     @State var imageSelected = UIImage()
     
+    @StateObject var vm = EditActionViewModel()
+    @EnvironmentObject var gvm : GoalViewModel
+    
+    let actionID : UUID
+    
     let repeatOptions: [String] = [
         "Never", "Daily", "Weekdays", "Weekends", "Weekly", "Biweekly", "Monthly", "Every 3 Months", "Every 6 Months", "Yearly"
     ]
-    var imageDifficulty: [String] = [
-        "dTrivial", "dEasy", "dMedium", "dHard", "dExpert"
-    ]
-    
-    //Bool difficulty
-        @State var isTappedDifficultyTrivial = false
-        @State var isTappedDifficultyEasy = false
-        @State var isTappedDifficultyMedium = false
-        @State var isTappedDifficultyHard = false
-        @State var isTappedDifficultyExpert = false
     
     
-//    @State var isTappedDifficulty = false
+    
       @State var isTappedDetails = false
 
-    // For Editing Purposes
-    var action: Actionable?
-    var planId: UUID?
-    
-    @EnvironmentObject var activityToday : Dailies
     
     var body: some View {
         GeometryReader{ geo in
@@ -70,7 +60,7 @@ struct ActionSubmissionView: View {
                                     openCameraSheet = true
                                 }){
                                     if changeSubmissionImage {
-                                        Image(uiImage: imageSelected)
+                                        Image(uiImage: vm.proofImage)
                                             .resizable()
                                             .foregroundColor(primary900)
                                             .aspectRatio(contentMode: .fit)
@@ -99,7 +89,7 @@ struct ActionSubmissionView: View {
                                         }
                                     }
                                 }.sheet(isPresented: $openCameraSheet) {
-                                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                                    SubmissionPicker(selectedImage: $vm.proofImage, sourceType: .photoLibrary)
                                 }
                                 Spacer()
     
@@ -111,6 +101,8 @@ struct ActionSubmissionView: View {
                         Section{
                             Button {
                                 //Saving image action
+                                vm.submitProof(actionID: actionID)
+                                presentationMode.wrappedValue.dismiss()
                             } label: {
                                 HStack{
                                     Spacer()
@@ -128,7 +120,7 @@ struct ActionSubmissionView: View {
                                     .foregroundColor(Color.blue)
                                     .bold()
                         ){
-                            TextField("Ex: Morning Run", text: $actionTitle)
+                            TextField("Ex: Morning Run", text: $vm.actionTitle)
                                 .padding(.all, 7.0)
                                 .foregroundColor(Color.black)
                             //                            .padding(.horizontal)
@@ -140,7 +132,7 @@ struct ActionSubmissionView: View {
                                     .foregroundColor(Color.blue)
                                     .bold()
                         ){
-                            DatePicker("Start Date", selection: $scheduleDatePicker, in: Date()..., displayedComponents: .date)
+                            DatePicker("Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
                                 .padding(.leading, 5.0)
                                 .foregroundColor(Color.black)
                             HStack{
@@ -149,7 +141,7 @@ struct ActionSubmissionView: View {
                                     .foregroundColor(Color.black)
                                 Spacer()
                                 Picker(
-                                    selection: $repeatPicker,
+                                    selection: $vm.repeats,
                                     label:
                                         HStack{
                                             Text(repeatPicker)
@@ -194,7 +186,7 @@ struct ActionSubmissionView: View {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink{
                                 //Move to edit page with passing data
-//                                EditActionView()
+                                EditActionView(actionID: actionID, vm: vm)
                                 
                             }label: {
                                 Text("Edit")
@@ -205,35 +197,23 @@ struct ActionSubmissionView: View {
                     }
                 }//navigationView
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
-                .onAppear {
-                    if let action = action {
-                        actionTitle = action.action
-                        detailsWhere = action.place
-                        repeatPicker = action.repeats.rawValue
-                        switch action.difficulty {
-                        case .trivial :
-                            isTappedDifficultyTrivial = true
-                        case .easy:
-                            isTappedDifficultyEasy = true
-                        case .medium:
-                            isTappedDifficultyMedium = true
-                        case .hard:
-                            isTappedDifficultyHard = true
-                        case .expert:
-                            isTappedDifficultyExpert = true
-                        }
-                        scheduleDatePicker = action.time
-                    }
-                }
+
             }//Vstack Line 16
         }//geometryReader
+        .onAppear() {
+            vm.setup(context: gvm.context!)
+            vm.fillProperties(actionID: actionID)
+        }
+        .onDisappear() {
+            gvm.getPlans(id: nil)
+        }
     }
 
 }
 
 struct ActionSubmissionView_Previews: PreviewProvider {
     static var previews: some View {
-        ActionSubmissionView()
+        ActionSubmissionView(actionID: UUID())
             .environmentObject(Dailies())
     }
 }

@@ -54,6 +54,7 @@ class GoalViewModel : ObservableObject {
         for plan in plans {
             actions += plan.wrappedActions
         }
+        actions = actions.filter { $0.isDoneToday == false }
     }
     
     // calculate end date from start date

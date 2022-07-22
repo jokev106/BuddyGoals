@@ -7,12 +7,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class EditActionViewModel : ObservableObject {
     
     @Published var actionTitle : String = ""
     @Published var startDate : Date = Date()
     @Published var repeats : String = ""
+    @Published var proofImage : UIImage = UIImage()
     
     
     var context : NSManagedObjectContext?
@@ -28,10 +30,11 @@ class EditActionViewModel : ObservableObject {
     
     
     // fill and update values for published properties
-    func fillProperties(title : String, date : Date, repeats: RepeatAction) {
-        actionTitle = title
-        startDate = date
-        self.repeats = repeats.rawValue
+    func fillProperties(actionID:UUID) {
+        let action = coreDataController?.selectOneWhereCoreData(entityName: "CoreDataAction", toPredicate: "id", predicateValue: "\(actionID)").first as! CoreDataAction
+        actionTitle = action.wrappedTitle
+        startDate = action.wrappedDate
+        self.repeats = action.repeats.rawValue
     }
     
     // edit action
@@ -50,10 +53,14 @@ class EditActionViewModel : ObservableObject {
         save()
     }
     
-    func removeDummyAction() {
-        let dummyAction = coreDataController?.selectOneWhereCoreData(entityName: "CoreDataAction", toPredicate: "title", predicateValue: "Dummy").first! as! CoreDataAction
-        let plan = dummyAction.plan
-        plan?.removeFromActions(dummyAction)
+    func submitProof(actionID : UUID) {
+        let action = coreDataController?.selectOneWhereCoreData(entityName: "CoreDataAction", toPredicate: "id", predicateValue: "\(actionID)").first as! CoreDataAction
+        let actionRecord = CoreDataActionRecord(context: context!)
+        actionRecord.id = UUID()
+        actionRecord.dateSubmitted = Date()
+        actionRecord.proofImage = proofImage.pngData()
+        action.addToRecords(actionRecord)
+        
         save()
     }
     

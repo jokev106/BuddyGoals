@@ -244,7 +244,8 @@ extension GoalView {
                     //ForEach {
                     ForEach (vm.actions.filter { $0.plan == plan }) { action in
                         NavigationLink {
-                            EditActionView(initialActionTitle: action.wrappedTitle, initialStartDate: action.wrappedDate, initialRepeatValue: action.repeats, actionID: action.id!)
+//                            EditActionView(initialActionTitle: action.wrappedTitle, initialStartDate: action.wrappedDate, initialRepeatValue: action.repeats, actionID: action.id!)
+                            ActionSubmissionView(actionID:action.id!)
                         } label: {
                             CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle)
                         }

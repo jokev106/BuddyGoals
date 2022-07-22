@@ -12,16 +12,16 @@ struct EditActionView: View {
     //modal view(presentation) mode
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
-    let initialActionTitle : String
-    let initialStartDate : Date
-    let initialRepeatValue : RepeatAction
+//    let initialActionTitle : String
+//    let initialStartDate : Date
+//    let initialRepeatValue : RepeatAction
     let actionID : UUID
 //    let action : CoreDataAction
     
-    @ObservedObject var vm = EditActionViewModel()
+    @ObservedObject var vm : EditActionViewModel
     @EnvironmentObject var gvm : GoalViewModel
     
-    //var for form input
+//    var for form input
     @State private var actionTitle:  String = ""
     @State private var actionCommitment:  String = ""
     @State private var detailsDatePicker = Date()
@@ -56,7 +56,6 @@ struct EditActionView: View {
 //    var action: Actionable?
 //    var planId: UUID?
     
-    @EnvironmentObject var activityToday : Dailies
     
     var body: some View {
         GeometryReader{ geo in
@@ -144,11 +143,9 @@ struct EditActionView: View {
             }//Vstack Line 16
         }//geometryReader
         .onAppear {
-            vm.setup(context: gvm.context!)
-            vm.fillProperties(title: initialActionTitle, date: initialStartDate, repeats: initialRepeatValue)
         }
         .onDisappear() {
-            gvm.getPlans(id: nil)
+            vm.fillProperties(actionID: actionID)
         }
     }
 
