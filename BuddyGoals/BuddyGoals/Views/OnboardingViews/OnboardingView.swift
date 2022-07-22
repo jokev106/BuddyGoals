@@ -116,6 +116,13 @@ extension OnboardingView {
         .foregroundColor(.white)
         .cornerRadius(10)
         .onTapGesture {
+            if onboardingState == 1 {
+                vm.addNewUser(name: nameRegister, username: idRegister)
+            } else if onboardingState == 6 {
+                vm.addNewGoal(title: onboardingGoal)
+                vm.addNewPlan(title: onboardingPlan)
+                vm.addNewAction(title: onboardingAction)
+            }
             nextButtonPressed()
         }
     }
@@ -903,6 +910,7 @@ extension OnboardingView {
     
     func skipButtonPresssed(){
         withAnimation(.spring()){
+            vm.addEmptyUser()
             currentUserSignedIn = true
         }
     }

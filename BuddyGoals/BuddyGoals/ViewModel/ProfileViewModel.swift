@@ -47,7 +47,7 @@ class ProfileViewModel : ObservableObject {
     func fillProperties() {
         name = self.user?.wrappedName ?? "Unknown User"
         imageSelected = self.user?.wrappedPicture ?? UIImage(named: "Gusde-Emot")!
-        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
+        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
         currentGoal = tempGoal?.wrappedTitle ?? "No Goal Set Yet"
         scheduleStart = tempGoal?.startDate ?? Date()
         duration = tempGoal?.wrappedDuration ?? -1

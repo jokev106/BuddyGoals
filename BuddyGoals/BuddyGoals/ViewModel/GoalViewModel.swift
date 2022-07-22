@@ -40,7 +40,7 @@ class GoalViewModel : ObservableObject {
             var tempGoal = user[0].wrappedGoals
             tempGoal = tempGoal.filter { $0.isFinished == false }
             goal = tempGoal
-            goalID = goal[0].id
+            goalID = goal.first?.id
         }
     }
     
@@ -48,7 +48,7 @@ class GoalViewModel : ObservableObject {
     func getPlans(id : UUID?) {
         let usedID = id ?? self.goalID
         if usedID != nil {
-            let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
+            let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID!)") as! [CoreDataPlan]
     //        for plan in tempPlans {
     //            plans[plan] = plan.wrappedActions
     //        }
@@ -66,9 +66,11 @@ class GoalViewModel : ObservableObject {
         var dateComponent = DateComponents()
         let tempGoal = goal.first ?? nil
         if tempGoal != nil {
-            dateComponent.day = 7 * tempGoal!.wrappedDuration
-            let calculatedEndDate = Calendar.current.date(byAdding: dateComponent, to: tempGoal!.startDate!)
-            return calculatedEndDate!
+            if tempGoal!.startDate != nil {
+                dateComponent.day = 7 * tempGoal!.wrappedDuration
+                let calculatedEndDate = Calendar.current.date(byAdding: dateComponent, to: tempGoal!.startDate!)
+                return calculatedEndDate!
+            }
         }
         return nil
     }

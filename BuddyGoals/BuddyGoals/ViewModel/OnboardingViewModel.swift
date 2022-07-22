@@ -23,6 +23,7 @@ class OnboardingViewModel : ObservableObject {
     func addEmptyUser() {
         let newUser = CoreDataUser(context: context!)
         newUser.id = UUID()
+        newUser.name = "My Name"
         
         save()
     }
@@ -54,6 +55,7 @@ class OnboardingViewModel : ObservableObject {
         newPlan.id = UUID()
         newPlan.title = title
         newPlan.planColor = .colorBlue
+        newPlan.goalID = self.goal?.id
         
         self.goal?.addToPlans(newPlan)
         
