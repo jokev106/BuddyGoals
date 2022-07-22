@@ -17,7 +17,7 @@ struct AddPlanView: View {
 //    @State var diamondPlusColor = diamondPlus
     
     @State var isTappedCircleBlue = false
-    @State var isTappedCircleYellow = false
+    @State var isTappedCircleGreen = false
     @State var isTappedCircleOrange = false
     @State var isTappedCirclePurple = false
     @State var isTappedCircleRed = false
@@ -72,7 +72,7 @@ struct AddPlanView: View {
                                     self.isTappedCircleBlue.toggle()
                                     if isTappedCircleBlue == true {
                                         isTappedCircleRed = false
-                                        isTappedCircleYellow = false
+                                        isTappedCircleGreen = false
                                         isTappedCirclePurple = false
                                         isTappedCircleOrange = false
                                         
@@ -82,14 +82,15 @@ struct AddPlanView: View {
                             Spacer()
                                 .frame(width: 20)
                             
-                            Image(systemName: isTappedCircleYellow ? "record.circle.fill" : "circle.fill")
+                            Image(systemName: isTappedCircleGreen ? "record.circle.fill" : "circle.fill")
                                 .resizable()
                                 .frame(width: 40, height: 40)
-                                .foregroundColor(.yellow)
+                                .foregroundColor(.green)
                                 .onTapGesture {
                                     // Warnanya green
-                                    self.isTappedCircleYellow.toggle()
-                                    if isTappedCircleYellow == true {
+                                    dataPlan.colorPlan = .colorGreen
+                                    self.isTappedCircleGreen.toggle()
+                                    if isTappedCircleGreen == true {
                                         isTappedCircleRed = false
                                         isTappedCircleBlue = false
                                         isTappedCirclePurple = false
@@ -111,7 +112,7 @@ struct AddPlanView: View {
                                         isTappedCircleRed = false
                                         isTappedCircleBlue = false
                                         isTappedCirclePurple = false
-                                        isTappedCircleYellow = false
+                                        isTappedCircleGreen = false
                                     }
                                 }
                             
@@ -128,7 +129,7 @@ struct AddPlanView: View {
                                     if isTappedCirclePurple == true {
                                         isTappedCircleRed = false
                                         isTappedCircleBlue = false
-                                        isTappedCircleYellow = false
+                                        isTappedCircleGreen = false
                                         isTappedCircleOrange = false
                                     }
                                 }
@@ -144,7 +145,7 @@ struct AddPlanView: View {
                                     dataPlan.colorPlan = .colorRed
                                     self.isTappedCircleRed.toggle()
                                     if isTappedCircleRed == true {
-                                        isTappedCircleYellow = false
+                                        isTappedCircleGreen = false
                                         isTappedCircleBlue = false
                                         isTappedCirclePurple = false
                                         isTappedCircleOrange = false
@@ -163,6 +164,7 @@ struct AddPlanView: View {
                     
                 }//navigationView
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
+                .navigationBarHidden(true)
                 .onDisappear() {
                     dataPlan.getPlans()
                 }
