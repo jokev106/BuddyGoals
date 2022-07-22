@@ -10,6 +10,9 @@ import SwiftUI
 struct IntroView: View {
     
     @AppStorage("signed_in") var currentUserSignedIn: Bool = false
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @EnvironmentObject var gvm : GoalViewModel
     
     
     var body: some View {
@@ -21,6 +24,8 @@ struct IntroView: View {
             }else{
                 OnboardingView()
             }
+        }.onAppear() {
+            gvm.setup(context: viewContext)
         }
     }
 }

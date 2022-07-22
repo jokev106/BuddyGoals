@@ -101,7 +101,7 @@ struct GoalView: View {
         .onAppear() {
             vm.setup(context: self.viewContext)
             ////            Uncomment to get initial items in core data
-                        vm.addInitialItems()
+//                        vm.addInitialItems()
             
             
             vm.getUser()

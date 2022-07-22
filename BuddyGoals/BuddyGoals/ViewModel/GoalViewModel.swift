@@ -22,8 +22,10 @@ class GoalViewModel : ObservableObject {
     
     // Setup awal
     func setup(context : NSManagedObjectContext) {
-        self.context = context
-        coreDataController = CoreDataController(context: context)
+        if self.context == nil {
+            self.context = context
+            coreDataController = CoreDataController(context: context)
+        }
     }
     
     var currentGoal : CoreDataGoal? {
@@ -44,17 +46,19 @@ class GoalViewModel : ObservableObject {
     
     // query plans from goal
     func getPlans(id : UUID?) {
-        let usedID = id ?? self.goalID!
-        let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
-//        for plan in tempPlans {
-//            plans[plan] = plan.wrappedActions
-//        }
-        plans = tempPlans.sorted { $0.index <= $1.index}
-        actions = []
-        for plan in plans {
-            actions += plan.wrappedActions
+        let usedID = id ?? self.goalID
+        if usedID != nil {
+            let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
+    //        for plan in tempPlans {
+    //            plans[plan] = plan.wrappedActions
+    //        }
+            plans = tempPlans.sorted { $0.index <= $1.index}
+            actions = []
+            for plan in plans {
+                actions += plan.wrappedActions
+            }
+            actions = actions.filter { $0.isDoneToday == false }
         }
-        actions = actions.filter { $0.isDoneToday == false }
     }
     
     // calculate end date from start date

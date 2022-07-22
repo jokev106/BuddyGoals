@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @ObservedObject var vm = OnboardingViewModel()
+    @EnvironmentObject var gvm : GoalViewModel
     /*
      Onboarding State Section
      0 - Welcome Section
@@ -38,6 +40,7 @@ struct OnboardingView: View {
     @State private var onboardingGoal: String = ""
     @State private var onboardingPlan: String = ""
     @State private var onboardingAction: String = ""
+    
     
     //App Storage
     @AppStorage("onboardingGoal") var currentUserGoal: String?
@@ -85,6 +88,8 @@ struct OnboardingView: View {
         }
         .alert(isPresented: $showAlert) {
             return Alert(title: Text(alertTitle))
+        }.onAppear() {
+            vm.setup(context: gvm.context!)
         }
     }
     
