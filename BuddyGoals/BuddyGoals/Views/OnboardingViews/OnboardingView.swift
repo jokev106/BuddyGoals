@@ -33,8 +33,8 @@ struct OnboardingView: View {
     @State var showAlert: Bool = false
     
     //Register var
-    @State private var emailRegister:  String = ""
-    @State private var passwordRegister:  String = ""
+    @State private var nameRegister:  String = ""
+    @State private var idRegister:  String = ""
     
     //Set onboarding goal var
     @State private var onboardingGoal: String = ""
@@ -106,7 +106,6 @@ extension OnboardingView {
     
     private var bottomButton: some View {
         Text(onboardingState == 0 ? "Get Started" :
-                onboardingState == 1 ? "Sign Up" :
                 onboardingState == 6 ? "Finish" :
                 "Continue"
         )
@@ -175,17 +174,17 @@ extension OnboardingView {
                 .frame( height: 20)
             //pict and text 3
             HStack{
-                Image("development")
+                Image("Onboarding3")
                     .resizable()
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(width: 110, height: 110)
                 VStack{
-                    Text("Improve everyday")
+                    Text("Hold Yourself Accountable")
                         .fontWeight(.bold)
                         .font(.system(size: 16))
                         .padding(.bottom, 1.0)
                         .frame(width: 250, alignment: .leading)
-                    Text("Improve yourself continuously every day and be the best version of yourself.")
+                    Text("Submit your actions by taking a picture of your task and Rock On!")
                         .font(.system(size: 12))
                         .padding(.horizontal, 1.0)
                         .frame(width: 250, alignment: .leading)
@@ -202,27 +201,54 @@ extension OnboardingView {
         VStack{
             Spacer()
                 .frame(height: 20)
-            //Chevron back to onboarding page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                    previousButtonPressed()
+            //Navigation item(chevron left, current page, skip)
+            Group{
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                        .foregroundColor(primary900)
+                        .onTapGesture {
+                            //Code go back to Onboarding
+                            previousButtonPressed()
+                        }
+                    Spacer()
+                    ForEach(0..<6){ state in
+                        if state == 0{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(primary900)
+                        }else{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    Spacer()
+                        .frame(width: 100)
+                    Button {
+                        //Skip func
+                        skipButtonPresssed()
+                    } label: {
+                        Text("Skip")
+                    }
+                    Spacer()
+                        .frame(width: 10)
+
                 }
+            }
             Spacer()
-                .frame(height: 50)
+                .frame(height: 35)
             
             //Title login page
-            Text("Hi There!")
+            Text("Hi There!,")
                 .font(.system(size: 35).bold())
                 .padding(.leading, 26.0)
                 .foregroundColor(primary900)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Let's get better!")
+            Text("Let's get to know \nbetter!")
                 .font(.system(size: 35).bold())
                 .padding(.leading, 26.0)
                 .foregroundColor(primary900)
@@ -231,8 +257,14 @@ extension OnboardingView {
             Spacer()
                 .frame(height: 50)
             Group{
-                //Text field for login
-                TextField("Email", text: $emailRegister)
+                //Text field NAME
+                Text("FULL NAME")
+                    .foregroundColor(primary900)
+                    .fontWeight(.bold)
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                TextField("Giga Chad", text: $nameRegister)
                     .padding()
                     .frame(width: 350, alignment: .center)
                     .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
@@ -240,12 +272,18 @@ extension OnboardingView {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     )
-                    .foregroundColor(.black)
+                    .foregroundColor(.gray)
                 
                 Spacer()
-                    .frame(height: 20)
-                
-                TextField("Password", text: $passwordRegister)
+                    .frame(height: 30)
+                //Text field ID
+                Text("BUDDY ID")
+                    .foregroundColor(primary900)
+                    .fontWeight(.bold)
+                    .font(.system(size: 12))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .leading)
+                TextField("ggch4d", text: $idRegister)
                     .padding()
                     .frame(width: 350, alignment: .center)
                     .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
@@ -253,63 +291,73 @@ extension OnboardingView {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     )
-                    .foregroundColor(.black)
+                    .foregroundColor(.gray
+                    )
+                Text("Make your own Buddy ID (Max. 15 character).\n   Once your ID is set, it cannot be changed.")
+                    .foregroundColor(.gray)
+                    .fontWeight(.bold)
+                    .font(.system(size: 10))
+                    .padding(.horizontal, 1.0)
+                    .frame(width: 320, alignment: .center)
             }
             
             Spacer()
-            //                .frame(height: 220)
-            
-            //            Group{
-            //                //Button for sign in
-            //                Button(action: {}) {
-            //                    Text("Sign Up")
-            //                        .fontWeight(.bold)
-            //                        .padding(16)
-            //                }
-            //                .frame(width: 350, alignment: .center)
-            //                .background(.white)
-            //                .foregroundColor(primary900)
-            //                .cornerRadius(18)
-            //
-            //                Spacer()
-            //                    .frame(height: 5)
-            //                HStack{
-            //                    Rectangle()
-            //                        .frame(width: 90, height: 1)
-            //                        .background(.white)
-            //                        .border(.white)
-            //                    Text("Or")
-            //                        .font(.system(size: 15))
-            //                        .foregroundColor(.white)
-            //                    Rectangle()
-            //                        .frame(width: 90, height: 1)
-            //                        .background(.white)
-            //                        .border(.white
-            //                        )
-            //                }
-            //                //Button for sign in via APPLE ACCOUNT
-            //                Button(action: {
-            //                    //Action
-            //                }) {
-            //                    Image(systemName: "applelogo")
-            //                    Text("Sign Up with Apple")
-            //                        .fontWeight(.bold)
-            //                        .padding(16)
-            //                }
-            //                .frame(width: 350, alignment: .center)
-            //                .background(.black)
-            //                .foregroundColor(.white)
-            //                .cornerRadius(18)
-            //            }
-            
-            //            //Login account button
-            //            Button(action: {
-            //                //Action
-            //            }) {
-            //                Text("Already have an account? Sign In")
-            //                    .foregroundColor(.white)
-            //                    .font(.system(size: 14))
-            //            }
+            //Button for register
+            /*
+             .frame(height: 220)
+
+         Group{
+             //Button for sign in
+             Button(action: {}) {
+                 Text("Sign Up")
+                     .fontWeight(.bold)
+                     .padding(16)
+             }
+             .frame(width: 350, alignment: .center)
+             .background(.white)
+             .foregroundColor(primary900)
+             .cornerRadius(18)
+
+             Spacer()
+                 .frame(height: 5)
+             HStack{
+                 Rectangle()
+                     .frame(width: 90, height: 1)
+                     .background(.white)
+                     .border(.white)
+                 Text("Or")
+                     .font(.system(size: 15))
+                     .foregroundColor(.white)
+                 Rectangle()
+                     .frame(width: 90, height: 1)
+                     .background(.white)
+                     .border(.white
+                     )
+             }
+             //Button for sign in via APPLE ACCOUNT
+             Button(action: {
+                 //Action
+             }) {
+                 Image(systemName: "applelogo")
+                 Text("Sign Up with Apple")
+                     .fontWeight(.bold)
+                     .padding(16)
+             }
+             .frame(width: 350, alignment: .center)
+             .background(.black)
+             .foregroundColor(.white)
+             .cornerRadius(18)
+         }
+
+         //Login account button
+         Button(action: {
+             //Action
+         }) {
+             Text("Already have an account? Sign In")
+                 .foregroundColor(.white)
+                 .font(.system(size: 14))
+         }
+             */
             
         }
         //        .background(primary900)
@@ -319,17 +367,44 @@ extension OnboardingView {
         VStack{
             Spacer()
                 .frame(height: 20)
-            //Chevron back to previous page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                    previousButtonPressed()
+            //Navigation item(chevron left, current page, skip)
+            Group{
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                        .foregroundColor(primary900)
+                        .onTapGesture {
+                            //Code go back to Onboarding
+                            previousButtonPressed()
+                        }
+                    Spacer()
+                    ForEach(0..<6){ state in
+                        if state == 1{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(primary900)
+                        }else{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    Spacer()
+                        .frame(width: 100)
+                    Button {
+                        //Skip func
+                        skipButtonPresssed()
+                    } label: {
+                        Text("Skip")
+                    }
+                    Spacer()
+                        .frame(width: 10)
+
                 }
+            }
             Spacer()
                 .frame(height: 30)
             //
@@ -353,17 +428,43 @@ extension OnboardingView {
         VStack{
             Spacer()
                 .frame(height: 20)
-            //Chevron back to previous page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                    previousButtonPressed()
+            //Navigation item(chevron left, current page, skip)
+            Group{
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                        .foregroundColor(primary900)
+                        .onTapGesture {
+                            //Code go back to Onboarding
+                            previousButtonPressed()
+                        }
+                    Spacer()
+                    ForEach(0..<6){ state in
+                        if state == 2{
+                            Circle()
+                                .frame(width: 10, height: 10)                                .foregroundColor(primary900)
+                        }else{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    Spacer()
+                        .frame(width: 100)
+                    Button {
+                        //Skip func
+                        skipButtonPresssed()
+                    } label: {
+                        Text("Skip")
+                    }
+                    Spacer()
+                        .frame(width: 10)
+
                 }
+            }
             Spacer()
                 .frame(height: 30)
             //Title
@@ -408,17 +509,44 @@ extension OnboardingView {
             Group{
                 Spacer()
                     .frame(height: 20)
-                //Chevron back to previous page
-                Image(systemName: "chevron.left")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading)
-                    .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                    .foregroundColor(primary900)
-                    .onTapGesture {
-                        //Code go back to Onboarding
-                        previousButtonPressed()
+                //Navigation item(chevron left, current page, skip)
+                Group{
+                    HStack{
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.leading)
+                            .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                            .foregroundColor(primary900)
+                            .onTapGesture {
+                                //Code go back to Onboarding
+                                previousButtonPressed()
+                            }
+                        Spacer()
+                        ForEach(0..<6){ state in
+                            if state == 3{
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(primary900)
+                            }else{
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        Spacer()
+                            .frame(width: 100)
+                        Button {
+                            //Skip func
+                            skipButtonPresssed()
+                        } label: {
+                            Text("Skip")
+                        }
+                        Spacer()
+                            .frame(width: 10)
+
                     }
+                }
                 Spacer()
                     .frame(height: 30)
                 //Title
@@ -481,17 +609,44 @@ extension OnboardingView {
         VStack{
             Spacer()
                 .frame(height: 20)
-            //Chevron back to previous page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                    previousButtonPressed()
+            //Navigation item(chevron left, current page, skip)
+            Group{
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                        .foregroundColor(primary900)
+                        .onTapGesture {
+                            //Code go back to Onboarding
+                            previousButtonPressed()
+                        }
+                    Spacer()
+                    ForEach(0..<6){ state in
+                        if state == 4{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(primary900)
+                        }else{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    Spacer()
+                        .frame(width: 100)
+                    Button {
+                        //Skip func
+                        skipButtonPresssed()
+                    } label: {
+                        Text("Skip")
+                    }
+                    Spacer()
+                        .frame(width: 10)
+
                 }
+            }
             Spacer()
                 .frame(height: 30)
             //Title
@@ -564,17 +719,44 @@ extension OnboardingView {
         VStack{
             Spacer()
                 .frame(height: 20)
-            //Chevron back to previous page
-            Image(systemName: "chevron.left")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.leading)
-                .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
-                .foregroundColor(primary900)
-                .onTapGesture {
-                    //Code go back to Onboarding
-                    previousButtonPressed()
+            //Navigation item(chevron left, current page, skip)
+            Group{
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading)
+                        .frame(maxWidth: .infinity, maxHeight: 30, alignment: .leading)
+                        .foregroundColor(primary900)
+                        .onTapGesture {
+                            //Code go back to Onboarding
+                            previousButtonPressed()
+                        }
+                    Spacer()
+                    ForEach(0..<6){ state in
+                        if state == 5{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(primary900)
+                        }else{
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    Spacer()
+                        .frame(width: 100)
+                    Button {
+                        //Skip func
+                        skipButtonPresssed()
+                    } label: {
+                        Text("Skip")
+                    }
+                    Spacer()
+                        .frame(width: 10)
+
                 }
+            }
             Spacer()
                 .frame(height: 30)
             //Title
@@ -654,7 +836,6 @@ extension OnboardingView {
     }
 }
 
-
 //MARK: FUNCTIONS
 extension OnboardingView {
     
@@ -671,12 +852,20 @@ extension OnboardingView {
         //Check input data
         switch onboardingState {
         case 1:
-            guard emailRegister.count > 1 else {
+            guard nameRegister.count > 1 else {
                 showAlert(title: "Email and Password can't be empty")
                 return
             }
-            guard passwordRegister.count > 1 else {
+            guard idRegister.count > 1 else {
                 showAlert(title: "Email and Password can't be empty")
+                return
+            }
+            guard idRegister.count <= 15 else {
+                showAlert(title: "Buddy ID Max. 15 character and can't be changed")
+                return
+            }
+            guard nameRegister.count <= 15 else {
+                showAlert(title: "")
                 return
             }
         case 3:
@@ -710,6 +899,12 @@ extension OnboardingView {
             }
         }
         
+    }
+    
+    func skipButtonPresssed(){
+        withAnimation(.spring()){
+            currentUserSignedIn = true
+        }
     }
     
     func signIn(){

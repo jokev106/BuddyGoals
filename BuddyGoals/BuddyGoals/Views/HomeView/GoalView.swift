@@ -20,11 +20,11 @@ struct GoalView: View {
 //    private var items: FetchedResults<Item>
     
     //for White Content Navigation Bar
-    init() {
-       let navBarAppearance = UINavigationBar.appearance()
-       navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-       navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    }
+//    init() {
+//       let navBarAppearance = UINavigationBar.appearance()
+//       navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//       navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+//    }
     
     //Modal Bool
     @State var addNewPlanView = false
