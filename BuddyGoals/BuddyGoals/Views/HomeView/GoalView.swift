@@ -256,7 +256,7 @@ extension GoalView {
                 .padding(.top)
                 .frame(width: 300)
             
-            Text("Tap the 􀢽 Manage Plan button!")
+            Text("Tap the \(Image(systemName: "list.triangle")) Manage Plan button!")
                 .font(.caption)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
