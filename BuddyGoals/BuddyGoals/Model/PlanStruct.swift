@@ -11,14 +11,6 @@ import Foundation
 struct Plan : Identifiable {
     let id = UUID()
     var planTitle : String
-//    var colorPlan : String
-}
-
-enum ColorPlan{
-    case Blue
-    case Orange
-    case Yellow
-    case Purple
-    case Red
+    var colorPlan : String
 }
 

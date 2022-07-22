@@ -11,13 +11,13 @@ import SwiftUI
 
 class PlanModel: ObservableObject {
     @Published var planTitle : String = ""
-//    @Published var colorPlan : String = ""
+    @Published var colorPlan : String = ""
     @Published var plans : [Plan] = []
     
     func onAdd(plan: String, color: String) {
-        plans.append(Plan(planTitle: plan))
+        plans.append(Plan(planTitle: plan, colorPlan: color))
         self.planTitle = ""
-//        self.colorPlan = ""
+        self.colorPlan = ""
     }
     
     func onDelete(offset: IndexSet) {
@@ -28,8 +28,8 @@ class PlanModel: ObservableObject {
         plans.move(fromOffsets: source, toOffset: destination)
     }
  
-    func onUpdate(index: Int, plan: String) {
+    func onUpdate(index: Int, plan: String, colorPlan: String) {
         plans[index].planTitle = planTitle
-//        plans[index].colorPlan = colorPlan
+        plans[index].colorPlan = colorPlan
     }
 }

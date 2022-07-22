@@ -12,7 +12,7 @@ struct PlanDetailView: View {
     //    @Environment(\.dismiss) var dismissSheetView
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
-    @EnvironmentObject var dataPlan : PlanModel
+    @EnvironmentObject var data : PlanModel
     //if edit mode active
     @State var editMode = EditMode.inactive
     @State var show: Bool = false
@@ -23,50 +23,34 @@ struct PlanDetailView: View {
             NavigationView{
                 
                 //content
-                ScrollView{
-                    LazyVStack(spacing: 10, pinnedViews: [.sectionFooters]){
-                        HStack{
-                            TextField("Enter title", text: $dataPlan.planTitle)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .foregroundColor(.black)
-                            addButton
-                        }
-                        .padding(.horizontal)
-                        List {
-                            ForEach(Array(dataPlan.plans.enumerated()), id: \.offset){offset, plan in
-                                NavigationLink(destination: RankView()){
-                                    HStack{
-                                        Rectangle()
-                                            .foregroundColor(.orange)
-                                            .frame(width: 15, height: 50)
-                                        VStack{
-                                            Text(dataPlan.planTitle)
-                                                .foregroundColor(.black)
-                                        }
-                                        .foregroundColor(.black)
-                                    }.cornerRadius(5)
-                                }
+                VStack{
+                    HStack{
+                        TextField("Enter title", text: $data.planTitle)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .foregroundColor(.black)
+                        addButton
+                    }
+                    .padding(.horizontal)
+                    List {
+                        ForEach(Array(data.plans.enumerated()), id: \.offset){offset, plan in
+                            NavigationLink(destination: RankView()){
+                                HStack{
+                                    Rectangle()
+                                        .foregroundColor(.orange)
+                                        .frame(width: 15, height: 50)
+                                    VStack{
+                                        Text(data.planTitle)
+                                            .foregroundColor(.black)
+                                    }
+                                    .foregroundColor(.black)
+                                }.cornerRadius(5)
                             }
-                            .onDelete(perform: dataPlan.onDelete)
-                            .onMove(perform: dataPlan.onMove)
                         }
-                        .listStyle(InsetListStyle())
-                        
-                        //Footer Button
-                        
-                        
+                        .onDelete(perform: data.onDelete)
+                        .onMove(perform: data.onMove)
                     }
-                }
-                .safeAreaInset(edge: .bottom){
-                    NavigationLink{
-                        AddPlanView()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(blue)
-                        Text("Add New Plan")
-                            .foregroundColor(blue)
-                    }
-                    .frame(width: 300, height: 0, alignment: .leading)
+                    .listStyle(InsetListStyle())
+                    
                 }
                 //navbar Setting
                 .navigationBarTitle(
@@ -90,9 +74,9 @@ struct PlanDetailView: View {
         //if edit mode active / not active
         switch editMode {
         case .inactive:
-            return AnyView(Button(action: {}) {
+            return AnyView(Button(action: {self.data.onAdd(plan: self.data.planTitle, color: self.data.colorPlan )}) {
                 HStack{
-//                                        Text("Add")
+                    //                    Text("Add")
                     Image(systemName: "plus")
                 }
                 .padding()
@@ -104,8 +88,6 @@ struct PlanDetailView: View {
             return AnyView(EmptyView())
         }
     }
-    
-    
 }
 
 struct PlanDetailView_Previews: PreviewProvider {
