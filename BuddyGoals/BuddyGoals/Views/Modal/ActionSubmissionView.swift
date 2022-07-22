@@ -194,7 +194,7 @@ struct ActionSubmissionView: View {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink{
                                 //Move to edit page with passing data
-                                EditActionView()
+//                                EditActionView()
                                 
                             }label: {
                                 Text("Edit")

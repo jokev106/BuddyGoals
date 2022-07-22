@@ -17,6 +17,7 @@ class GoalViewModel : ObservableObject {
     @Published var user : [CoreDataUser] = []
     @Published var goal : [CoreDataGoal] = []
     @Published var plans : [CoreDataPlan] = []
+    @Published var actions : [CoreDataAction] = []
     @Published var remainingDay : Int = 0
     
     // Setup awal
@@ -45,7 +46,14 @@ class GoalViewModel : ObservableObject {
     func getPlans(id : UUID?) {
         let usedID = id ?? self.goalID!
         let tempPlans = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataPlan", toPredicate: "goalID", predicateValue: "\(usedID)") as! [CoreDataPlan]
+//        for plan in tempPlans {
+//            plans[plan] = plan.wrappedActions
+//        }
         plans = tempPlans.sorted { $0.index <= $1.index}
+        actions = []
+        for plan in plans {
+            actions += plan.wrappedActions
+        }
     }
     
     // calculate end date from start date

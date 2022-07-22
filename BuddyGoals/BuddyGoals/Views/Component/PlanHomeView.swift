@@ -25,13 +25,13 @@ struct PlanHomeView: View {
             //Card
             ForEach(planActions) { action in
                 
-                NavigationLink(destination: AddActionView(action : action, planId: plan.id), label: {
-                    
-                    let imageColor : Color = getImageNameColor(action: action)
-                    
-//                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
-                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
-                })
+//                NavigationLink(destination: AddActionView(action : action, planId: plan.id), label: {
+//                    
+//                    let imageColor : Color = getImageNameColor(action: action)
+//                    
+////                    CardHomeView(colorCard: imageColor, milestone: action.action, destinationCard: "")
+//                    CardHomeView(colorCard: imageColor, milestone: action.action)
+//                })
 //                Text(action.action)
             }
             //Close of Card

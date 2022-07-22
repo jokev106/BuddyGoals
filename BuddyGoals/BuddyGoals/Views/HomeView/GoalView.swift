@@ -218,14 +218,22 @@ extension GoalView {
                             
                         Spacer()
                         
-                        Button(action: {self.addNewActionView.toggle()}) {
+                        NavigationLink {
+                            AddActionView(plan: plan)
+                        } label: {
                             Image(systemName: "plus.circle.fill")
                                 .foregroundColor(plusButtonWhite)
                                 .background(plan.planColor.colorValue)
                                 .clipShape(Circle())
-                        }.sheet(isPresented: $addNewActionView) {
-                            AddActionView()
                         }
+//                        Button(action: {self.addNewActionView.toggle()}) {
+//                            Image(systemName: "plus.circle.fill")
+//                                .foregroundColor(plusButtonWhite)
+//                                .background(plan.planColor.colorValue)
+//                                .clipShape(Circle())
+//                        }.sheet(isPresented: $addNewActionView) {
+//                            AddActionView(plan: plan)
+//                        }
                         
                     }
                     .padding(.bottom, 20)
@@ -234,8 +242,12 @@ extension GoalView {
                     
                     //Card
                     //ForEach {
-                    ForEach (plan.wrappedActions) { action in
-                        CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle, destinationCard: "")
+                    ForEach (vm.actions.filter { $0.plan == plan }) { action in
+                        NavigationLink {
+                            EditActionView(initialActionTitle: action.wrappedTitle, initialStartDate: action.wrappedDate, initialRepeatValue: action.repeats, actionID: action.id!)
+                        } label: {
+                            CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle)
+                        }
                     }
                         
 //                        CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")

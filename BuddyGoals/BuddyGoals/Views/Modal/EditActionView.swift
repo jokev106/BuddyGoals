@@ -12,6 +12,15 @@ struct EditActionView: View {
     //modal view(presentation) mode
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
+    let initialActionTitle : String
+    let initialStartDate : Date
+    let initialRepeatValue : RepeatAction
+    let actionID : UUID
+//    let action : CoreDataAction
+    
+    @ObservedObject var vm = EditActionViewModel()
+    @EnvironmentObject var gvm : GoalViewModel
+    
     //var for form input
     @State private var actionTitle:  String = ""
     @State private var actionCommitment:  String = ""
@@ -28,24 +37,24 @@ struct EditActionView: View {
     let repeatOptions: [String] = [
         "Never", "Daily", "Weekdays", "Weekends", "Weekly", "Biweekly", "Monthly", "Every 3 Months", "Every 6 Months", "Yearly"
     ]
-    var imageDifficulty: [String] = [
-        "dTrivial", "dEasy", "dMedium", "dHard", "dExpert"
-    ]
+//    var imageDifficulty: [String] = [
+//        "dTrivial", "dEasy", "dMedium", "dHard", "dExpert"
+//    ]
     
-    //Bool difficulty
-        @State var isTappedDifficultyTrivial = false
-        @State var isTappedDifficultyEasy = false
-        @State var isTappedDifficultyMedium = false
-        @State var isTappedDifficultyHard = false
-        @State var isTappedDifficultyExpert = false
-    
-    
+//    //Bool difficulty
+//        @State var isTappedDifficultyTrivial = false
+//        @State var isTappedDifficultyEasy = false
+//        @State var isTappedDifficultyMedium = false
+//        @State var isTappedDifficultyHard = false
+//        @State var isTappedDifficultyExpert = false
+//
+//
 //    @State var isTappedDifficulty = false
       @State var isTappedDetails = false
 
     // For Editing Purposes
-    var action: Actionable?
-    var planId: UUID?
+//    var action: Actionable?
+//    var planId: UUID?
     
     @EnvironmentObject var activityToday : Dailies
     
@@ -62,7 +71,7 @@ struct EditActionView: View {
                                     .foregroundColor(Color.blue)
                                     .bold()
                         ){
-                            TextField("Ex: Morning Run", text: $actionTitle)
+                            TextField("Ex: Morning Run", text: $vm.actionTitle)
                                 .padding(.all, 7.0)
                                 .foregroundColor(Color.black)
                             //                            .padding(.horizontal)
@@ -74,7 +83,7 @@ struct EditActionView: View {
                                     .foregroundColor(Color.blue)
                                     .bold()
                         ){
-                            DatePicker("Start Date", selection: $scheduleDatePicker, in: Date()..., displayedComponents: .date)
+                            DatePicker("Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
                                 .padding(.leading, 5.0)
                                 .foregroundColor(Color.black)
                             HStack{
@@ -83,10 +92,10 @@ struct EditActionView: View {
                                     .foregroundColor(Color.black)
                                 Spacer()
                                 Picker(
-                                    selection: $repeatPicker,
+                                    selection: $vm.repeats,
                                     label:
                                         HStack{
-                                            Text(repeatPicker)
+                                            Text(vm.repeats)
                                                 .foregroundColor(Color.black)
                                                 .font(.headline)
                                                 .background(Color.black)
@@ -123,26 +132,7 @@ struct EditActionView: View {
                     }) {
                         Text("Cancel").bold()
                     }, trailing: Button(action: {
-//                        activityToday.updateAction(planId: planId!, actionId: action!.id, action: $actionTitle.wrappedValue)
-                        let difficulty : Rank = {
-                            if isTappedDifficultyTrivial {
-                                return .trivial
-                            } else if isTappedDifficultyMedium {
-                                return .medium
-                            } else if isTappedDifficultyEasy {
-                                return.easy
-                            } else if isTappedDifficultyHard {
-                                return .hard
-                            } else {
-                                return .expert
-                            }
-                        }()
-                        if let action = action {
-                            activityToday.updateAction(planId: planId!, actionId: action.id, action: $actionTitle.wrappedValue, time: $detailsDatePicker.wrappedValue, place: $detailsWhere.wrappedValue, startDate: $detailsDatePicker.wrappedValue, repeats: RepeatAction(rawValue: $repeatPicker.wrappedValue)!, difficulty: difficulty)
-                        } else {
-                            activityToday.addNewAction(action: $actionTitle.wrappedValue, time: $detailsDatePicker.wrappedValue, place: $detailsWhere.wrappedValue, startDate: $detailsDatePicker.wrappedValue, repeats: RepeatAction(rawValue: $repeatPicker.wrappedValue)!, difficulty: difficulty)
-                        }
-                        
+                        vm.editAction(actionID: actionID)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Save").bold()
@@ -150,36 +140,24 @@ struct EditActionView: View {
                     .foregroundColor(Color.white)
                 }//navigationView
                 .navigationAppearance(backgroundColor: UIColor(primary900), foregroundColor: .white, hideSeperator: true)
-                .onAppear {
-                    if let action = action {
-                        actionTitle = action.action
-                        detailsWhere = action.place
-                        repeatPicker = action.repeats.rawValue
-                        switch action.difficulty {
-                        case .trivial :
-                            isTappedDifficultyTrivial = true
-                        case .easy:
-                            isTappedDifficultyEasy = true
-                        case .medium:
-                            isTappedDifficultyMedium = true
-                        case .hard:
-                            isTappedDifficultyHard = true
-                        case .expert:
-                            isTappedDifficultyExpert = true
-                        }
-                        scheduleDatePicker = action.time
-                    }
-                }
+                
             }//Vstack Line 16
         }//geometryReader
+        .onAppear {
+            vm.setup(context: gvm.context!)
+            vm.fillProperties(title: initialActionTitle, date: initialStartDate, repeats: initialRepeatValue)
+        }
+        .onDisappear() {
+            gvm.getPlans(id: nil)
+        }
     }
 
 }
 
-struct EditActionView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditActionView()
-            .environmentObject(Dailies())
-    }
-}
+//struct EditActionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditActionView(initialActionTitle: "None", initialStartDate: Date(), initialRepeatValue: .daily)
+//            .environmentObject(Dailies())
+//    }
+//}
 

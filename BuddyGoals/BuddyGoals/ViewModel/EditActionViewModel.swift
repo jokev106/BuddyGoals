@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class ActionViewModel : ObservableObject {
+class EditActionViewModel : ObservableObject {
     
     @Published var actionTitle : String = ""
     @Published var startDate : Date = Date()
@@ -25,29 +25,36 @@ class ActionViewModel : ObservableObject {
     }
     
     // add new action
-    func addAction(plan : CoreDataPlan) {
-        let newAction = CoreDataAction(context: context!)
-        newAction.id = UUID()
-        newAction.title = actionTitle
-        newAction.startDate = startDate
-        newAction.repeats = RepeatAction(rawValue: repeats)!
-        newAction.plan = plan
-        
-        save()
-    }
+    
     
     // fill and update values for published properties
-    func fillProperties(title : String, date : Date, repeats: String) {
+    func fillProperties(title : String, date : Date, repeats: RepeatAction) {
         actionTitle = title
         startDate = date
-        self.repeats = repeats
+        self.repeats = repeats.rawValue
     }
     
     // edit action
-    func editAction(action : CoreDataAction) {
+    func editAction(actionID : UUID) {
+        let action = coreDataController?.selectOneWhereCoreData(entityName: "CoreDataAction", toPredicate: "id", predicateValue: "\(actionID)").first! as! CoreDataAction
         action.title = actionTitle
         action.startDate = startDate
         action.repeats = RepeatAction(rawValue: repeats)!
+//        let plan = action.plan
+//        let newDummyAction = CoreDataAction(context: context!)
+//        newDummyAction.id = UUID()
+//        newDummyAction.title = "Dummy"
+//        plan?.addToActions(newDummyAction)
+//        save()
+//        plan?.removeFromActions(newDummyAction)
+        save()
+    }
+    
+    func removeDummyAction() {
+        let dummyAction = coreDataController?.selectOneWhereCoreData(entityName: "CoreDataAction", toPredicate: "title", predicateValue: "Dummy").first! as! CoreDataAction
+        let plan = dummyAction.plan
+        plan?.removeFromActions(dummyAction)
+        save()
     }
     
     // sacve to core data

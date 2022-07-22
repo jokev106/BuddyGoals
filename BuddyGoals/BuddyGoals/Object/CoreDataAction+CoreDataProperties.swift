@@ -55,4 +55,8 @@ extension CoreDataAction : Identifiable {
     var wrappedTitle : String {
         return title ?? "Unknown Action"
     }
+    
+    var wrappedDate : Date {
+        return startDate ?? Date()
+    }
 }

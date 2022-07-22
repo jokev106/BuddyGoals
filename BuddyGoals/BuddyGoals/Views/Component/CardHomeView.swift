@@ -13,7 +13,6 @@ struct CardHomeView: View {
     //@State var imageCard : String
     @State var colorCard : Color
     @State var milestone : String
-    @State var destinationCard : String
     
     var body: some View {
         
@@ -56,7 +55,7 @@ struct CardHomeView: View {
 
 struct CardHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        CardHomeView(colorCard: Color.black, milestone: "Test", destinationCard: "")
+        CardHomeView(colorCard: Color.black, milestone: "Test")
 //        CardHomeView(imageCard: "", colorCard: Color.black, milestone: "Test", destinationCard: "")
     }
 }
