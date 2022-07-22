@@ -30,17 +30,33 @@ struct AddPlanView: View {
                     
                     //content
                     VStack{
-                        HStack{
-                            Spacer()
-                            Button(action: {
-                                dataPlan.addPlan()
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Text("Create").bold()
-                                    .foregroundColor(.black)
+                        ZStack{
+                            Rectangle()
+                                .frame(width: .infinity, height: 56)
+                                .foregroundColor(primary900)
+                            HStack{
+                                Spacer()
+                                    .frame(width: 20)
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Text("Cancel").bold()
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                }
+
+                                Spacer()
+                                Button(action: {
+                                    dataPlan.addPlan()
+                                    presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Text("Create").bold()
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                }
+                                Spacer()
+                                    .frame(width: 20)
                             }
-                            Spacer()
-                                .frame(width: 20)
                         }
                         Spacer()
                             .frame(height: 35)
