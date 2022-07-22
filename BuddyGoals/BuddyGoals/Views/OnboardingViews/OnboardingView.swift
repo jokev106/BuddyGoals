@@ -117,8 +117,8 @@ extension OnboardingView {
         .cornerRadius(10)
         .onTapGesture {
             if onboardingState == 1 {
-                vm.addNewUser(name: nameRegister, username: idRegister)
             } else if onboardingState == 6 {
+//                vm.addNewUser(name: nameRegister, username: idRegister)
                 vm.addNewGoal(title: onboardingGoal)
                 vm.addNewPlan(title: onboardingPlan)
                 vm.addNewAction(title: onboardingAction)
@@ -875,6 +875,7 @@ extension OnboardingView {
                 showAlert(title: "")
                 return
             }
+            vm.addNewUser(name: nameRegister, username: idRegister)
         case 3:
             guard onboardingGoal.count > 1 else {
                 showAlert(title: "You have to set your Goal first!")
