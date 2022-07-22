@@ -29,6 +29,9 @@ struct ProfileView: View {
      @State private var scheduleEnd = Date()
 
     
+    //var for submission image picker
+    @State var changeSubmissionImage = false
+    @State var openCameraSheet = false
     
     var body: some View {
         GeometryReader{ geo in
@@ -118,7 +121,7 @@ extension ProfileView {
     var formProfile: some View {
         
         VStack {
-            Image("Gusde-Emot")
+            Image(uiImage: vm.imageSelected)
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 125, height: 125, alignment: .center)
@@ -193,11 +196,12 @@ extension ProfileView {
             
             Button(action: {
                 //Action
-                
+                changeSubmissionImage = true
+                openCameraSheet = true
             }, label: {
                 ZStack {
                     
-                    Image("Gusde-Emot")
+                    Image(uiImage: vm.imageSelected)
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 125, height: 125, alignment: .center)
@@ -217,7 +221,9 @@ extension ProfileView {
                     
                 }
             }) //Button
-            
+            .sheet(isPresented: $openCameraSheet) {
+                SubmissionPicker(selectedImage: $vm.imageSelected, sourceType: .photoLibrary)
+            }
             Form {
                 
                 //Form

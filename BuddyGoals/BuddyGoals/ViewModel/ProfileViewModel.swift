@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class ProfileViewModel : ObservableObject {
     
@@ -14,6 +15,8 @@ class ProfileViewModel : ObservableObject {
     @Published var currentGoal : String = ""
     @Published var scheduleStart : Date = Date()
     @Published var duration : Int = 0
+    @Published var imageSelected = UIImage()
+    
     
     
     var context : NSManagedObjectContext?
@@ -38,6 +41,7 @@ class ProfileViewModel : ObservableObject {
     // fill and update published properties
     func fillProperties() {
         name = self.user?.wrappedName ?? "Unknown User"
+        imageSelected = self.user?.wrappedPicture ?? UIImage()
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
         currentGoal = tempGoal!.wrappedTitle
         scheduleStart = tempGoal!.startDate!
@@ -47,6 +51,7 @@ class ProfileViewModel : ObservableObject {
     // update user + goal
     func update() {
         user?.name = name
+        user?.profilePicture = imageSelected.pngData()
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
         tempGoal?.title = currentGoal
         tempGoal?.startDate = scheduleStart

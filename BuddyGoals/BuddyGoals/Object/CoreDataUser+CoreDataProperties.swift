@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreData
+import UIKit
+import SwiftUI
 
 
 extension CoreDataUser {
@@ -72,5 +74,12 @@ extension CoreDataUser : Identifiable {
         let sortedGoal = goalSet.sorted { $0.wrappedTitle < $1.wrappedTitle }
         
         return sortedGoal
+    }
+    public var wrappedPicture : UIImage {
+        if profilePicture == nil {
+            return UIImage(named: "Gusde-Emot") ?? UIImage()
+        }
+        let image = UIImage(data: profilePicture!)!
+        return image
     }
 }
