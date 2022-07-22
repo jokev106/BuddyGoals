@@ -22,11 +22,15 @@ class PlanModel: ObservableObject {
     var coreDataController : CoreDataController?
     
     // Setup awal untuk memakai View Model tapi menghindari init
-    func setup(goalID: UUID, context : NSManagedObjectContext) {
+    func setup(goalID: UUID?, context : NSManagedObjectContext) {
         self.context = context
         coreDataController = CoreDataController(context: context)
         self.goalID = goalID
-        self.goal = (self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataGoal", toPredicate: "id", predicateValue: "\(goalID)").first as! CoreDataGoal)
+        if goalID != nil {
+            self.goal = (self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataGoal", toPredicate: "id", predicateValue: "\(goalID!)").first as! CoreDataGoal)
+            getPlans()
+        }
+        
     }
     
     // Add new plan

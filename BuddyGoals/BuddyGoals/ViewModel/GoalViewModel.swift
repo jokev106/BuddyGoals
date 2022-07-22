@@ -32,11 +32,13 @@ class GoalViewModel : ObservableObject {
     // query user sesuai user yang login
     func getUser() {
 //        user = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "name", predicateValue: "My Nam") as! [CoreDataUser]
-        user = self.coreDataController?.selectAllCoreData(entityName: "CoreDataUser") as! [CoreDataUser]
-        var tempGoal = user[0].wrappedGoals
-        tempGoal = tempGoal.filter { $0.isFinished == false }
-        goal = tempGoal
-        goalID = goal[0].id
+        user = self.coreDataController?.selectAllCoreData(entityName: "CoreDataUser") as? [CoreDataUser] ?? []
+        if user.count >= 1 {
+            var tempGoal = user[0].wrappedGoals
+            tempGoal = tempGoal.filter { $0.isFinished == false }
+            goal = tempGoal
+            goalID = goal[0].id
+        }
     }
     
     // query plans from goal
@@ -47,19 +49,25 @@ class GoalViewModel : ObservableObject {
     }
     
     // calculate end date from start date
-    private func calculateEndDate() -> Date {
+    private func calculateEndDate() -> Date? {
         var dateComponent = DateComponents()
-        let tempGoal = goal[0]
-        dateComponent.day = 7 * tempGoal.wrappedDuration
-        let calculatedEndDate = Calendar.current.date(byAdding: dateComponent, to: tempGoal.startDate!)
-        return calculatedEndDate!
+        let tempGoal = goal.first ?? nil
+        if tempGoal != nil {
+            dateComponent.day = 7 * tempGoal!.wrappedDuration
+            let calculatedEndDate = Calendar.current.date(byAdding: dateComponent, to: tempGoal!.startDate!)
+            return calculatedEndDate!
+        }
+        return nil
     }
     
     // calculate remaining days from end date to start date
     func calculateRemainingDays() {
-        let diffSeconds = calculateEndDate().timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
-        let diffDays = Int(diffSeconds / (60.0 * 60.0 * 24.0))
-        self.remainingDay = diffDays
+        let endDate = calculateEndDate()
+        if endDate != nil {
+            let diffSeconds = endDate!.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+            let diffDays = Int(diffSeconds / (60.0 * 60.0 * 24.0))
+            self.remainingDay = diffDays
+        }
     }
     
     // Add initial items for core data
