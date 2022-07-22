@@ -18,12 +18,10 @@
 		B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226E9F287D508100CBCB49 /* RepeatAction.swift */; };
 		B3226EA6287D508100CBCB49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3226EA0287D508100CBCB49 /* User.swift */; };
 		B340B2E2287EB2D200120673 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E1287EB2D200120673 /* LoginView.swift */; };
-		B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E3287EE05900120673 /* RegisterView.swift */; };
 		B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E5288002A700120673 /* PlanDetailView.swift */; };
 		B340B2E928801AA000120673 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2E828801AA000120673 /* PlanModel.swift */; };
 		B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B340B2EB28801B5800120673 /* PlanStruct.swift */; };
-		B359A0ED2887EE2800C72159 /* fakeHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B359A0EC2887EE2800C72159 /* fakeHome.swift */; };
-		B359A0EF2887EEE900C72159 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B359A0EE2887EEE900C72159 /* OnboardingView.swift */; };
+		B359A0F1288A8EA200C72159 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B359A0F0288A8EA200C72159 /* IntroView.swift */; };
 		B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */; };
 		B35B9350287C1A380056C847 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B934F287C1A380056C847 /* ContentView.swift */; };
 		B35B9352287C1A390056C847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35B9351287C1A390056C847 /* Assets.xcassets */; };
@@ -44,8 +42,12 @@
 		B3A892A3287D54E100694732 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A2287D54E100694732 /* EditGoalView.swift */; };
 		B3A892A5287D550D00694732 /* CardHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A4287D550D00694732 /* CardHomeView.swift */; };
 		B3A892A7287D552C00694732 /* SubmissionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892A6287D552C00694732 /* SubmissionPicker.swift */; };
-		B3A892AB287D5D3500694732 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* IntroView.swift */; };
 		B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A892AA287D5D3500694732 /* OnboardingView.swift */; };
+		B8880BCE2887EA7A003A1AD2 /* BuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */; };
+		B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */; };
+		B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD228893212003A1AD2 /* NeedApproveCard.swift */; };
+		B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */; };
+		B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */; };
 		F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88DE2882C47000213726 /* CoreDataPartner+CoreDataClass.swift */; };
 		F73A88EB2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88DF2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift */; };
 		F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88E02882C47000213726 /* CoreDataUser+CoreDataClass.swift */; };
@@ -63,11 +65,6 @@
 		F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A88FE2886BCCC00213726 /* PlanView.swift */; };
 		F73A8901288800A000213726 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A8900288800A000213726 /* ProfileViewModel.swift */; };
 		F73A89032888FBB600213726 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73A89022888FBB600213726 /* ActionViewModel.swift */; };
-		B8880BCE2887EA7A003A1AD2 /* BuddyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */; };
-		B8880BD02887FD20003A1AD2 /* BuddyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */; };
-		B8880BD328893212003A1AD2 /* NeedApproveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD228893212003A1AD2 /* NeedApproveCard.swift */; };
-		B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */; };
-		B8880BD7288933CD003A1AD2 /* ApprovedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,12 +96,10 @@
 		B3226E9F287D508100CBCB49 /* RepeatAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatAction.swift; sourceTree = "<group>"; };
 		B3226EA0287D508100CBCB49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B340B2E1287EB2D200120673 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		B340B2E3287EE05900120673 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B340B2E5288002A700120673 /* PlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailView.swift; sourceTree = "<group>"; };
 		B340B2E828801AA000120673 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 		B340B2EB28801B5800120673 /* PlanStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStruct.swift; sourceTree = "<group>"; };
-		B359A0EC2887EE2800C72159 /* fakeHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fakeHome.swift; sourceTree = "<group>"; };
-		B359A0EE2887EEE900C72159 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B359A0F0288A8EA200C72159 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		B35B934A287C1A380056C847 /* BuddyGoals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyGoals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35B934D287C1A380056C847 /* BuddyGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyGoalsApp.swift; sourceTree = "<group>"; };
 		B35B934F287C1A380056C847 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,8 +123,12 @@
 		B3A892A2287D54E100694732 /* EditGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		B3A892A4287D550D00694732 /* CardHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardHomeView.swift; sourceTree = "<group>"; };
 		B3A892A6287D552C00694732 /* SubmissionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPicker.swift; sourceTree = "<group>"; };
-		B3A892AA287D5D3500694732 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		B3A892AA287D5D3500694732 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyView.swift; sourceTree = "<group>"; };
+		B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyProfileView.swift; sourceTree = "<group>"; };
+		B8880BD228893212003A1AD2 /* NeedApproveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedApproveCard.swift; sourceTree = "<group>"; };
+		B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingSubmissionCard.swift; sourceTree = "<group>"; };
+		B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedCard.swift; sourceTree = "<group>"; };
 		F73A88DE2882C47000213726 /* CoreDataPartner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPartner+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F73A88DF2882C47000213726 /* CoreDataPartner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataPartner+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F73A88E02882C47000213726 /* CoreDataUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataUser+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -147,11 +146,6 @@
 		F73A88FE2886BCCC00213726 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		F73A8900288800A000213726 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F73A89022888FBB600213726 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
-		B8880BCD2887EA7A003A1AD2 /* BuddyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyView.swift; sourceTree = "<group>"; };
-		B8880BCF2887FD20003A1AD2 /* BuddyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyProfileView.swift; sourceTree = "<group>"; };
-		B8880BD228893212003A1AD2 /* NeedApproveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedApproveCard.swift; sourceTree = "<group>"; };
-		B8880BD42889334F003A1AD2 /* WaitingSubmissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingSubmissionCard.swift; sourceTree = "<group>"; };
-		B8880BD6288933CD003A1AD2 /* ApprovedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,10 +268,8 @@
 		B359A0EB2887E98D00C72159 /* OnboardingViews */ = {
 			isa = PBXGroup;
 			children = (
-				B3A892AA287D5D3500694732 /* IntroView.swift */,
-				B340B2E3287EE05900120673 /* RegisterView.swift */,
-				B359A0EC2887EE2800C72159 /* fakeHome.swift */,
-				B359A0EE2887EEE900C72159 /* OnboardingView.swift */,
+				B359A0F0288A8EA200C72159 /* IntroView.swift */,
+				B3A892AA287D5D3500694732 /* OnboardingView.swift */,
 			);
 			path = OnboardingViews;
 			sourceTree = "<group>";
@@ -517,7 +509,6 @@
 				F73A88F42882C47000213726 /* CoreDataActionRecord+CoreDataClass.swift in Sources */,
 				B340B2E6288002A700120673 /* PlanDetailView.swift in Sources */,
 				B3226EA5287D508100CBCB49 /* RepeatAction.swift in Sources */,
-				B359A0ED2887EE2800C72159 /* fakeHome.swift in Sources */,
 				F73A89032888FBB600213726 /* ActionViewModel.swift in Sources */,
 				F73A88EA2882C47000213726 /* CoreDataPartner+CoreDataClass.swift in Sources */,
 				B35B9350287C1A380056C847 /* ContentView.swift in Sources */,
@@ -526,10 +517,11 @@
 				F73A88F32882C47000213726 /* CoreDataAction+CoreDataProperties.swift in Sources */,
 				F73A88F52882C47000213726 /* CoreDataActionRecord+CoreDataProperties.swift in Sources */,
 				B3A8929C287D53D500694732 /* ColorsSet.swift in Sources */,
-				B3A892AB287D5D3500694732 /* IntroView.swift in Sources */,
+				B3A892AB287D5D3500694732 /* OnboardingView.swift in Sources */,
 				B3226E98287D4F1A00CBCB49 /* NavigationAppearance.swift in Sources */,
 				F73A88EF2882C47000213726 /* CoreDataPlan+CoreDataProperties.swift in Sources */,
 				B3226EA6287D508100CBCB49 /* User.swift in Sources */,
+				B359A0F1288A8EA200C72159 /* IntroView.swift in Sources */,
 				F73A88FF2886BCCC00213726 /* PlanView.swift in Sources */,
 				F73A8901288800A000213726 /* ProfileViewModel.swift in Sources */,
 				F73A88EC2882C47000213726 /* CoreDataUser+CoreDataClass.swift in Sources */,
@@ -538,12 +530,10 @@
 				B340B2EC28801B5800120673 /* PlanStruct.swift in Sources */,
 				B35B934E287C1A380056C847 /* BuddyGoalsApp.swift in Sources */,
 				B3A89298287D53A400694732 /* MainView.swift in Sources */,
-				B340B2E4287EE05A00120673 /* RegisterView.swift in Sources */,
 				F73A88EE2882C47000213726 /* CoreDataPlan+CoreDataClass.swift in Sources */,
 				F73A88F02882C47000213726 /* CoreDataGoal+CoreDataClass.swift in Sources */,
 				F73A88FD28869D4300213726 /* GoalViewModel.swift in Sources */,
 				B8880BD52889334F003A1AD2 /* WaitingSubmissionCard.swift in Sources */,
-				B359A0EF2887EEE900C72159 /* OnboardingView.swift in Sources */,
 				B3226EA1287D508100CBCB49 /* Goal.swift in Sources */,
 				F73A88F22882C47000213726 /* CoreDataAction+CoreDataClass.swift in Sources */,
 				B340B2E928801AA000120673 /* PlanModel.swift in Sources */,
