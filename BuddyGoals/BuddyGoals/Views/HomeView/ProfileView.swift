@@ -151,8 +151,6 @@ extension ProfileView {
                     Text("\(vm.currentGoal)")
                         .foregroundColor(Color.black)
                     
-                    
-                        //                            .padding(.horizontal)<#code#>
                 }
                 
                 Section (header: Text("Scheduling")
@@ -227,8 +225,6 @@ extension ProfileView {
                         .font(.caption)
                     
                     
-                    
-                    
                 }
             }) //Button
             .sheet(isPresented: $openCameraSheet) {
@@ -267,8 +263,10 @@ extension ProfileView {
                     
                     HStack {
                         Text("Duration")
+                            .padding(.trailing)
                         Spacer()
-                        Text("\(vm.duration) Weeks")
+                        TextField("Set your duration", value: $vm.duration, formatter: NumberFormatter())
+                        Text(" Weeks")
                     }
                     .padding(.leading, 5.0)
                     .foregroundColor(Color.black)
