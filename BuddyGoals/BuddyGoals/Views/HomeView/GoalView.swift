@@ -12,8 +12,8 @@ struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var data : PlanModel
     @EnvironmentObject var vm : GoalViewModel
-    
-    
+    @StateObject var vmProfile : ProfileViewModel = ProfileViewModel()
+
     //Modal Bool
     @State var addNewPlanView = false
     @State var addNewActionView = false
@@ -95,7 +95,6 @@ struct GoalView: View {
                     } //VStack
                     //.navigationTitle("Goal")
                     .navigationBarHidden(true)
-
                     
                 }
                 

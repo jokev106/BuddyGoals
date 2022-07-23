@@ -24,7 +24,7 @@ struct ApprovedCard: View {
                     .padding(.trailing, 10)
                     .padding(.leading, 10)
                     .frame(width: 20, height: 80)
-                    .background(colorCard)
+                    .background(.gray)
             }
             
             
@@ -44,11 +44,16 @@ struct ApprovedCard: View {
                     .resizable()
                     .frame(width: 60, height: 60)
                     .cornerRadius(10)
-                    .padding(.trailing, 15)
                 
-                //Image(systemName: <#T##String#>)
+                Image(systemName: "hand.thumbsup.fill")
+                    .foregroundColor(.black)
+                    .padding(5)
+                    .background(.white)
+                    .cornerRadius(10)
+                    .opacity(0.7)
                 
-            }
+            }.padding(.trailing, 15)
+
             
             
                 

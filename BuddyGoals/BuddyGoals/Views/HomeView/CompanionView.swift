@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CompanionView: View {
     
-    let user = "" //example
+    @State private var user: String = "" //example
     @State private var inviteBuddy: Bool = false
-    @State private var searchText = ""
+    @State private var searchText: String = ""
     @State private var showBuddyView = false
 
     var body: some View {
@@ -30,7 +30,7 @@ struct CompanionView: View {
             }
             
         } //Navigation View
-        .navigationAppearance(backgroundColor: UIColor(.red), foregroundColor: .white, hideSeperator: true)
+        .navigationAppearance(backgroundColor: UIColor.red, foregroundColor: .white, hideSeperator: true)
         
     } // var body
 }
@@ -85,6 +85,8 @@ extension CompanionView {
         }
         .navigationTitle("Buddy")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationAppearance(backgroundColor: UIColor(.red), foregroundColor: .white, hideSeperator: true)
+
     } //empty buddy
     
     var inviteBuddyView: some View {
@@ -94,42 +96,62 @@ extension CompanionView {
             Text("\(searchText)")
                 .searchable(text: $searchText)
             
-         
-            Image("Gusde-Emot")
-                .resizable()
-                .clipShape(Circle())
-                .frame(width: 125, height: 125, alignment: .center)
-                .padding()
-            
-            Text("Buddy's Name")
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
-                .frame(width: 200)
-            
-            Button(action: {
-                //Action
-                showBuddyView = true
-            }, label: {
-                Text("Invite")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
+            if searchText != "" {
+             
+                Image("Gusde-Emot")
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: 125, height: 125, alignment: .center)
                     .padding()
-                    .foregroundColor(.white)
-                    .background(primary900)
-                    .cornerRadius(15)
-            })
-            .padding(.top, 5.0)
-            .frame(width: .infinity)
-            NavigationLink("", destination:  BuddyView(), isActive: $showBuddyView)
-               
+                
+                Text("Buddy's Name")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .frame(width: 200)
+                
+                Button(action: {
+                    //Action
+                    showBuddyView = true
+                    //return AnyView(BuddyView())
+                }, label: {
+                    Text("Invite")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(primary900)
+                        .cornerRadius(15)
+                })
+                .padding(.top, 5.0)
+                .frame(width: .infinity)
+                NavigationLink("", destination:  BuddyView(), isActive: $showBuddyView)
+            } else {
+                
+                Button(action: {
+                    //Action
+                    inviteBuddy = false
+                }, label: {
+                    Text("Cancel")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.red)
+                        .cornerRadius(15)
+                })
+                .padding(.top, 5.0)
+                .frame(width: .infinity)
+                
+            }
             
             Spacer()
         }
         .navigationTitle("Buddy")
         .navigationBarTitleDisplayMode(.inline)
-        
+        .navigationAppearance(backgroundColor: UIColor(.red), foregroundColor: .white, hideSeperator: true)
+
     } //inviteBuddyView
     
 }
