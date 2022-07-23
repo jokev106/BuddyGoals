@@ -37,7 +37,7 @@ struct BuddyView: View {
                     VStack {
                         
                         HStack{
-                            Text("Goal")
+                            Text("Buddy")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
