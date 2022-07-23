@@ -224,13 +224,15 @@ extension GoalView {
                             
                         Spacer()
                         
-                        NavigationLink {
-                            AddActionView(plan: plan)
+                        Button {
+                            self.addNewActionView.toggle()
                         } label: {
                             Image(systemName: "plus.circle.fill")
                                 .foregroundColor(plan.planColor.colorValue)
                                 .background(plusButtonWhite)
                                 .clipShape(Circle())
+                        }.sheet(isPresented: $addNewActionView) {
+                            AddActionView(plan: plan)
                         }
 //                        Button(action: {self.addNewActionView.toggle()}) {
 //                            Image(systemName: "plus.circle.fill")

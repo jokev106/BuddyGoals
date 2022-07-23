@@ -46,6 +46,8 @@ struct AddPlanView: View {
                                 }
 
                                 Spacer()
+                                Text("New Plan").bold()
+                                Spacer()
                                 Button(action: {
                                     dataPlan.addPlan()
                                     presentationMode.wrappedValue.dismiss()

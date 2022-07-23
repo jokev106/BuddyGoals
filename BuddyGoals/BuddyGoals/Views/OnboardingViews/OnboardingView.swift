@@ -871,8 +871,8 @@ extension OnboardingView {
                 showAlert(title: "Buddy ID Max. 15 character and can't be changed")
                 return
             }
-            guard nameRegister.count <= 15 else {
-                showAlert(title: "")
+            guard nameRegister.count <= 90 else {
+                showAlert(title: "Your name is too long!. Please re-enter you correct name..")
                 return
             }
             vm.addNewUser(name: nameRegister, username: idRegister)
