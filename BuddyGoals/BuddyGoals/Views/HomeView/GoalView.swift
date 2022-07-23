@@ -19,6 +19,8 @@ struct GoalView: View {
     @State var addNewActionView = false
     @State var tapProfileView = false
     @State var tapEditGoal = false
+    
+    @State var isAlertShowed = false
 
     var body: some View {
         
@@ -59,7 +61,15 @@ struct GoalView: View {
                             
                             HStack {
                                 
-                                Button(action: {self.addNewPlanView.toggle()}) {
+                                Button(action: {
+                                    if vm.currentGoal == nil {
+                                        isAlertShowed = true
+                                    } else {
+                                        self.addNewPlanView.toggle()
+                                    }
+                                    
+                                    
+                                }) {
                                     HStack{
                                         Image(systemName: "list.triangle")
                                         Text("Manage Plan")
@@ -101,6 +111,9 @@ struct GoalView: View {
             vm.getUser()
             vm.getPlans(id: nil)
             vm.calculateRemainingDays()
+        }
+        .alert("You need to add a goal before adding a new plan", isPresented: $isAlertShowed) {
+                    Button("OK", role: .cancel) { }
         }
 
         

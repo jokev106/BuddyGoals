@@ -23,7 +23,9 @@ class OnboardingViewModel : ObservableObject {
     func addEmptyUser() {
         let newUser = CoreDataUser(context: context!)
         newUser.id = UUID()
+        let number = Int.random(in: 1000..<10000)
         newUser.name = "My Name"
+        newUser.email = "User \(number)"
         
         save()
     }
