@@ -11,7 +11,7 @@ import CoreData
 class AddActionViewModel : ObservableObject {
     @Published var actionTitle : String = ""
     @Published var startDate : Date = Date()
-    @Published var repeats : String = ""
+    @Published var repeats : String = "Never"
     
     
     var context : NSManagedObjectContext?
