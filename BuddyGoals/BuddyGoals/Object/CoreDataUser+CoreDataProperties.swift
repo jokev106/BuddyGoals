@@ -75,6 +75,11 @@ extension CoreDataUser : Identifiable {
         
         return sortedGoal
     }
+    
+    public var wrappedId : String {
+        return email ?? "No ID"
+    }
+    
     public var wrappedPicture : UIImage {
         if profilePicture == nil {
             return UIImage(named: "Gusde-Emot") ?? UIImage()

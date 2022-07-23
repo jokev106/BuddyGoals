@@ -37,7 +37,8 @@ class GoalViewModel : ObservableObject {
 //        user = self.coreDataController?.selectOneWhereCoreData(entityName: "CoreDataUser", toPredicate: "name", predicateValue: "My Nam") as! [CoreDataUser]
         user = self.coreDataController?.selectAllCoreData(entityName: "CoreDataUser") as? [CoreDataUser] ?? []
         if user.count >= 1 {
-            var tempGoal = user[0].wrappedGoals
+            user = [user[user.count - 1]]
+            var tempGoal = user.last!.wrappedGoals
             tempGoal = tempGoal.filter { $0.isFinished == false }
             goal = tempGoal
             goalID = goal.first?.id
@@ -82,6 +83,8 @@ class GoalViewModel : ObservableObject {
             let diffSeconds = endDate!.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
             let diffDays = Int(diffSeconds / (60.0 * 60.0 * 24.0))
             self.remainingDay = diffDays
+        } else {
+            self.remainingDay = 0
         }
     }
     

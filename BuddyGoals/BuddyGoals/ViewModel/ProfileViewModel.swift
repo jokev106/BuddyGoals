@@ -57,17 +57,21 @@ class ProfileViewModel : ObservableObject {
     func update() {
         user?.name = name
         user?.profilePicture = imageSelected.pngData()
-        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
+        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
         if tempGoal != nil {
             tempGoal?.title = currentGoal
             tempGoal?.startDate = scheduleStart
             tempGoal?.duration = Int16(duration)
         } else {
-            let newGoal = CoreDataGoal(context: context!)
-            newGoal.id = UUID()
-            newGoal.title = currentGoal
-            newGoal.startDate = scheduleStart
-            newGoal.duration = Int16(duration)
+            if currentGoal != "No Goal Set Yet" && duration > 0 {
+                let newGoal = CoreDataGoal(context: context!)
+                newGoal.id = UUID()
+                newGoal.title = currentGoal
+                newGoal.startDate = scheduleStart
+                newGoal.duration = Int16(duration)
+                
+                newGoal.user = user
+            }
         }
         
         save()
@@ -75,7 +79,7 @@ class ProfileViewModel : ObservableObject {
     
     // finish goal
     func finishGoal() {
-        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }[0]
+        let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
         tempGoal?.isFinished = true
         
         save()

@@ -135,7 +135,7 @@ extension ProfileView {
                 .multilineTextAlignment(.center)
             
             HStack {
-                Text("gghch")
+                Text(vm.user?.wrappedId ?? "No ID Attached")
                     .foregroundColor(whiteDark)
                 Image(systemName: "doc.on.doc")
                     .foregroundColor(whiteDark)
@@ -181,6 +181,8 @@ extension ProfileView {
                         Spacer()
                         Button(action: {
                             //action
+                            vm.finishGoal()
+                            vm.fillProperties()
                         }, label: {
                             Text("End Goal")
                                 .foregroundColor(.red)
@@ -258,7 +260,7 @@ extension ProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    DatePicker("Start Date", selection: $vm.scheduleStart, in: Date()..., displayedComponents: .date)
+                    DatePicker("Start Date", selection: $vm.scheduleStart, in: vm.scheduleStart..., displayedComponents: .date)
                         .padding(.leading, 5.0)
                         .foregroundColor(Color.black)
                     
