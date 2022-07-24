@@ -77,4 +77,25 @@ extension CoreDataAction : Identifiable {
             return true
         }
     }
+    
+    var isAvailableToday : Bool {
+        let recordCount = wrappedRecords.count
+        var calculatedEndDate = wrappedDate
+        if repeats.repeatComponent != nil {
+            for _ in 0...recordCount {
+                calculatedEndDate = Calendar.current.date(byAdding: repeats.repeatComponent!, to: calculatedEndDate)!
+            }
+            if NSCalendar.current.isDateInToday(calculatedEndDate) {
+                return true
+            }
+            return false
+        } else {
+            if repeats == .weekdays && NSCalendar.current.isDateInWeekend(Date()) == false {
+                return true
+            } else if repeats == .weekends && NSCalendar.current.isDateInWeekend(Date()) {
+                return true
+            }
+            return false
+        }
+    }
 }

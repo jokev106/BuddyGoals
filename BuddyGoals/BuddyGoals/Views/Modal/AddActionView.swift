@@ -49,7 +49,6 @@ struct AddActionView: View {
     // For Editing Purposes
     var plan : CoreDataPlan
     
-    @EnvironmentObject var activityToday : Dailies
     
     var body: some View {
         GeometryReader{ geo in
