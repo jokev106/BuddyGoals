@@ -181,6 +181,7 @@ extension ProfileView {
                         Button(action: {
                             //action
                             vm.finishGoal()
+                            gvm.resetProperties()
                             vm.fillProperties()
                         }, label: {
                             Text("End Goal")

@@ -71,6 +71,8 @@ class OnboardingViewModel : ObservableObject {
         newAction.id = UUID()
         newAction.title = title
         newAction.plan = self.plan
+        newAction.startDate = Date()
+        newAction.repeats = .never
         
         save()
     }

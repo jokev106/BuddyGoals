@@ -55,6 +55,12 @@ class GoalViewModel : ObservableObject {
         }
     }
     
+    func resetProperties() {
+        plans = []
+        actions = []
+        goalID = nil
+    }
+    
     func getActions() {
         var tempActions = self.coreDataController?.selectAllCoreData(entityName: "CoreDataAction") as? [CoreDataAction] ?? []
         tempActions = tempActions.filter { self.plans.contains($0.plan!) && $0.isDoneToday == false && $0.isAvailableToday == true }

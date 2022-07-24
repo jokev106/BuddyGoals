@@ -50,13 +50,15 @@ class ProfileViewModel : ObservableObject {
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
         currentGoal = tempGoal?.wrappedTitle ?? "No Goal Set Yet"
         scheduleStart = tempGoal?.startDate ?? Date()
-        duration = tempGoal?.wrappedDuration ?? -1
+        duration = tempGoal?.wrappedDuration ?? 0
     }
     
     // update user + goal
     func update() {
         user?.name = name
-        user?.profilePicture = imageSelected.pngData()
+        if imageSelected != UIImage(named: "Gusde-Emot") {
+            user?.profilePicture = imageSelected.pngData()
+        }
         let tempGoal = self.user?.wrappedGoals.filter { $0.isFinished == false }.first
         if tempGoal != nil {
             tempGoal?.title = currentGoal

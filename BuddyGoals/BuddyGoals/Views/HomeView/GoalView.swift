@@ -174,7 +174,7 @@ extension GoalView {
                         .foregroundColor(Color.black)
                         .bold()
                     Spacer()
-                    Text("\(vm.currentGoal?.wrappedDuration ?? -1) Weeks")
+                    Text("\(vm.currentGoal?.wrappedDuration ?? 0) Weeks")
                         .foregroundColor(Color.gray)
                     
                     VStack {
