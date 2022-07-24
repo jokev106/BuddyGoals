@@ -121,7 +121,7 @@ struct EditActionView: View {
                     
                     //navbar Setting
                     .navigationBarTitle(
-                        Text("Add Action").bold(),
+                        Text("Edit Action").bold(),
                         displayMode: .inline)
                     .foregroundColor(Color.white)
                     .navigationBarItems(leading:
