@@ -46,18 +46,20 @@ struct PlanDetailView: View {
                     }
                     .listStyle(InsetListStyle())
                     //Footer Button
-                                        ZStack{
-                                            NavigationLink{
-                                                AddPlanView()
-                                            } label: {
-                                                Image(systemName: "plus")
-                                                    .foregroundColor(blue)
-                                                Text("Add New Plan")
-                                                    .foregroundColor(blue)
-                                                //                                    .frame(width: 350, height: 20, alignment: .leading)
-                                            }
-                                            .frame(width: 300, height: 0, alignment: .leading)
-                                        }.padding(.top)
+                    ZStack{
+                        NavigationLink{
+                            AddPlanView()
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(blue)
+                            Text("Add New Plan")
+                                .foregroundColor(blue)
+                            //                                    .frame(width: 350, height: 20, alignment: .leading)
+                        }
+                        .frame(width: 300, height: 0, alignment: .leading)
+                    }
+                    .padding(.top)
+                    .padding(.bottom)
                 }
                 //navbar Setting
                 .navigationBarTitle(

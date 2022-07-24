@@ -75,7 +75,7 @@ extension BuddyProfileView {
                 .padding(.top)
                 
             //Continue Profile
-            Text("Giga Chadson")//Name
+            Text("Buddy's Name")//Name
                 .foregroundColor(.black)
                 .font(.system(size: 25))
                 .multilineTextAlignment(.center)
@@ -87,22 +87,29 @@ extension BuddyProfileView {
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    TextField("Set your goal", text: $currentGoal)
-                        .padding(.all, 7.0)
-                        .foregroundColor(Color.black)
-                    //                            .padding(.horizontal)
+                    Text("Lost 1 Kg in 1 week")
+                        .foregroundColor(.black)
                 }
                 
                 Section (header: Text("Scheduling")
                             .foregroundColor(Color.blue)
                             .bold()
                 ){
-                    DatePicker("Start Date", selection: $scheduleStart, in: Date()..., displayedComponents: .date)
-                        .padding(.leading, 5.0)
-                        .foregroundColor(Color.black)
-                    DatePicker("Duration", selection: $scheduleEnd, in: Date()..., displayedComponents: .date)
-                        .padding(.leading, 5.0)
-                        .foregroundColor(Color.black)
+                    HStack {
+                        Text("Start Date")
+                        Spacer()
+                        Text("20 Jun 2022")
+                    }
+                    .padding(.leading, 5.0)
+                    .foregroundColor(Color.black)
+                    
+                    HStack {
+                        Text("Duration")
+                        Spacer()
+                        Text("15 Days")
+                    }
+                    .padding(.leading, 5.0)
+                    .foregroundColor(Color.black)
                 }
                 
                 Section {

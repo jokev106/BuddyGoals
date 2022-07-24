@@ -173,7 +173,6 @@ extension ProfileView {
                     }
                     .padding(.leading, 5.0)
                     .foregroundColor(Color.black)
-                    
                 }
                 
                 Section {

@@ -13,13 +13,6 @@ struct BuddyView: View {
     @EnvironmentObject var data: PlanModel
     
     
-    //for White Content Navigation Bar
-    init() {
-       let navBarAppearance = UINavigationBar.appearance()
-       navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-       navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-    
     //Modal Bool
     @State var addNewPlanView = false
     @State var addNewActionView = false
@@ -35,7 +28,7 @@ struct BuddyView: View {
                     
                     VStack{
                         Color.red
-                            .frame(height: 260, alignment: .top)
+                            .frame(height: 300, alignment: .top)
                             .ignoresSafeArea(.all)
                             .shadow(radius: 10)
                         Spacer()
@@ -44,7 +37,7 @@ struct BuddyView: View {
                     VStack {
                         
                         HStack{
-                            Text("Goal")
+                            Text("Buddy")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -64,7 +57,7 @@ struct BuddyView: View {
                                         .frame(width: 20, height: 20)
                                         .clipShape(Circle())
                                     
-                                    Text("Giga Chad")
+                                    Text("Buddy's Name")
                                         .font(.caption2)
                                         .fontWeight(.bold)
                                         .multilineTextAlignment(.center)
@@ -105,6 +98,7 @@ struct BuddyView: View {
             
         } //Navigation View
         .edgesIgnoringSafeArea(.all)
+        .navigationAppearance(backgroundColor: UIColor(.red), foregroundColor: .white, hideSeperator: true)
 
         
     } //View Close
@@ -133,7 +127,7 @@ extension BuddyView {
             
             VStack{
                 HStack {
-                    Text("Be a good boyfriend")
+                    Text("Lost 1 Kg in 1 Week")
                         .font(.system(size: 25, weight: .bold))
                         .frame(alignment: .topTrailing)
                         .foregroundColor(Color.black)
@@ -196,7 +190,7 @@ extension BuddyView {
                 
                 HStack{
                     
-                    Text("Exercise")
+                    Text("Need Approval")
                         .font(.system(size: 22.5))
                         .bold()
                     
@@ -209,9 +203,37 @@ extension BuddyView {
                 
                 //Card
                 //ForEach {
-                    CardHomeView(colorCard: green, milestone: "Jumping Jack for 3 minutes")
-                    CardHomeView(colorCard: green, milestone: "Plank for 3 minutes")
-                    CardHomeView(colorCard: green, milestone: "Sit up 10 times")
+                NeedApproveCard(imageCard: "Egg", colorCard: .green, milestone: "Egg breakfast", destinationCard: "")
+                
+                HStack{
+                    
+                    Text("Waiting Submission")
+                        .font(.system(size: 22.5))
+                        .bold()
+                    
+                    Spacer()
+                    
+                }
+                .padding(.bottom, 20)
+                .padding(.trailing, 30)
+                .padding(.leading, 30)// HStack
+                
+                WaitingSubmissionCard(colorCard: .red, milestone: "Cook healthy food", destinationCard: "")
+                
+                HStack{
+                    
+                    Text("Approved")
+                        .font(.system(size: 22.5))
+                        .bold()
+                    
+                    Spacer()
+                    
+                }
+                .padding(.bottom, 20)
+                .padding(.trailing, 30)
+                .padding(.leading, 30)// HStack
+                
+                ApprovedCard(imageCard: "Egg", colorCard: .gray, milestone: "Eat healthy food", destinationCard: "")
                     
                 //}
                 

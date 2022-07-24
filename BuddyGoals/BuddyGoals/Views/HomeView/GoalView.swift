@@ -12,20 +12,8 @@ struct GoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var data : PlanModel
     @EnvironmentObject var vm : GoalViewModel
-    
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-//        animation: .default)
-//    private var items: FetchedResults<Item>
-    
-    //for White Content Navigation Bar
-//    init() {
-//       let navBarAppearance = UINavigationBar.appearance()
-//       navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//       navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//    }
-    
+    @StateObject var vmProfile : ProfileViewModel = ProfileViewModel()
+
     //Modal Bool
     @State var addNewPlanView = false
     @State var addNewActionView = false
@@ -67,8 +55,8 @@ struct GoalView: View {
                         //extention main goal card
                         mainGoalCard
                         
-                        //Close of Card
                         
+                        //Close of Card
                         VStack {
                             
                             HStack {
@@ -94,14 +82,19 @@ struct GoalView: View {
                             }.padding(25)
                             
                             //extention list card plan
-                            listPlansCard
+                            if !vm.plans.isEmpty {
+                                listPlansCard
+                            } else {
+                                emptyStatePlan
+                            }
+                            
+                            Spacer()
                             
                         } //VStack
                    
                     } //VStack
                     //.navigationTitle("Goal")
                     .navigationBarHidden(true)
-
                     
                 }
                 
@@ -231,13 +224,15 @@ extension GoalView {
                             
                         Spacer()
                         
-                        NavigationLink {
-                            AddActionView(plan: plan)
+                        Button {
+                            self.addNewActionView.toggle()
                         } label: {
                             Image(systemName: "plus.circle.fill")
-                                .foregroundColor(plusButtonWhite)
-                                .background(plan.planColor.colorValue)
+                                .foregroundColor(plan.planColor.colorValue)
+                                .background(plusButtonWhite)
                                 .clipShape(Circle())
+                        }.sheet(isPresented: $addNewActionView) {
+                            AddActionView(plan: plan)
                         }
 //                        Button(action: {self.addNewActionView.toggle()}) {
 //                            Image(systemName: "plus.circle.fill")
@@ -264,15 +259,6 @@ extension GoalView {
                         }
                     }
                         
-//                        CardHomeView(colorCard: green, milestone: "Plank for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Sit up 10 times", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Vertical Jumps for 3 minutes", destinationCard: "")
-//                        CardHomeView(colorCard: green, milestone: "Try Something", destinationCard: "")
-                    //}
                     
                     //Close of Card
                 }
@@ -281,6 +267,32 @@ extension GoalView {
             
         }
     } //var listPlansCard
+    
+    var emptyStatePlan: some View {
+        
+        VStack {
+            Image("Invite-Buddy")
+                .resizable()
+                .frame(width: 200, height: 200, alignment: .center)
+            
+            Text("Break down your goal")
+                .font(.title2)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .padding(.top)
+                .frame(width: 300)
+            
+            Text("Tap the \(Image(systemName: "list.triangle")) Manage Plan button!")
+                .font(.caption)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .lineLimit(3)
+                .frame(width: 300)
+                .foregroundColor(whiteDark)
+        }
+        
+    } //emptyStatePlan
     
     
 }
