@@ -171,8 +171,7 @@ struct ActionSubmissionView: View {
                     
                     //navbar Setting
                     .navigationBarTitle(
-                        Text("Add Action").bold(),
-                        displayMode: .inline)
+                        Text("Add Action").bold(), displayMode: .inline)
                     .foregroundColor(Color.white)
                     .navigationBarItems(leading:
                                             //Cancel Button
@@ -187,7 +186,7 @@ struct ActionSubmissionView: View {
                             NavigationLink{
                                 //Move to edit page with passing data
                                 EditActionView(actionID: actionID, vm: vm)
-                                
+                                    .navigationBarHidden(true)
                             }label: {
                                 Text("Edit")
                                     .foregroundColor(.white)

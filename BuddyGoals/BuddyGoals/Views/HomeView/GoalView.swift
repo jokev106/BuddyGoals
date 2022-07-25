@@ -254,6 +254,7 @@ extension GoalView {
                         NavigationLink {
 //                            EditActionView(initialActionTitle: action.wrappedTitle, initialStartDate: action.wrappedDate, initialRepeatValue: action.repeats, actionID: action.id!)
                             ActionSubmissionView(actionID:action.id!)
+                                .navigationBarHidden(true)
                         } label: {
                             CardHomeView(colorCard: plan.planColor.colorValue, milestone: action.wrappedTitle)
                         }
